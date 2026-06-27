@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AIリスクマネジメント & AIO対策 学習ツール</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@600;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f6f1e7; --bg-deep:#efe7d8; --panel:#fffdf8; --panel2:#f1ebdc; --line:#d8cdb9;
+    --ink:#25201a; --sub:#5c544a; --muted:#8a8073;
+    --accent:#2b5ea7; --accent2:#c2402d; --green:#3c7a4a; --amber:#b07d1e; --red:#c2402d;
+    --govern:#1c3f78; --map:#2b5ea7; --measure:#3c7a4a; --manage:#c2402d;
+    --radius:14px; --shadow:0 10px 30px rgba(60,45,30,.10);
+    --serif:"Shippori Mincho B1",serif;
+    --sans:"Zen Kaku Gothic New",-apple-system,BlinkMacSystemFont,"Hiragino Sans","Yu Gothic",Meiryo,sans-serif;
+    --mono:"IBM Plex Mono",ui-monospace,monospace;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    background:radial-gradient(1100px 600px at 82% -8%, var(--bg-deep) 0%, var(--bg) 52%) fixed;
+    color:var(--ink); font-family:var(--sans); line-height:1.8; -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1060px;margin:0 auto;padding:28px 20px 90px}
+  header.hero{padding:8px 0 22px;border-bottom:1px solid var(--line);margin-bottom:22px}
+  .kicker{display:inline-flex;align-items:center;gap:8px;font-size:12px;letter-spacing:.14em;color:var(--accent2);text-transform:uppercase;font-weight:700}
+  .kicker::before{content:"";width:22px;height:2px;background:var(--accent2);display:inline-block}
+  h1{font-family:var(--serif);font-size:31px;font-weight:800;margin:10px 0 6px;line-height:1.28}
+  h1 span{background:linear-gradient(90deg,var(--accent2),var(--accent));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .lede{color:var(--sub);font-size:15px;margin:0;max-width:780px}
+  .progress{margin-top:16px;display:flex;align-items:center;gap:12px;font-size:13px;color:var(--sub)}
+  .bar{flex:1;height:8px;background:var(--panel2);border-radius:99px;overflow:hidden;border:1px solid var(--line)}
+  .bar>i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--accent),var(--green));transition:width .5s}
+
+  nav.tabs{display:flex;gap:6px;flex-wrap:wrap;position:sticky;top:0;z-index:20;background:rgba(246,241,231,.9);backdrop-filter:blur(10px);padding:10px 0;margin-bottom:18px;border-bottom:1px solid var(--line)}
+  .tab{appearance:none;border:1px solid var(--line);background:var(--panel);color:var(--sub);padding:9px 13px;border-radius:99px;font-size:13px;font-weight:700;cursor:pointer;transition:.15s;white-space:nowrap}
+  .tab:hover{color:var(--ink);border-color:var(--accent)}
+  .tab.active{background:linear-gradient(90deg,var(--accent),var(--accent2));color:#fff;border-color:transparent;box-shadow:0 4px 14px rgba(43,94,167,.28)}
+
+  section.view{display:none;animation:fade .35s ease}
+  section.view.active{display:block}
+  @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+  h2{font-family:var(--serif);font-size:22px;font-weight:800;margin:6px 0 4px;display:flex;align-items:center;gap:10px}
+  h2 .n{font-family:var(--mono);font-size:13px;color:var(--muted);font-weight:600;border:1px solid var(--line);border-radius:8px;padding:2px 8px}
+  .section-sub{color:var(--sub);margin:0 0 18px;font-size:14px}
+  h3{font-family:var(--serif);font-size:17px;font-weight:700;margin:24px 0 8px}
+  h4.mini{font-family:var(--serif);font-size:15px;margin:16px 0 6px}
+  p{margin:8px 0}
+
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:20px 22px;margin:14px 0;box-shadow:var(--shadow)}
+  .grid{display:grid;gap:14px}
+  .g2{grid-template-columns:1fr 1fr}.g3{grid-template-columns:repeat(3,1fr)}
+  @media(max-width:760px){.g2,.g3{grid-template-columns:1fr}}
+
+  .pill{display:inline-block;font-size:11.5px;font-weight:700;padding:3px 9px;border-radius:99px;border:1px solid var(--line);color:var(--sub)}
+  .pill.guard{color:#1c3f78;border-color:#bcd0ea;background:#e9f0fa}
+  .pill.attack{color:#9a2f20;border-color:#e6c4bc;background:#faece8}
+
+  .map{display:grid;gap:14px}
+  .maprow{display:grid;grid-template-columns:170px 1fr;gap:14px;align-items:stretch}
+  @media(max-width:760px){.maprow{grid-template-columns:1fr}}
+  .mapbox{border-radius:12px;padding:14px 16px;border:1px solid var(--line);background:var(--panel2)}
+  .mapbox.center{display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;background:linear-gradient(135deg,#eaf0fa,#f7ece8);border-color:#c9d8ec}
+  .mapbox h4{margin:0 0 4px;font-size:14px}
+  .mapbox p{margin:0;font-size:12.5px;color:var(--sub)}
+
+  .func{border-left:4px solid var(--accent);padding:14px 16px;border-radius:10px;background:var(--panel2);margin:10px 0}
+  .func.govern{border-color:var(--govern)}.func.map{border-color:var(--map)}
+  .func.measure{border-color:var(--measure)}.func.manage{border-color:var(--manage)}
+  .func h4{margin:0 0 4px;font-size:15px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .func .tag{font-size:11px;font-weight:700;padding:2px 7px;border-radius:6px;color:#fff}
+  .func .cnt{font-size:11px;color:var(--muted);font-family:var(--mono)}
+  .func.govern .tag{background:var(--govern)}.func.map .tag{background:var(--map)}
+  .func.measure .tag{background:var(--measure)}.func.manage .tag{background:var(--manage)}
+  .func p{margin:4px 0 0;font-size:13.5px;color:var(--sub)}
+
+  ul.clean{margin:8px 0;padding-left:0;list-style:none}
+  ul.clean li{padding:6px 0 6px 24px;position:relative;font-size:14px;color:var(--ink);border-bottom:1px dashed var(--line)}
+  ul.clean li:last-child{border-bottom:0}
+  ul.clean li::before{content:"▸";position:absolute;left:4px;color:var(--accent2)}
+  ol.steps{margin:8px 0;padding-left:0;list-style:none;counter-reset:s}
+  ol.steps li{counter-increment:s;padding:8px 0 8px 40px;position:relative;font-size:14px;border-bottom:1px dashed var(--line)}
+  ol.steps li:last-child{border-bottom:0}
+  ol.steps li::before{content:counter(s);position:absolute;left:0;top:7px;width:26px;height:26px;border-radius:8px;background:var(--accent);color:#fff;display:grid;place-items:center;font-family:var(--mono);font-size:13px;font-weight:600}
+
+  table{width:100%;border-collapse:collapse;font-size:13.5px;margin:10px 0}
+  th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{color:var(--sub);font-weight:700;background:var(--panel2)}
+  td strong{color:var(--accent)}
+
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+  .chip{font-size:12.5px;padding:6px 11px;border-radius:9px;border:1px solid var(--line);background:var(--panel2);color:var(--ink)}
+  .chip b{color:var(--accent2)}
+
+  .callout{border:1px solid var(--line);border-left:4px solid var(--amber);background:#fbf4e3;border-radius:10px;padding:12px 16px;margin:14px 0;font-size:13.5px}
+  .callout.tip{border-left-color:var(--green);background:#eef5ee}
+  .callout.key{border-left-color:var(--accent);background:#eaf0fa}
+  .callout b{color:var(--ink)}
+
+  .search{width:100%;padding:13px 16px;border-radius:12px;border:1px solid var(--line);background:var(--panel);color:var(--ink);font-size:15px;margin-bottom:6px;font-family:var(--sans)}
+  .search:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px rgba(43,94,167,.16)}
+  .gfilter{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0 14px}
+  .gf{font-size:12px;padding:5px 11px;border-radius:99px;border:1px solid var(--line);background:var(--panel);color:var(--sub);cursor:pointer;font-weight:600}
+  .gf.on{background:var(--accent);color:#fff;border-color:transparent}
+  .term{border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin:10px 0;background:var(--panel)}
+  .term h4{margin:0 0 4px;font-size:15px;color:var(--ink)}
+  .term .cat{font-size:11px;font-weight:700;color:var(--accent2);letter-spacing:.04em}
+  .term p{margin:6px 0 0;font-size:13.5px;color:var(--sub)}
+  .nohit{color:var(--muted);text-align:center;padding:20px;display:none}
+
+  .q{border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin:12px 0;background:var(--panel)}
+  .q .qhead{font-weight:700;font-size:15px;margin-bottom:10px}
+  .q .qnum{color:var(--accent2);font-weight:700;margin-right:6px;font-family:var(--mono)}
+  .opt{display:block;width:100%;text-align:left;border:1px solid var(--line);background:var(--panel2);color:var(--ink);padding:11px 14px;border-radius:10px;margin:7px 0;cursor:pointer;font-size:14px;transition:.12s;font-family:var(--sans)}
+  .opt:hover{border-color:var(--accent)}
+  .opt.correct{border-color:var(--green);background:#e9f4ea;color:#1f5a2c}
+  .opt.wrong{border-color:var(--red);background:#faeae6;color:#9a2f20}
+  .opt.disabled{cursor:default;opacity:.92}
+  .exp{font-size:13px;color:var(--sub);margin-top:10px;padding:10px 12px;border-left:3px solid var(--accent);background:var(--panel2);border-radius:8px;display:none}
+  .exp.show{display:block}
+  .score{position:sticky;bottom:16px;margin-top:20px;background:linear-gradient(135deg,#eaf0fa,#f7ece8);border:1px solid #c9d8ec;border-radius:14px;padding:16px 20px;display:flex;align-items:center;justify-content:space-between;box-shadow:var(--shadow)}
+  .score b{font-family:var(--serif);font-size:24px;color:var(--ink)}
+  .btn{appearance:none;border:1px solid var(--line);background:var(--panel);color:var(--ink);padding:9px 16px;border-radius:10px;font-size:13.5px;font-weight:700;cursor:pointer;font-family:var(--sans)}
+  .btn:hover{border-color:var(--accent)}
+
+  .qa{border:1px solid var(--line);border-radius:12px;margin:10px 0;background:var(--panel);overflow:hidden}
+  .qa summary{cursor:pointer;padding:14px 18px;font-weight:700;font-size:14.5px;list-style:none;display:flex;align-items:center;gap:10px}
+  .qa summary::-webkit-details-marker{display:none}
+  .qa summary::before{content:"Q";flex:none;width:24px;height:24px;border-radius:7px;background:var(--accent2);color:#fff;display:grid;place-items:center;font-size:12px;font-weight:800}
+  .qa[open] summary{border-bottom:1px solid var(--line)}
+  .qa .ans{padding:14px 18px 18px;font-size:13.5px;color:var(--sub)}
+  .qa .ans strong{color:var(--ink)}
+
+  footer{margin-top:40px;padding-top:18px;border-top:1px solid var(--line);color:var(--muted);font-size:12px}
+  footer a{color:var(--accent);text-decoration:none}
+  .src{font-size:12px;color:var(--muted);margin-top:6px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <div class="kicker">副業・業務委託 準備教材 ｜ Deep Dive 版</div>
+    <h1>AIリスクマネジメント<span> & </span>AIO対策</h1>
+    <p class="lede">企業のAIを<b>守り（NIST AI RMFによるリスク診断・ガバナンス）</b>と<b>攻め（生成AIに正しく引用されるAIO最適化）</b>の両面で支援する仕事を、一次情報ベースで深く学ぶための教材。読み切れば実務で語れるレベルを目指します。</p>
+    <div class="progress">
+      <span id="progLabel">学習の進み具合</span>
+      <div class="bar"><i id="progBar"></i></div>
+      <span id="progPct">0%</span>
+    </div>
+  </header>
+
+  <nav class="tabs" id="tabs">
+    <button class="tab active" data-view="map">🗺 全体像</button>
+    <button class="tab" data-view="risk">⚠️ リスクの基礎</button>
+    <button class="tab" data-view="rmf">📐 NIST AI RMF</button>
+    <button class="tab" data-view="reg">🌐 規制マップ</button>
+    <button class="tab" data-view="aio">🎯 AIO基礎</button>
+    <button class="tab" data-view="prac">🔧 AIO実務</button>
+    <button class="tab" data-view="glossary">📖 用語集</button>
+    <button class="tab" data-view="quiz">✅ クイズ</button>
+  </nav>
+
+  <!-- ===== 01 全体像 ===== -->
+  <section class="view active" id="view-map">
+    <h2><span class="n">01</span>全体像 — 守りと攻め、2つの事業の地図</h2>
+    <p class="section-sub">なぜ1社が「リスク管理」と「AIO」を両方やるのか。その必然性と、学ぶべき範囲の地図を最初に押さえます。</p>
+
+    <div class="card">
+      <h3>Priv Tech社のポジショニング</h3>
+      <p style="color:var(--sub);font-size:14px;margin-top:0">本業は<b style="color:var(--ink)">プライバシーテック（同意管理・GDPR・Cookie規制対策）</b>。そこで培った「企業のリスクとレピュテーションを守る力」を、生成AI時代に拡張したのが2つの事業です。</p>
+      <div class="map">
+        <div class="maprow">
+          <div class="mapbox center"><h4>プライバシーテック<br>（本業の土台）</h4><p>同意管理 Trust 360 / GDPR / Cookie規制</p></div>
+          <div class="grid g2" style="margin:0">
+            <div class="mapbox"><span class="pill guard">守り</span><h4 style="margin-top:8px">① AIリスクマネジメント</h4><p>NIST AI RMF準拠で、AI活用の<b>プライバシー・著作権・ハルシネーション</b>等のリスクを診断・運用支援。</p></div>
+            <div class="mapbox"><span class="pill attack">攻め</span><h4 style="margin-top:8px">② AIO対策（AI Hack）</h4><p>生成AIに<b>正しく・好意的に引用される</b>ようサイトを最適化。誤情報によるブランド毀損も防ぐ。</p></div>
+          </div>
+        </div>
+      </div>
+      <div class="callout key"><b>つながりの本質：</b>どちらも「AIが企業をどう扱うか」を制御する仕事。守りは<b>リスク</b>を、攻めは<b>レピュテーション（評判・引用）</b>を管理する。AIに正しく引用させること自体が、誤情報によるブランド毀損を防ぐ"守り"にもなる。だから地続き。応募ポジション「AI Optimizationコンサル」は<b>②の攻め側</b>。</div>
+    </div>
+
+    <div class="card">
+      <h3>「AI Hack」の正体 — Priv Tech × AI Hack 提携（2025年6月）</h3>
+      <p style="color:var(--sub);font-size:14px;margin-top:0">AI Hackは <b style="color:var(--ink)">Priv Tech代表でもある中道大輔氏が設立した別会社</b>のAIO分析ツール。源流は<b>Priv Techのプライバシーリスク対応の経験</b>＋<b>ヤフー/ソフトバンクのアドテク事業で培ったデータ活用知見</b>。両社が提携し<b>「AIの回答最適化 × リスク対策」</b>という統合モデルを掲げています。</p>
+      <div class="grid g2" style="margin-top:6px">
+        <div class="mapbox"><span class="pill attack">攻め</span><h4 style="margin-top:8px">AI Hack が担う</h4><p>AIO分析ツールで、複数の生成AIにおける<b>自社・競合の回答内容を可視化・評価</b>（優先度/感情/言及量/ドメイン引用など）。</p></div>
+        <div class="mapbox"><span class="pill guard">守り</span><h4 style="margin-top:8px">Priv Tech が担う</h4><p><b>プライバシー・セキュリティ・デジタルマーケ</b>の知見で、法的・倫理的・戦略的なリスク対策とAIガバナンス強化。</p></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>🧭 このツールの学習ロードマップ</h3>
+      <ol class="steps">
+        <li><b>リスクの基礎</b>（02）— そもそもAIにどんなリスクがあるか。生成AI固有の12リスクまで</li>
+        <li><b>NIST AI RMF</b>（03）— 診断の背骨。4機能 × 7特性の中身</li>
+        <li><b>規制マップ</b>（04）— 米/EU/日本/ISOの違いを地図化（“どれが義務か”を区別）</li>
+        <li><b>AIO基礎</b>（05）— LLMがどう情報を引用するか（RAG/グラウンディング）とSEOとの違い</li>
+        <li><b>AIO実務</b>（06）— 研究で実証された施策・構造化データ・計測KPI</li>
+        <li><b>用語集・クイズ</b>（07-08）で定着</li>
+      </ol>
+    </div>
+
+    <div class="card">
+      <h3>📚 Priv Lab（公式ブログ）で深掘り</h3>
+      <ul class="clean">
+        <li><a href="https://privtech.co.jp/blog/security/whatis-airiskmanagement.html" target="_blank">AIリスクマネジメントとは？安全なAI活用のための対策</a></li>
+        <li><a href="https://privtech.co.jp/blog/security/whatis-aio.html" target="_blank">AIO（AI Optimization）とは？ゼロクリック検索に対応する新戦略</a></li>
+        <li><a href="https://privtech.co.jp/news/2025/06/17.html" target="_blank">Priv Tech、AI Hackと提携（提携プレスリリース）</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ===== 02 リスクの基礎 ===== -->
+  <section class="view" id="view-risk">
+    <h2><span class="n">02</span>AIリスクの基礎</h2>
+    <p class="section-sub">フレームワークの前に「何が危ないのか」を具体で押さえます。ここが診断サービスが解決する“痛み”そのもの。</p>
+
+    <div class="card">
+      <h3>AIリスクマネジメントとは（定義）</h3>
+      <p style="color:var(--sub);font-size:14px;margin-top:0">「<b style="color:var(--ink)">AIの導入・運用で生じる様々なリスクを事前に評価・分析し、被害を予防・低減するための対策を実施する一連のプロセス</b>」。狙いは、リスクとベネフィットのバランスを取り、AIを<b>「安全に使える状態」</b>に保つこと。NISTのAI RMFは、設計・開発から実装・運用・廃止まで<b>AIライフサイクル全体</b>を継続的に管理するための指針です。</p>
+      <div class="callout key"><b>“社会技術的（socio-technical）”という視点：</b>AIのリスクは技術の不具合だけではなく、<b>人・組織・社会の文脈</b>で初めて顕在化する。同じモデルでも、誰がどう使うかでリスクは変わる──これがAI RMFの基本姿勢です。</div>
+    </div>
+
+    <div class="card">
+      <h3>企業のAI活用でよく問題になるリスク</h3>
+      <div class="grid g2">
+        <ul class="clean">
+          <li><b>ハルシネーション</b>（作話）— もっともらしい誤情報の生成</li>
+          <li><b>バイアス・差別</b> — 学習データの偏りが不公平な出力に</li>
+          <li><b>プライバシー侵害</b> — 個人情報の漏えい・目的外利用</li>
+          <li><b>著作権・知的財産</b> — 学習/出力での権利侵害</li>
+        </ul>
+        <ul class="clean">
+          <li><b>情報セキュリティ</b> — プロンプトインジェクション／データポイズニング</li>
+          <li><b>誤情報の拡散</b> — 企業の説明が誤り→<b>ブランド毀損</b></li>
+          <li><b>説明不能</b> — なぜその出力か説明できない（ブラックボックス）</li>
+          <li><b>サプライチェーン</b> — 外部モデル・API依存のリスク</li>
+        </ul>
+      </div>
+      <div class="callout tip"><b>攻めと守りの交差点：</b>「誤情報の拡散→ブランド毀損」は、リスク管理（守り）でもAIO（攻め）でも中心テーマ。この一点が両事業をつなぐ蝶番です。</div>
+    </div>
+
+    <div class="card">
+      <h3>生成AI“固有”の12リスク（NIST AI 600-1 / Generative AI Profile）</h3>
+      <p style="color:var(--sub);font-size:13.5px;margin-top:0">NISTが2024年7月に公開した生成AI特化の別冊で定義された、生成AIで<b>新たに生じる/悪化する</b>12のリスク領域。診断の“生成AI版チェックリスト”として使えます。</p>
+      <div class="chips">
+        <span class="chip"><b>1.</b> CBRN情報・能力（化学/生物/放射線/核）</span>
+        <span class="chip"><b>2.</b> Confabulation（作話・ハルシネーション）</span>
+        <span class="chip"><b>3.</b> 危険・暴力・憎悪コンテンツ</span>
+        <span class="chip"><b>4.</b> データプライバシー</span>
+        <span class="chip"><b>5.</b> 環境負荷（学習の大量CO₂排出）</span>
+        <span class="chip"><b>6.</b> 有害バイアス・均質化</span>
+        <span class="chip"><b>7.</b> 人間-AIの相互作用設計</span>
+        <span class="chip"><b>8.</b> 情報の完全性（誤情報・偽情報）</span>
+        <span class="chip"><b>9.</b> 情報セキュリティ（プロンプト注入等）</span>
+        <span class="chip"><b>10.</b> 知的財産（著作権侵害）</span>
+        <span class="chip"><b>11.</b> わいせつ・品位を貶める内容</span>
+        <span class="chip"><b>12.</b> バリューチェーン/部品統合（供給網）</span>
+      </div>
+      <p class="src">出典: NIST AI 600-1（2024年7月）。これら12に対し、AI RMFの4機能（Govern/Map/Measure/Manage）で対処アクションを示す構成。</p>
+    </div>
+  </section>
+
+  <!-- ===== 03 NIST AI RMF ===== -->
+  <section class="view" id="view-rmf">
+    <h2><span class="n">03</span>NIST AI RMF の中身</h2>
+    <p class="section-sub">米NISTが2023年1月に公開した、信頼できるAIのための<b>任意適用</b>フレームワーク（AI 100-1）。日本AISIが日本語訳を公開。これが診断サービスの背骨です。</p>
+
+    <div class="card">
+      <h3>全体像：AI RMFは「2部構成」</h3>
+      <table>
+        <tr><th>パート</th><th>中身</th></tr>
+        <tr><td><strong>Part 1：フレーミング</strong></td><td>「信頼できるAIとは何か（<b>7つの特性</b>）」とリスクの捉え方（社会技術的）を定義。<b>ゴール</b>を示す部分。</td></tr>
+        <tr><td><strong>Part 2：コア</strong></td><td>実際に回す<b>4機能（GOVERN/MAP/MEASURE/MANAGE）</b>。各機能が<b>カテゴリ→サブカテゴリ</b>に分解され、診断の点検項目になる。<b>手段</b>を示す部分。</td></tr>
+      </table>
+      <p class="src">補助文書：具体的な実践アクション集「<b>Playbook</b>」、業界・用途別の「<b>Profile</b>」（生成AI Profile もその一つ）。</p>
+    </div>
+
+    <div class="card">
+      <h3>コアの4機能（GMMM）— カテゴリ数つき</h3>
+      <div class="func govern">
+        <h4><span class="tag">GOVERN</span>統治 — 全機能を貫く土台 <span class="cnt">6カテゴリ / 19サブカテゴリ</span></h4>
+        <p>AIリスク管理の<b>文化・方針・体制・説明責任</b>を組織に根づかせる。誰が高リスク用途を承認するか、外部モデルをどう導入するか、安全性テストにどう資源を割くか等。<b>他3機能すべてに作用する横断機能。</b></p>
+      </div>
+      <div class="func map">
+        <h4><span class="tag">MAP</span>マップ — 文脈とリスクの特定 <span class="cnt">5カテゴリ</span></h4>
+        <p>①文脈の確立 ②AIシステムの分類 ③能力と限界の把握 ④リスク/便益の評価基準 ⑤ステークホルダーの特定。「どんな目的で・誰に・どんな前提で使うか」を見える化し、起こりうる害を洗い出す。</p>
+      </div>
+      <div class="func measure">
+        <h4><span class="tag">MEASURE</span>メジャー — リスクの分析・測定 <span class="cnt">4カテゴリ / 22サブカテゴリ</span></h4>
+        <p>定量・定性・混合手法で、精度・バイアス・堅牢性・ハルシネーション率などを<b>分析・ベンチマーク・継続モニタリング</b>。測れないものは管理できない、を体現する段階。</p>
+      </div>
+      <div class="func manage">
+        <h4><span class="tag">MANAGE</span>マネージ — 対応と優先順位付け <span class="cnt">4カテゴリ / 13サブカテゴリ</span></h4>
+        <p>測定結果をもとに資源を配分し、<b>低減・受容・回避</b>を判断。インシデントへの対応・復旧・コミュニケーション計画まで含み、継続改善につなげる。</p>
+      </div>
+      <div class="callout"><b>診断サービスの実体：</b>顧客のAI活用を、この<b>4機能 × 7特性</b>のマトリクスで点検し「どこが手薄か」を可視化→Playbookのアクションで運用支援する。これが「NIST AI RMF準拠の診断」。</div>
+    </div>
+
+    <div class="card">
+      <h3>信頼できるAIの「7つの特性」</h3>
+      <ul class="clean">
+        <li><b>妥当で信頼できる（Valid & Reliable）</b> — 全特性の<b>土台</b>。意図通り正確に動くか</li>
+        <li><b>安全（Safe）</b> — 人命・健康・財産・環境を危険にさらさない</li>
+        <li><b>セキュア＆レジリエント</b> — 攻撃に耐え、異常から復旧できる</li>
+        <li><b>説明責任＆透明（Accountable & Transparent）</b> — 誰が責任を持ち、情報が開示されているか</li>
+        <li><b>説明可能＆解釈可能（Explainable & Interpretable）</b> — なぜその出力かを説明できる</li>
+        <li><b>プライバシー強化（Privacy-Enhanced）</b> — 個人情報を保護する設計</li>
+        <li><b>公平＝有害バイアスを管理（Fair）</b> — 差別的・偏った出力を抑える</li>
+      </ul>
+      <div class="callout tip"><b>覚え方：</b>Valid & Reliable が<b>地面</b>。その上に Safe / Secure / Accountable / Explainable / Privacy / Fair が建つ。土台が崩れると全部崩れる、というNISTの図を思い出すと忘れにくい。</div>
+    </div>
+  </section>
+
+  <!-- ===== 04 規制マップ ===== -->
+  <section class="view" id="view-reg">
+    <h2><span class="n">04</span>規制・標準マップ</h2>
+    <p class="section-sub">「NIST AI RMFだけ」ではありません。<b>義務か任意か</b>を軸に、世界の主要4つを地図化します。ここを区別できると一気にプロっぽくなります。</p>
+
+    <div class="card">
+      <h3>4つの位置づけを一覧で</h3>
+      <table>
+        <tr><th>名称</th><th>地域</th><th>性格</th><th>認証</th></tr>
+        <tr><td><strong>NIST AI RMF</strong></td><td>米国</td><td>任意のフレームワーク（基準・共通言語）</td><td>なし</td></tr>
+        <tr><td><strong>EU AI Act</strong></td><td>EU</td><td><b>義務の法律</b>。リスクベースで規制、罰則あり（2024〜施行）</td><td>適合性評価</td></tr>
+        <tr><td><strong>AI事業者ガイドライン</strong></td><td>日本</td><td>任意のソフトロー。10の共通指針（経産省・総務省）</td><td>なし</td></tr>
+        <tr><td><strong>ISO/IEC 42001</strong></td><td>国際</td><td>AIマネジメントシステム(AIMS)規格。PDCAで組織に定着</td><td><b>第三者認証可</b></td></tr>
+      </table>
+      <div class="callout key"><b>一言整理：</b>米=<b>任意の物差し（RMF）</b>、EU=<b>守らないと罰則の法律（AI Act）</b>、日本=<b>努力目標のガイドライン</b>、ISO=<b>認証が取れるマネジメント規格</b>。RMFでリスクを洗い出し、ISO 42001で“仕組み”として回す、という<b>補完関係</b>で使われます。</div>
+    </div>
+
+    <div class="card">
+      <h3>EU AI Act — リスクで4階層（重要）</h3>
+      <div class="func manage"><h4><span class="tag">禁止</span>許容できないリスク（Unacceptable）</h4><p>人間の尊厳・基本権に反するAIは<b>使用禁止</b>。例：社会的スコアリング、サブリミナルな操作、特定の生体監視。</p></div>
+      <div class="func measure"><h4><span class="tag">高</span>高リスク（High）</h4><p>健康・安全・基本権に重大な影響。<b>市場投入前に厳格な適合性評価</b>。例（附属書III）：生体認証、重要インフラ、教育、雇用、必須サービス、法執行、移民・国境、司法。</p></div>
+      <div class="func map"><h4><span class="tag">限定</span>限定リスク（Limited）</h4><p><b>透明性の義務</b>。チャットボットやディープフェイクは「AIと対話/生成」だと利用者に<b>明示</b>する必要。</p></div>
+      <div class="func govern"><h4><span class="tag">最小</span>最小リスク（Minimal）</h4><p>スパムフィルタ等。<b>義務なし</b>。大半のAIはここに該当。</p></div>
+    </div>
+
+    <div class="card">
+      <h3>日本：AI事業者ガイドライン — 10の共通指針</h3>
+      <p style="color:var(--sub);font-size:13.5px;margin-top:0">経産省・総務省が既存ガイドラインを統合し2024年4月に公開（Living Documentとして更新継続）。対象を<b>AI開発者／AI提供者／AI利用者</b>の3者に整理し、共通指針を10にまとめています。</p>
+      <div class="chips">
+        <span class="chip"><b>1.</b> 人間中心</span><span class="chip"><b>2.</b> 安全性</span><span class="chip"><b>3.</b> 公平性</span>
+        <span class="chip"><b>4.</b> プライバシー保護</span><span class="chip"><b>5.</b> セキュリティ確保</span><span class="chip"><b>6.</b> 透明性</span>
+        <span class="chip"><b>7.</b> アカウンタビリティ</span><span class="chip"><b>8.</b> 教育・リテラシー</span><span class="chip"><b>9.</b> 公正競争確保</span><span class="chip"><b>10.</b> イノベーション</span>
+      </div>
+      <p class="src">前半7つはNISTの7特性とも重なる“ガバナンスの定番”。後半3つ（教育・公正競争・イノベーション）に<b>利活用促進</b>の色が出るのが日本版の特徴。</p>
+    </div>
+  </section>
+
+  <!-- ===== 05 AIO基礎 ===== -->
+  <section class="view" id="view-aio">
+    <h2><span class="n">05</span>AIO の基礎 — なぜ引用されるのか</h2>
+    <p class="section-sub">小手先の前に「<b>LLMはどうやって情報源を選び引用するのか</b>」という仕組みを理解します。ここが分かると施策が腹落ちします。</p>
+
+    <div class="card">
+      <h3>AIO とは（Priv Tech流の定義）</h3>
+      <p style="color:var(--sub);font-size:14px;margin-top:0">AIO（AI Optimization）＝「<b style="color:var(--ink)">生成AIに正確で信頼できる情報を届けるための最適化手法</b>」。露出を増やすだけでなく、<b>誤情報がユーザーに届くリスクを防ぐ＝ブランドを守る</b>活動でもある。背景には<b>ゼロクリック検索</b>（AIが答えてユーザーがサイトに来ない）の広がりがあります。</p>
+    </div>
+
+    <div class="card">
+      <h3>仕組み：LLM検索は RAG ＋ グラウンディングで動く</h3>
+      <p style="color:var(--sub);font-size:14px;margin-top:0">ChatGPT検索・Perplexity・Gemini・Google AI Overviews などは、モデルの記憶だけで答えているのではありません。多くは <b>RAG（検索拡張生成）</b> という仕組みです。</p>
+      <ol class="steps">
+        <li>ユーザーの問いを<b>検索クエリに変換</b>し、Web等から関連文書を取得（セマンティック検索）</li>
+        <li>取得した文書を<b>文脈（コンテキスト）としてLLMに渡す</b></li>
+        <li>LLMがその文書に<b>グラウンディング（接地）</b>して回答を生成し、<b>出典として引用</b>する</li>
+      </ol>
+      <div class="callout key"><b>だから引用される条件はこうなる：</b>①<b>検索で見つかる</b>（＝SEOの土台が要る）→②AIが<b>抽出・解釈しやすい構造</b>→③<b>事実として信頼できる</b>。AIOはこの3条件を満たす作業、と理解すると一貫します。グラウンディングはハルシネーションを減らす技術でもあるので、正確な情報提供＝AIにとっても“使いたい情報源”になる。</div>
+    </div>
+
+    <div class="card">
+      <h3>SEO と AIO/LLMO/GEO/AEO の違い</h3>
+      <table>
+        <tr><th></th><th>対象</th><th>ゴール</th></tr>
+        <tr><td><strong>SEO</strong></td><td>検索エンジン（Google等）</td><td>上位表示→<b>クリック</b>獲得</td></tr>
+        <tr><td><strong>LLMO</strong></td><td>ChatGPT/Gemini/Claude等の生成AI</td><td>AIの<b>回答内に引用</b>される</td></tr>
+        <tr><td><strong>GEO</strong></td><td>AI Overviews/Perplexity等の生成エンジン</td><td>AI生成エリアへの<b>掲載</b>（学術用語）</td></tr>
+        <tr><td><strong>AEO</strong></td><td>“答える”エンジン</td><td><b>答え</b>として引用される</td></tr>
+        <tr><td><strong>AIO</strong></td><td>AI全般（総称）</td><td>上記をまとめた呼び方</td></tr>
+      </table>
+      <div class="callout"><b>整理：</b>「LLMO/GEO/AEO/AIOは<b>重なりが大きく、各社が強調点で呼び分けているだけ</b>。本質は“AIに正しく引用される構造づくり”で共通」。<b>SEOの否定ではなく上に積む</b>——AIに引用されるのは検索で評価された信頼ページが多いため。</div>
+    </div>
+  </section>
+
+  <!-- ===== 06 AIO実務 ===== -->
+  <section class="view" id="view-prac">
+    <h2><span class="n">06</span>AIO 実務 — 何を、どうやるか</h2>
+    <p class="section-sub">研究で効果が実証された施策から、具体のチェック項目、計測KPIまで。応募ポジションの“手を動かす”部分です。</p>
+
+    <div class="card">
+      <h3>📊 まず“効く施策”は研究で出ている（GEO研究）</h3>
+      <p style="color:var(--sub);font-size:14px;margin-top:0">プリンストン大学らの論文「GEO: Generative Engine Optimization」（KDD 2024）は、約1万クエリ × 9戦略を検証。<b>生成エンジンでの可視性を最大40%向上</b>させる高効果施策を特定しました。</p>
+      <div class="chips">
+        <span class="chip"><b>①</b> 統計・数値を加える（最も効果大）</span>
+        <span class="chip"><b>②</b> 出典・引用を明示する</span>
+        <span class="chip"><b>③</b> 引用句（quotation）を入れる</span>
+      </div>
+      <p class="src">キーワード詰め込み等の従来型より明確に有効。ただし効果は分野で異なる＝ドメイン別の最適化が必要、というのも知見。</p>
+    </div>
+
+    <div class="card">
+      <h3>🔧 引用される構造づくり（実装チェックリスト）</h3>
+      <h4 class="mini">① 構造化データ（スキーママークアップ）</h4>
+      <ul class="clean">
+        <li><b>FAQPage</b>：質問と回答を明示（Q&Aで抽出されやすく）</li>
+        <li><b>Article</b>：著者・公開日・更新日・見出しを構造化</li>
+        <li><b>Organization</b>：企業情報・連絡先・ロゴを明記（誤認・競合混同を防ぐ）</li>
+      </ul>
+      <h4 class="mini">② コンテンツ構成（AIが抽出しやすく）</h4>
+      <ul class="clean">
+        <li><b>結論ファースト</b>：見出しの答えを最初の1〜2文で完結（逆ピラミッド）</li>
+        <li>箇条書き・表で<b>事実を切り取りやすく</b></li>
+        <li>1見出し＝1論点。曖昧な総称でなく具体名・数値で書く</li>
+      </ul>
+      <h4 class="mini">③ E-E-A-T と外部評価（信頼性）</h4>
+      <ul class="clean">
+        <li><b>独自調査・統計</b>の発信（＝GEO研究で最も効く施策と一致）</li>
+        <li>監修者・著者のプロフィール／実績を明示</li>
+        <li>第三者メディア・比較サイト・SNSでの<b>言及（外部評価）</b>を増やす</li>
+      </ul>
+      <h4 class="mini">④ テクニカル & 鮮度</h4>
+      <ul class="clean">
+        <li>表示速度・Core Web Vitals・リンク切れ防止</li>
+        <li><b>情報の鮮度を保つ</b>（AIは新しく正確な情報を優先しがち）</li>
+        <li><b>llms.txt</b>：クロール範囲を示すファイル。<b>現状は実験段階で効果未確認</b>（Googleは未使用と明言）。最優先ではない</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>📈 成果の測り方（AIO の KPI）と AI Hack</h3>
+      <p style="color:var(--sub);font-size:14px;margin-top:0">AIOは「やって終わり」ではなく、<b>想定プロンプトで実際にAIの回答を確認</b>して検証・改善を回します。見るべき観点：</p>
+      <ul class="clean">
+        <li>AIが自社を<b>どう説明</b>しているか（正確か／好意的か）</li>
+        <li>「おすすめ」「比較」「デメリット」文脈での<b>露出の有無</b></li>
+        <li>引用元が<b>自社直接</b>か<b>第三者メディア経由</b>か</li>
+        <li>競合との<b>相対的な立ち位置</b></li>
+      </ul>
+      <div class="callout tip"><b>AI Hack はこれを自動化するツール：</b>複数の生成AIで自社・競合の回答を<b>優先度／ポジティブ／ネガティブ／言及量／ドメイン引用／事実性</b>でスコア化し、スコア差分や構造データから<b>改善案を自動生成</b>。＝上のKPIをダッシュボード化したもの。</div>
+    </div>
+
+    <div class="card">
+      <h3>⚠️ ブランド管理としてのAIO</h3>
+      <p style="color:var(--sub);font-size:14px;margin-top:0">生成AIが企業を<b>誤って紹介</b>すると、それがブランド毀損に直結します。原因と対策はセットで言えるように：</p>
+      <table>
+        <tr><th>誤紹介の原因</th><th>対策</th></tr>
+        <tr><td>情報の古さ・不足</td><td>一次情報の整備・更新（鮮度維持）</td></tr>
+        <tr><td>競合との混同</td><td>Organization構造化・固有名/実績の明示</td></tr>
+        <tr><td>サイトの構造的問題</td><td>見出し・構造化データ・抽出しやすい記述</td></tr>
+        <tr><td>外部からの操作・ネガ情報</td><td>外部評価の強化・モニタリング・<b>セキュリティ</b></td></tr>
+      </table>
+      <p class="src">最後の「セキュリティ」で“守り（リスク管理）”と再び交わる。攻めと守りが一体だと示せると事業理解が伝わります。</p>
+    </div>
+  </section>
+
+  <!-- ===== 07 用語集 ===== -->
+  <section class="view" id="view-glossary">
+    <h2><span class="n">07</span>用語集</h2>
+    <p class="section-sub">検索＋カテゴリ絞り込みができます（例：「RMF」「引用」「バイアス」）。</p>
+    <input class="search" id="gsearch" placeholder="🔍 用語・説明を検索…" oninput="filterGlossary()">
+    <div class="gfilter" id="gfilter"></div>
+    <div id="glist"></div>
+    <p class="nohit" id="nohit">該当する用語が見つかりません。</p>
+  </section>
+
+  <!-- ===== 08 クイズ ===== -->
+  <section class="view" id="view-quiz">
+    <h2><span class="n">08</span>理解度クイズ</h2>
+    <p class="section-sub">選択肢をクリックすると即採点＆解説。全<span id="qTotal">0</span>問。</p>
+    <div id="quizList"></div>
+    <div class="score">
+      <div><span style="color:var(--sub);font-size:13px">スコア</span><br><b><span id="scoreNow">0</span> / <span id="scoreMax">0</span></b></div>
+      <button class="btn" onclick="resetQuiz()">↺ もう一度</button>
+    </div>
+  </section>
+
+
+  <footer>
+    <p>学習用の自習教材です。公開情報（NIST AI RMF / 日本AISI日本語版・NIST AI 600-1、EU AI Act、AI事業者ガイドライン、ISO/IEC 42001、GEO研究[KDD2024]、Priv Tech・AI Hack 公開ページ、各社解説）にもとづく要約。最新の一次情報は必ず公式でご確認ください。</p>
+    <p>主要出典：
+      <a href="https://airc.nist.gov/airmf-resources/airmf/" target="_blank">NIST AI RMF (AIRC)</a> ・
+      <a href="https://www.nist.gov/itl/ai-risk-management-framework" target="_blank">NIST AI RMF / 600-1</a> ・
+      <a href="https://aisi.go.jp/output/output_information/240704/" target="_blank">AISI 日本語版</a> ・
+      <a href="https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai" target="_blank">EU AI Act</a> ・
+      <a href="https://www.meti.go.jp/press/2024/04/20240419004/20240419004.html" target="_blank">AI事業者ガイドライン(METI)</a> ・
+      <a href="https://dl.acm.org/doi/10.1145/3637528.3671900" target="_blank">GEO論文(KDD2024)</a> ・
+      <a href="https://privtech.co.jp/blog/" target="_blank">Priv Lab</a> ・
+      <a href="https://service.ai-hack.ai/" target="_blank">AI Hack</a>
+    </p>
+  </footer>
+</div>
+
+<script>
+/* ===== 用語集 ===== */
+const GLOSSARY=[
+  {t:"NIST AI RMF",c:"リスク管理",d:"米NISTが2023年1月公開したAIリスクマネジメントフレームワーク（AI 100-1）。任意適用。信頼できるAIの実現を支援。日本AISIが日本語訳を公開。"},
+  {t:"GOVERN（統治）",c:"RMF",d:"AIリスク管理の文化・方針・体制・説明責任を組織に根づかせる機能。6カテゴリ19サブカテゴリ。他3機能を横断する土台。"},
+  {t:"MAP（マップ）",c:"RMF",d:"利用文脈・対象・能力と限界・評価基準・ステークホルダーを整理し、リスクを特定する機能。5カテゴリ。"},
+  {t:"MEASURE（メジャー）",c:"RMF",d:"リスクを定量・定性で分析・ベンチマーク・継続モニタリングする機能。4カテゴリ22サブカテゴリ。"},
+  {t:"MANAGE（マネージ）",c:"RMF",d:"測定結果に基づき低減/受容/回避を判断し、インシデント対応・復旧・周知まで行う機能。4カテゴリ13サブカテゴリ。"},
+  {t:"信頼できるAIの7特性",c:"RMF",d:"妥当・信頼/安全/セキュア＆レジリエント/説明責任＆透明/説明可能＆解釈可能/プライバシー強化/公平。Valid&Reliableが土台。"},
+  {t:"Playbook",c:"RMF",d:"AI RMFの各サブカテゴリに対する具体的な実践アクション集。診断後の運用支援で参照する。"},
+  {t:"Profile（プロファイル）",c:"RMF",d:"業界・用途別にAI RMFを当てはめた版。生成AI Profile（NIST AI 600-1）もその一つ。"},
+  {t:"Generative AI Profile / NIST AI 600-1",c:"リスク管理",d:"生成AI固有の12リスクを定義したAI RMFの別冊（2024年7月）。CBRN・作話・プライバシー・著作権・情報セキュリティ等。"},
+  {t:"Confabulation（作話）",c:"AIリスク",d:"NISTがハルシネーションを指して使う語。事実でない内容をもっともらしく生成する現象。"},
+  {t:"ハルシネーション",c:"AIリスク",d:"生成AIが事実でない内容をもっともらしく出力する現象。誤情報→ブランド毀損の起点。"},
+  {t:"プロンプトインジェクション",c:"AIリスク",d:"悪意ある指示を入力や外部データに紛れ込ませ、AIの挙動を乗っ取る攻撃。情報セキュリティリスクの代表例。"},
+  {t:"データポイズニング",c:"AIリスク",d:"学習データに不正なデータを混入させ、モデルの出力を歪める攻撃。"},
+  {t:"社会技術的システム",c:"リスク管理",d:"AIリスクを技術だけでなく、人・組織・社会の文脈を含めて捉えるAI RMFの基本姿勢。"},
+  {t:"AIライフサイクル",c:"リスク管理",d:"設計・開発から実装・運用・廃止までの一連の段階。RMFはこの全体で継続的にリスクを管理する。"},
+  {t:"AISI（AI安全研究所）",c:"機関",d:"日本のAI Safety Institute。NIST AI RMFの日本語訳など、AIの安全性に関する公式資料を公開。"},
+  {t:"EU AI Act",c:"規制",d:"EUの包括的AI規制法（2024〜施行）。リスクを禁止/高/限定/最小の4階層に分け義務を課す。違反に罰則。"},
+  {t:"高リスクAI",c:"規制",d:"EU AI Actで、健康・安全・基本権に重大な影響を持つAI。市場投入前に厳格な適合性評価が必要（生体認証・雇用・司法等）。"},
+  {t:"AI事業者ガイドライン",c:"規制",d:"日本の経産省・総務省が2024年4月公開。AI開発者/提供者/利用者の3者に整理し、10の共通指針を提示。任意のソフトロー。"},
+  {t:"ISO/IEC 42001",c:"規制",d:"AIマネジメントシステム(AIMS)の国際規格。PDCAで組織に定着させ第三者認証が取れる。RMF（任意・認証なし）と補完関係。"},
+  {t:"AIガバナンス",c:"リスク管理",d:"AIを安全・倫理的・法令順守で運用するための組織的な統制の仕組み。GOVERN機能が中核。"},
+  {t:"AIO（AI Optimization）",c:"AIO",d:"生成AIに正確で信頼できる情報を届け、引用・推薦される状態をつくる最適化の総称。誤情報を防ぐ“守り”の側面も持つ。"},
+  {t:"LLMO",c:"AIO",d:"LLM Optimization。ChatGPT/Gemini/Claude等の生成AIの回答に引用されることを狙う最適化。AIOとほぼ同義。"},
+  {t:"GEO",c:"AIO",d:"Generative Engine Optimization。AI Overviews/Perplexity等の生成エンジンでの掲載最適化。プリンストン大の論文(KDD2024)発の学術用語。"},
+  {t:"AEO",c:"AIO",d:"Answer Engine Optimization。“答える”エンジンに答えとして引用される最適化。AIOとほぼ同義。"},
+  {t:"RAG（検索拡張生成）",c:"AIO",d:"Retrieval-Augmented Generation。問いに関連する文書を検索で取得し、それを文脈にLLMが回答を生成する仕組み。AI検索の引用の基盤。"},
+  {t:"グラウンディング",c:"AIO",d:"LLMの生成を信頼できる情報源に“接地”させること。ハルシネーションを減らす。RAGは代表的な実装。"},
+  {t:"ゼロクリック検索",c:"AIO",d:"AI OverviewsやChatGPT等が回答を直接示し、ユーザーがサイトを訪れず検索を終える状態。AIOが重要になった直接の背景。"},
+  {t:"スキーママークアップ",c:"AIO実務",d:"構造化データ。ページの意味（企業/商品/FAQ等）をAI・検索に明示するマークアップ。FAQPage・Article・Organizationが定番。"},
+  {t:"E-E-A-T",c:"AIO実務",d:"Experience/Expertise/Authoritativeness/Trust。AIに引用されやすい信頼コンテンツの要件。独自調査・監修者明示・外部評価で高める。"},
+  {t:"結論ファースト（逆ピラミッド）",c:"AIO実務",d:"見出しの答えを最初の1〜2文で完結させる書き方。AIが事実を抽出・引用しやすくなる。"},
+  {t:"llms.txt",c:"AIO実務",d:"生成AIにクロール可否・範囲を示すファイル。現状は実験段階で効果未確認（Googleは未使用と明言）。最優先ではない。"},
+  {t:"外部評価（言及）",c:"AIO実務",d:"第三者メディア・比較サイト・SNSでの言及。AIは外部の評価も参照するため、自社サイト改善と並ぶ重要施策。"},
+  {t:"AI Hack",c:"プロダクト",d:"中道大輔氏（Priv Tech代表）が設立した会社のAIO分析ツール。2025年6月にPriv Techと提携。生成AIでの自社・競合の見え方をスコア化し改善案を自動生成。"},
+  {t:"事実性（Factual）",c:"AIO実務",d:"AIが述べる内容や自社コンテンツの正確さの度合い。誤情報＝ブランド毀損につながるため重視される。"},
+  {t:"プライバシーテック",c:"事業",d:"同意管理・GDPR対応・Cookie規制対策などを支援する技術領域。Priv Techの本業の土台。"}
+];
+
+/* ===== クイズ ===== */
+const QUIZ=[
+  {q:"NIST AI RMF のコアを構成する「4機能」は？",o:["PLAN/DO/CHECK/ACT","GOVERN/MAP/MEASURE/MANAGE","IDENTIFY/PROTECT/DETECT/RESPOND","COLLECT/CLEAN/TRAIN/DEPLOY"],a:1,e:"GOVERN・MAP・MEASURE・MANAGE。GOVERNは他3つを横断する土台。"},
+  {q:"GOVERN機能の特徴として正しいのは？",o:["測定だけを担当する","他の3機能すべてを横断する土台（文化・方針・責任）","EUだけに適用される","生成AI専用の機能"],a:1,e:"GOVERNは組織の文化・方針・説明責任を整え、Map/Measure/Manageすべてに作用する。"},
+  {q:"NIST AI RMF の適用について正しいのは？",o:["法的義務がある","任意適用のフレームワーク","ISO認証が必須","EU企業のみ対象"],a:1,e:"任意適用。義務ではないが各種ルールの土台・共通言語として参照される。"},
+  {q:"「信頼できるAIの7特性」の“土台”は？",o:["公平性","妥当で信頼できる（Valid & Reliable）","プライバシー強化","説明可能性"],a:1,e:"Valid & Reliableが全特性の基盤。土台が崩れると他も崩れる。"},
+  {q:"生成AI固有の12リスクを定義した文書は？",o:["NIST AI 100-1","NIST AI 600-1（Generative AI Profile）","ISO 27001","GDPR"],a:1,e:"NIST AI 600-1（2024年7月）。CBRN・作話・著作権・情報セキュリティ等12領域。"},
+  {q:"EU AI Act のリスク分類で『禁止』にあたるのは？",o:["スパムフィルタ","チャットボット","社会的スコアリング等 人間の尊厳に反するAI","ECサイトのレコメンド"],a:2,e:"許容できないリスク＝使用禁止。社会的スコアリング、サブリミナル操作など。"},
+  {q:"EU AI Act で『限定リスク』に課される主な義務は？",o:["市場投入前の適合性評価","透明性（AIと対話/生成だと利用者に明示）","完全な使用禁止","第三者認証の取得"],a:1,e:"チャットボットやディープフェイクは“AIである/AI生成である”と明示する透明性義務。"},
+  {q:"NIST AI RMF と ISO/IEC 42001 の関係は？",o:["まったく同一","RMFでリスクを洗い出し、ISO42001で仕組み化（補完）","ISOがRMFを禁止している","どちらも法的義務"],a:1,e:"RMF=任意・認証なし、ISO42001=PDCAで認証可。リスク評価と組織定着で補完し合う。"},
+  {q:"日本のAI事業者ガイドラインが対象を分ける3区分は？",o:["大企業/中小/個人","AI開発者/AI提供者/AI利用者","政府/民間/学術","製造/小売/金融"],a:1,e:"AIライフサイクルの役割でAI開発者・提供者・利用者の3者に整理。"},
+  {q:"AIO/LLMO/GEO/AEO の関係として最も適切なのは？",o:["互いに矛盾する別物","重なりが大きく強調点で呼び分けているだけ","SEOの正式な後継規格","NISTが定めた4機能の別名"],a:1,e:"いずれも“AIに正しく引用される最適化”を指し、重なりが大きい。"},
+  {q:"AI検索（ChatGPT検索/Perplexity等）が出典を引用できる主な仕組みは？",o:["モデルの暗記だけ","RAG＝関連文書を検索取得し文脈にして回答生成","人間が手動で選ぶ","広告枠の購入"],a:1,e:"RAG（検索拡張生成）＋グラウンディング。だから“検索で見つかり抽出しやすい”ことが引用条件になる。"},
+  {q:"SEOとAIOの関係として正しいのは？",o:["AIOはSEOを完全に置き換える","SEOで評価された信頼ページがAIに引用されやすく、SEOの上にAIOを積む","両者は無関係","AIOはキーワード詰め込みのこと"],a:1,e:"AIに引用されるのは検索で評価された信頼ページが多い。SEOを土台にAIOを重ねる統合戦略。"},
+  {q:"プリンストン大らのGEO研究で“最も効果が高かった”施策は？",o:["キーワードを増やす","統計・数値を加える","文字数を倍にする","広告を出す"],a:1,e:"統計の追加が最も効果的で、可視性を最大40%向上。出典明示・引用句も高効果。"},
+  {q:"AIOの構造化データで“競合との混同”を防ぐのに有効なのは？",o:["FAQPage","Organization（企業情報・ロゴ・連絡先）","画像のalt属性","パンくずリスト"],a:1,e:"Organizationで自社の固有情報を明示するとAIの誤認・競合混同を減らせる。"},
+  {q:"llms.txt の現状の位置づけとして正しいのは？",o:["導入必須で最優先","実験段階で効果未確認（Googleは未使用と明言）","SEOの正式規格","EU法で義務化"],a:1,e:"クロール範囲を示すファイルだが効果は未確認。慌てて最優先にする段階ではない。"},
+  {q:"AI Hack の説明として正しいのは？",o:["海外の検索エンジン","中道大輔氏が設立した、生成AIでの見え方を可視化するAIO分析ツール","NISTの認定監査機関","被リンク販売サービス"],a:1,e:"複数の生成AIで自社・競合の回答を優先度/感情/言及量/ドメイン引用等でスコア化し改善案を出すツール。"},
+  {q:"生成AIが企業を誤紹介する原因として“当てはまらない”のは？",o:["情報の古さ・不足","競合との混同","サイトの構造的問題や外部からの操作","従業員の有給取得率"],a:3,e:"原因は情報の鮮度・不足、競合混同、構造問題、外部操作など。有給取得率は無関係。"},
+  {q:"Priv Techが「リスク管理」と「AIO」を両方やる必然性は？",o:["たまたま事業が増えた","どちらも“AIが企業をどう扱うか”を守り/攻めで管理する仕事だから","AIOはRMFの一規格だから","技術的共通点が全くないから"],a:1,e:"守り＝リスク、攻め＝レピュテーション。AIに正しく引用させること自体が誤情報対策(守り)にもなる。"}
+];
+
+
+/* ===== レンダリング ===== */
+let gCat="すべて";
+function renderFilters(){
+  const cats=["すべて",...Array.from(new Set(GLOSSARY.map(g=>g.c)))];
+  document.getElementById('gfilter').innerHTML=cats.map(c=>`<span class="gf${c===gCat?' on':''}" onclick="setCat('${c}')">${c}</span>`).join('');
+}
+function setCat(c){gCat=c;renderFilters();filterGlossary();}
+function renderGlossary(){
+  document.getElementById('glist').innerHTML=GLOSSARY.map(g=>`<div class="term" data-k="${(g.t+g.c+g.d).toLowerCase()}" data-c="${g.c}">
+    <div class="cat">${g.c}</div><h4>${g.t}</h4><p>${g.d}</p></div>`).join('');
+}
+function filterGlossary(){
+  const q=document.getElementById('gsearch').value.trim().toLowerCase();let hit=0;
+  document.querySelectorAll('#glist .term').forEach(t=>{
+    const okq=t.dataset.k.includes(q);const okc=(gCat==="すべて"||t.dataset.c===gCat);
+    const show=okq&&okc;t.style.display=show?'':'none';if(show)hit++;
+  });
+  document.getElementById('nohit').style.display=hit?'none':'block';
+}
+
+let answered=[];
+function renderQuiz(){
+  answered=new Array(QUIZ.length).fill(false);
+  document.getElementById('scoreMax').textContent=QUIZ.length;
+  document.getElementById('qTotal').textContent=QUIZ.length;
+  document.getElementById('quizList').innerHTML=QUIZ.map((q,i)=>`<div class="q">
+    <div class="qhead"><span class="qnum">Q${i+1}.</span>${q.q}</div>
+    <div id="opts-${i}">${q.o.map((o,j)=>`<button class="opt" onclick="answer(${i},${j})">${o}</button>`).join('')}</div>
+    <div class="exp" id="exp-${i}">💡 ${q.e}</div></div>`).join('');
+  document.getElementById('scoreNow').textContent=0;
+}
+function answer(i,j){
+  if(answered[i])return;answered[i]=true;
+  const correct=QUIZ[i].a;
+  document.querySelectorAll(`#opts-${i} .opt`).forEach((b,k)=>{
+    b.classList.add('disabled');
+    if(k===correct)b.classList.add('correct');
+    if(k===j&&j!==correct)b.classList.add('wrong');
+  });
+  document.getElementById(`exp-${i}`).classList.add('show');
+  let s=0;QUIZ.forEach((q,n)=>{if(answered[n]&&!document.querySelector(`#opts-${n} .opt.wrong`))s++;});
+  document.getElementById('scoreNow').textContent=s;
+}
+function resetQuiz(){renderQuiz();}
+
+
+/* ===== タブ & 進捗 ===== */
+const visited=new Set(['map']);
+const TOTAL=document.querySelectorAll('#tabs .tab').length;
+function setProgress(){
+  const pct=Math.round(visited.size/TOTAL*100);
+  document.getElementById('progBar').style.width=pct+'%';
+  document.getElementById('progPct').textContent=pct+'%';
+  document.getElementById('progLabel').textContent=pct===100?'全セクション制覇 🎉':'学習の進み具合';
+}
+document.getElementById('tabs').addEventListener('click',e=>{
+  const b=e.target.closest('.tab');if(!b)return;
+  const v=b.dataset.view;
+  document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('active',t===b));
+  document.querySelectorAll('.view').forEach(s=>s.classList.toggle('active',s.id==='view-'+v));
+  visited.add(v);setProgress();window.scrollTo({top:0,behavior:'smooth'});
+});
+
+renderFilters();renderGlossary();renderQuiz();setProgress();
+</script>
+</body>
+</html>
