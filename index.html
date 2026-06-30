@@ -169,7 +169,7 @@
   .svc-card.c-sns     { --tc: var(--sns); }
 
   /* ───────── 実績（ポートフォリオ）カード ───────── */
-  .works { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  .works { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
   .work-card {
     display: flex; flex-direction: column;
     background: rgba(255,255,255,.62); border: 1px solid var(--line); border-radius: 8px;
@@ -177,7 +177,7 @@
     box-shadow: 0 4px 16px rgba(37,32,26,.07); transition: all .2s;
   }
   .work-card:hover { transform: translateY(-3px); box-shadow: 0 12px 26px rgba(37,32,26,.16); border-color: var(--wc); }
-  .work-thumb { height: 96px; background-size: cover; background-position: center; border-bottom: 1px solid var(--line); position: relative; }
+  .work-thumb { height: 124px; background-size: cover; background-position: center; border-bottom: 1px solid var(--line); position: relative; }
   .work-thumb::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, transparent, rgba(246,241,231,.35)); }
   .work-body { padding: 18px 20px 20px; display: flex; flex-direction: column; flex: 1; }
   .work-cat { font-size: 10.5px; font-weight: 700; letter-spacing: .1em; color: #fff; background: var(--wc); align-self: flex-start; padding: 2px 10px; border-radius: 999px; }
@@ -187,6 +187,11 @@
   .work-card.w-content { --wc: var(--content); } .work-card.w-content .work-thumb { background-image: var(--mosaic-2); }
   .work-card.w-office  { --wc: var(--office); }  .work-card.w-office  .work-thumb { background-image: var(--mosaic-3); }
   .work-card.w-sns     { --wc: var(--sns); }     .work-card.w-sns     .work-thumb { background-image: var(--mosaic-4); }
+  .work-card.w-ai      { --wc: var(--claude); }  .work-card.w-ai      .work-thumb { background-image: var(--mosaic-1); }
+  .work-card.no-link { cursor: default; }
+  .work-card.no-link:hover { transform: none; box-shadow: 0 4px 16px rgba(37,32,26,.07); border-color: var(--line); }
+  .work-status { margin-top: 14px; font-size: 12px; font-weight: 700; color: var(--wc); letter-spacing: .04em; }
+  .work-status .dot { color: var(--office); margin-right: 5px; }
 
   /* ───────── アズレージョ帯（区切り） ───────── */
   .azulejo {
@@ -386,9 +391,18 @@
       <div class="block-head">
         <span class="kicker solo">WORKS</span>
         <h2>制作実績</h2>
-        <p class="block-lede">公開中の成果物です。カードをクリックすると実際のサイトが開きます。</p>
+        <p class="block-lede">制作・運用してきた成果物です。公開中のものはカードをクリックするとサイトが開きます。</p>
       </div>
       <div class="works">
+        <div class="work-card w-ai no-link">
+          <div class="work-thumb" role="img" aria-label="採用スクリーニング用カスタムAI サムネイル"></div>
+          <div class="work-body">
+            <span class="work-cat">カスタムAI / 採用業務</span>
+            <h3>Gemini「Gems」採用スクリーニングAI</h3>
+            <p>Gemini の「Gems」（ユーザーが独自に作れるカスタムAIアシスタント）で、履歴書スクリーニングの判断基準とプロンプトを自分で設計。Gemini上で動くカスタムAIを自作し、採用フローに組み込んで運用しています。</p>
+            <span class="work-status"><span class="dot">●</span>社内で実運用中</span>
+          </div>
+        </div>
         <a class="work-card w-content" href="https://miho-okomee.github.io/daily-automation-textbook/" target="_blank" rel="noopener">
           <div class="work-thumb" role="img" aria-label="日常業務自動化の教科書 サムネイル"></div>
           <div class="work-body">
