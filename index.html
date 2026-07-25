@@ -272,6 +272,7 @@
   .stat .stat-label { font-size: 12.5px; font-weight: 700; color: var(--ink-soft); letter-spacing: .04em; }
   .stat .stat-num { font-family: var(--serif); font-weight: 800; font-size: clamp(24px, 3.4vw, 32px); color: var(--acc); margin: 10px 0 6px; letter-spacing: .02em; }
   .stat .stat-note { font-size: 12.5px; color: var(--ink-soft); }
+  .stat .stat-num.stat-num-sm { font-size: clamp(19px, 2.6vw, 24px); }
   .stat.s1 { --acc: var(--sns); } .stat.s2 { --acc: var(--content); } .stat.s3 { --acc: var(--office); }
 
   /* ───────── 個人事業の実績（追加） ───────── */
@@ -280,7 +281,7 @@
   .venture-card .v-cat { font-size: 10.5px; font-weight: 700; letter-spacing: .1em; color: #fff; background: var(--vc); padding: 2px 10px; border-radius: 999px; display: inline-block; }
   .venture-card h3 { font-family: var(--serif); font-size: 18px; font-weight: 800; margin: 12px 0 8px; line-height: 1.45; }
   .venture-card p { font-size: 13px; color: var(--ink-soft); }
-  .venture-card.v1 { --vc: var(--content); } .venture-card.v2 { --vc: var(--office); }
+  .venture-card.v1 { --vc: var(--content); } .venture-card.v2 { --vc: var(--office); } .venture-card.v3 { --vc: var(--sns); } .venture-card.v4 { --vc: var(--content); }
   @media (max-width: 880px) { .stats, .ventures { grid-template-columns: 1fr; } }
 </style>
 </head>
@@ -407,20 +408,20 @@
         <p class="block-lede">これまで自分の担当業務で実際に出してきた結果です。効果は環境によって変わるため、まず見極めてからご提案します。</p>
       </div>
       <div class="stats">
-        <div class="stat s1">
-          <div class="stat-label">展示会の企画・運営（日英対応）</div>
-          <div class="stat-num">20回以上</div>
-          <div class="stat-note">平均30件のリード／3件の商談化</div>
-        </div>
         <div class="stat s2">
           <div class="stat-label">メール作業（GAS×生成AI）</div>
           <div class="stat-num">90分 → 30分</div>
-          <div class="stat-note">月間約30時間削減</div>
+          <div class="stat-note">部門横断で「メール対応に時間がかかる」という声をヒアリングし、GAS（Google Apps Script）と生成AIを組み合わせて定型メールの下書き作成を自動化。1件あたりの作業時間を90分から30分に短縮し、チーム全体で月間約30時間分の工数を削減しました。</div>
         </div>
         <div class="stat s3">
           <div class="stat-label">セキュリティチェックシート回答</div>
-          <div class="stat-num">工数80%以上削減</div>
-          <div class="stat-note">過去150件をAIに参照させ下書きを自動生成</div>
+          <div class="stat-num stat-num-sm">工数80%以上削減</div>
+          <div class="stat-note">取引先ごとに書式が異なるセキュリティチェックシートへの回答は、内容を都度調べて手作業で作成する負担の大きい業務でした。過去150件分の回答実績をNotebookLMとGeminiに参照させて下書きを自動生成する仕組みを構築し、確認・微修正だけで済むようにして回答工数を80%以上削減しました。</div>
+        </div>
+        <div class="stat s1">
+          <div class="stat-label">展示会の企画・運営（日英対応）</div>
+          <div class="stat-num">20回以上</div>
+          <div class="stat-note">名古屋「先端素材Week」等の展示会で、企画・運営責任者として出展計画から当日の運営、終了後のフォローアップまでを一貫して担当。海外パートナーや来場者への日英対応も行い、1回あたり平均30件のリードを獲得、平均3件が商談化しています。</div>
         </div>
       </div>
     </section>
@@ -434,27 +435,9 @@
       <div class="block-head">
         <span class="kicker solo">WORKS</span>
         <h2>制作実績</h2>
-        <p class="block-lede">制作・運用してきた成果物です。公開中のものはカードをクリックするとサイトが開きます。</p>
+        <p class="block-lede">自分のスキルを磨くために制作した見本・教材です。実際の利用者は自分のみですが、公開中のものはカードをクリックするとサイトが開きます。</p>
       </div>
       <div class="works">
-        <div class="work-card w-ai no-link">
-          <div class="work-thumb" role="img" aria-label="採用スクリーニング用カスタムAI サムネイル"></div>
-          <div class="work-body">
-            <span class="work-cat">カスタムAI / 採用業務</span>
-            <h3>Gemini「Gems」採用スクリーニングAI</h3>
-            <p>Gemini の「Gems」（ユーザーが独自に作れるカスタムAIアシスタント）で、履歴書スクリーニングの判断基準とプロンプトを自分で設計。Gemini上で動くカスタムAIを自作し、採用フローに組み込んで運用しています。</p>
-            <span class="work-status"><span class="dot">●</span>社内で実運用中</span>
-          </div>
-        </div>
-        <div class="work-card w-ai no-link">
-          <div class="work-thumb" role="img" aria-label="メール業務自動化 サムネイル"></div>
-          <div class="work-body">
-            <span class="work-cat">GAS×生成AI / 業務効率化</span>
-            <h3>GAS×生成AIによるメール業務の自動化</h3>
-            <p>定型メールの作成・送信フローをGoogle Apps Script（GAS）と生成AIを組み合わせてテンプレート化。文面のたたき台作成から送信までにかかっていた時間を90分→30分に短縮し、月間約30時間の工数を削減しています。</p>
-            <span class="work-status"><span class="dot">●</span>社内で実運用中</span>
-          </div>
-        </div>
         <a class="work-card w-content" href="https://miho-okomee.github.io/daily-automation-textbook/" target="_blank" rel="noopener">
           <div class="work-thumb" role="img" aria-label="日常業務自動化の教科書 サムネイル"></div>
           <div class="work-body">
@@ -488,9 +471,9 @@
     <!-- ===== 個人事業の実績（追加） ===== -->
     <section class="block" id="ventures">
       <div class="block-head">
-        <span class="kicker solo">CLIENT WORK</span>
-        <h2>個人事業の実績</h2>
-        <p class="block-lede">個人として直接お引き受けした業務です。守秘のため、詳細は面談でご説明します。</p>
+        <span class="kicker solo">REAL IMPACT</span>
+        <h2>業務効率化の実績</h2>
+        <p class="block-lede">実際の利用者が第三者にいて、人の役に立ち、収入や実務の成果につながっている実績です。守秘に関わる部分は面談でご説明します。</p>
       </div>
       <div class="ventures">
         <div class="venture-card v1">
@@ -502,6 +485,16 @@
           <span class="v-cat">士業事務所 / 業務効率化</span>
           <h3>士業事務所の業務効率化支援</h3>
           <p>確定申告関連の業務効率化を支援。お客様の情報を含むため、詳細は面談でご説明します。</p>
+        </div>
+        <div class="venture-card v3">
+          <span class="v-cat">カスタムAI / 採用業務</span>
+          <h3>Gemini「Gems」採用スクリーニングAI</h3>
+          <p>Gemini の「Gems」（ユーザーが独自に作れるカスタムAIアシスタント）で、履歴書スクリーニングの判断基準とプロンプトを自分で設計。Gemini上で動くカスタムAIを自作し、採用フローに組み込んで運用中。社内で実運用中。</p>
+        </div>
+        <div class="venture-card v4">
+          <span class="v-cat">GAS×生成AI / 業務効率化</span>
+          <h3>GAS×生成AIによるメール業務の自動化</h3>
+          <p>定型メールの作成・送信フローをGoogle Apps Script（GAS）と生成AIを組み合わせてテンプレート化。文面のたたき台作成から送信までにかかっていた時間を90分→30分に短縮し、月間約30時間の工数を削減。社内で実運用中。</p>
         </div>
       </div>
     </section>
