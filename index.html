@@ -87,6 +87,12 @@
     color: #fff; background: var(--sns); padding: 6px 16px; border-radius: 999px;
   }
   .topnav a.cta:hover { background: var(--ink); }
+  .topnav .lang-switch {
+    font-family: var(--sans); font-size: 11.5px; font-weight: 700; letter-spacing: .08em;
+    color: var(--ink); background: transparent; border: 1px solid var(--line); border-radius: 999px;
+    padding: 5px 13px; cursor: pointer; transition: border-color .15s, color .15s;
+  }
+  .topnav .lang-switch:hover { border-color: var(--sns); color: var(--sns); }
 
   .wrap {
     max-width: 1080px; margin: 0 auto; padding: 0 clamp(20px, 5vw, 56px) 100px; min-width: 0;
@@ -234,6 +240,7 @@
     .topnav .logo { font-size: 15px; }
     .topnav .logo small { display: none; }       /* 屋号は省きロゴをコンパクトに */
     .topnav a.cta { padding: 6px 14px; font-size: 12px; }
+    .topnav .lang-switch { padding: 5px 10px; font-size: 11px; }
 
     header.hero { padding: 48px 0 40px; }
     .hero h1 { font-size: clamp(19px, 5.6vw, 34px); line-height: 1.5; }  /* 長い節(15文字)も画面内に収め、常に2行 */
@@ -291,11 +298,12 @@
     <span class="logo">Miho <small style="font-family:var(--sans);font-weight:500;font-size:10px;letter-spacing:.18em;color:var(--ink-soft)">VELACOTTA WORKS</small></span>
     <nav>
       <span class="links">
-        <a href="#about">プロフィール</a>
-        <a href="#services">できること</a>
-        <a href="#works">制作実績</a>
+        <a href="#about" data-i18n="nav.about">プロフィール</a>
+        <a href="#services" data-i18n="nav.services">できること</a>
+        <a href="#works" data-i18n="nav.works">制作実績</a>
       </span>
-      <a href="#contact" class="cta">お問い合わせ</a>
+      <a href="#contact" class="cta" data-i18n="nav.contact">お問い合わせ</a>
+      <button type="button" id="lang-toggle" class="lang-switch" aria-label="Switch to English / 英語表示に切り替え">EN</button>
     </nav>
   </div>
 
@@ -305,20 +313,20 @@
     <header class="hero">
       <span class="kicker">PORTFOLIO &amp; WORKS</span>
       <!-- ===== 要編集: キャッチコピー ===== -->
-      <h1><span class="nw">業務の詰まりを見つけ、</span><span class="nw"><em>仕組み</em>にして、動くところまで。</span></h1>
-      <p class="lede">
+      <h1 data-i18n="hero.title"><span class="nw">業務の詰まりを見つけ、</span><span class="nw"><em>仕組み</em>にして、動くところまで。</span></h1>
+      <p class="lede" data-i18n="hero.lede">
         外資系企業で営業・マーケティングチームを支える事務サポートをしながら、Notion・GAS・AIを使った業務効率化、
         MEO・店舗集客、わかりやすい教材づくりまで手がけています。「やりたいけど手が回らない」を、現場で回る形にします。
       </p>
       <div class="meta">
-        <span>業務効率化・自動化</span>
+        <span data-i18n="hero.meta1">業務効率化・自動化</span>
         <span>Notion / GAS / AI</span>
-        <span>営業・事務サポート</span>
-        <span>MEO・教材制作</span>
+        <span data-i18n="hero.meta3">営業・事務サポート</span>
+        <span data-i18n="hero.meta4">MEO・教材制作</span>
       </div>
       <div class="actions">
-        <a href="#contact" class="btn btn-primary">お仕事のご相談 →</a>
-        <a href="#works" class="btn btn-ghost">制作実績を見る</a>
+        <a href="#contact" class="btn btn-primary" data-i18n="hero.cta1">お仕事のご相談 →</a>
+        <a href="#works" class="btn btn-ghost" data-i18n="hero.cta2">制作実績を見る</a>
       </div>
     </header>
 
@@ -326,34 +334,34 @@
     <section class="block" id="about">
       <div class="block-head">
         <span class="kicker solo">ABOUT</span>
-        <h2>プロフィール</h2>
+        <h2 data-i18n="about.h2">プロフィール</h2>
       </div>
       <div class="about-grid">
         <div class="about-card">
-          <p>はじめまして、<b>Miho</b>と申します。外資系企業で営業・マーケティングチームを支える事務サポートを担当し、営業現場の「ちょっと困った」を<b>業務効率化</b>を念頭に解決するのが得意です。</p>
-          <p>ツールありきではなく、<b>課題から逆算</b>して仕組みをつくり、動くところまで作りきることを大切にしています。Notion・GAS・AIを使った自動化から、営業・事務サポート、MEO・教材制作まで幅広く対応します。</p>
+          <p data-i18n="about.p1">はじめまして、<b>Miho</b>と申します。外資系企業で営業・マーケティングチームを支える事務サポートを担当し、営業現場の「ちょっと困った」を<b>業務効率化</b>を念頭に解決するのが得意です。</p>
+          <p data-i18n="about.p2">ツールありきではなく、<b>課題から逆算</b>して仕組みをつくり、動くところまで作りきることを大切にしています。Notion・GAS・AIを使った自動化から、営業・事務サポート、MEO・教材制作まで幅広く対応します。</p>
           <ul class="about-facts">
-            <li><span>拠点</span>東京（リモート対応可）</li>
-            <li><span>稼働</span>平日夜・土日（週10〜20時間目安）</li>
-            <li><span>経験</span>DX推進 / 業務効率化 / 営業支援 / データ管理</li>
+            <li data-i18n="about.fact1"><span>拠点</span>東京（リモート対応可）</li>
+            <li data-i18n="about.fact2"><span>稼働</span>平日夜・土日（週10〜20時間目安）</li>
+            <li data-i18n="about.fact3"><span>経験</span>DX推進 / 業務効率化 / 営業支援 / データ管理</li>
           </ul>
           <p class="sign">— Miho / VelaCotta Works</p>
         </div>
         <div class="about-points">
           <div class="point p1">
             <div class="pt-no">01</div>
-            <h3>AI×業務効率化の実践力</h3>
-            <p>Notion AI・GASを活用した自動化システムを、実案件で構築・運用してきました。</p>
+            <h3 data-i18n="about.point1.h3">AI×業務効率化の実践力</h3>
+            <p data-i18n="about.point1.p">Notion AI・GASを活用した自動化システムを、実案件で構築・運用してきました。</p>
           </div>
           <div class="point p2">
             <div class="pt-no">02</div>
-            <h3>課題ファーストの思考</h3>
-            <p>ツールありきではなく、課題から逆算して最適な解決策を提案します。</p>
+            <h3 data-i18n="about.point2.h3">課題ファーストの思考</h3>
+            <p data-i18n="about.point2.p">ツールありきではなく、課題から逆算して最適な解決策を提案します。</p>
           </div>
           <div class="point p3">
             <div class="pt-no">03</div>
-            <h3>体系的な情報設計</h3>
-            <p>Input / Output / Tag 構造で、知識や業務情報を有機的に管理する設計力。</p>
+            <h3 data-i18n="about.point3.h3">体系的な情報設計</h3>
+            <p data-i18n="about.point3.p">Input / Output / Tag 構造で、知識や業務情報を有機的に管理する設計力。</p>
           </div>
         </div>
       </div>
@@ -363,38 +371,38 @@
     <section class="block" id="services">
       <div class="block-head">
         <span class="kicker solo">WHAT I DO</span>
-        <h2>できること</h2>
-        <p class="block-lede">課題から逆算して、必要なところだけでもお手伝いします。ご相談ベースで柔軟に対応します。</p>
+        <h2 data-i18n="services.h2">できること</h2>
+        <p class="block-lede" data-i18n="services.lede">課題から逆算して、必要なところだけでもお手伝いします。ご相談ベースで柔軟に対応します。</p>
       </div>
       <div class="cards3">
         <div class="svc-card c-content">
-          <h3>業務効率化・自動化</h3>
+          <h3 data-i18n="services.c1.h3">業務効率化・自動化</h3>
           <div class="form">AI &amp; AUTOMATION</div>
           <ul>
-            <li>Notion AI + GAS連携による自動化</li>
-            <li>FAQ対応・定型作業の仕組み化</li>
-            <li>業務プロセスの改善提案</li>
-            <li>手順書・マニュアルの整備</li>
+            <li data-i18n="services.c1.li1">Notion AI + GAS連携による自動化</li>
+            <li data-i18n="services.c1.li2">FAQ対応・定型作業の仕組み化</li>
+            <li data-i18n="services.c1.li3">業務プロセスの改善提案</li>
+            <li data-i18n="services.c1.li4">手順書・マニュアルの整備</li>
           </ul>
         </div>
         <div class="svc-card c-office">
-          <h3>営業・事務サポート</h3>
+          <h3 data-i18n="services.c2.h3">営業・事務サポート</h3>
           <div class="form">SALES SUPPORT</div>
           <ul>
-            <li>CRM運用・データ整備（Salesforce / Notion）</li>
-            <li>見積・請求・議事録・活動履歴の整理</li>
-            <li>展示会・イベントの準備〜フォロー</li>
-            <li>提案資料作成・日英翻訳</li>
+            <li data-i18n="services.c2.li1">CRM運用・データ整備（Salesforce / Notion）</li>
+            <li data-i18n="services.c2.li2">見積・請求・議事録・活動履歴の整理</li>
+            <li data-i18n="services.c2.li3">展示会・イベントの準備〜フォロー</li>
+            <li data-i18n="services.c2.li4">提案資料作成・日英翻訳</li>
           </ul>
         </div>
         <div class="svc-card c-sns">
-          <h3>MEO・コンテンツ制作</h3>
+          <h3 data-i18n="services.c3.h3">MEO・コンテンツ制作</h3>
           <div class="form">MEO &amp; CONTENT</div>
           <ul>
-            <li>Googleビジネスプロフィール運用・診断</li>
-            <li>学習コース・教材の設計と制作</li>
-            <li>ランディングページ・記事ライティング</li>
-            <li>図解・チェックリストへの落とし込み</li>
+            <li data-i18n="services.c3.li1">Googleビジネスプロフィール運用・診断</li>
+            <li data-i18n="services.c3.li2">学習コース・教材の設計と制作</li>
+            <li data-i18n="services.c3.li3">ランディングページ・記事ライティング</li>
+            <li data-i18n="services.c3.li4">図解・チェックリストへの落とし込み</li>
           </ul>
         </div>
       </div>
@@ -404,65 +412,65 @@
     <section class="block" id="numbers">
       <div class="block-head">
         <span class="kicker solo">BY THE NUMBERS</span>
-        <h2>数字で見る実務</h2>
-        <p class="block-lede">これまで自分の担当業務で実際に出してきた結果です。効果は環境によって変わるため、まず見極めてからご提案します。</p>
+        <h2 data-i18n="numbers.h2">数字で見る実務</h2>
+        <p class="block-lede" data-i18n="numbers.lede">これまで自分の担当業務で実際に出してきた結果です。効果は環境によって変わるため、まず見極めてからご提案します。</p>
       </div>
       <div class="stats">
         <div class="stat s2">
-          <div class="stat-label">メール作業（GAS×生成AI）</div>
-          <div class="stat-num">90分 → 30分</div>
-          <div class="stat-note">部門横断で「メール対応に時間がかかる」という声をヒアリングし、GAS（Google Apps Script）と生成AIを組み合わせて定型メールの下書き作成を自動化。1件あたりの作業時間を90分から30分に短縮し、チーム全体で月間約30時間分の工数を削減しました。</div>
+          <div class="stat-label" data-i18n="numbers.s1.label">メール作業（GAS×生成AI）</div>
+          <div class="stat-num" data-i18n="numbers.s1.num">90分 → 30分</div>
+          <div class="stat-note" data-i18n="numbers.s1.note">部門横断で「メール対応に時間がかかる」という声をヒアリングし、GAS（Google Apps Script）と生成AIを組み合わせて定型メールの下書き作成を自動化。1件あたりの作業時間を90分から30分に短縮し、チーム全体で月間約30時間分の工数を削減しました。</div>
         </div>
         <div class="stat s3">
-          <div class="stat-label">セキュリティチェックシート回答</div>
-          <div class="stat-num stat-num-sm">工数80%以上削減</div>
-          <div class="stat-note">取引先ごとに書式が異なるセキュリティチェックシートへの回答は、内容を都度調べて手作業で作成する負担の大きい業務でした。過去150件分の回答実績をNotebookLMとGeminiに参照させて下書きを自動生成する仕組みを構築し、確認・微修正だけで済むようにして回答工数を80%以上削減しました。</div>
+          <div class="stat-label" data-i18n="numbers.s2.label">セキュリティチェックシート回答</div>
+          <div class="stat-num stat-num-sm" data-i18n="numbers.s2.num">工数80%以上削減</div>
+          <div class="stat-note" data-i18n="numbers.s2.note">取引先ごとに書式が異なるセキュリティチェックシートへの回答は、内容を都度調べて手作業で作成する負担の大きい業務でした。過去150件分の回答実績をNotebookLMとGeminiに参照させて下書きを自動生成する仕組みを構築し、確認・微修正だけで済むようにして回答工数を80%以上削減しました。</div>
         </div>
         <div class="stat s1">
-          <div class="stat-label">展示会の企画・運営（日英対応）</div>
-          <div class="stat-num">20回以上</div>
-          <div class="stat-note">展示会の企画・運営責任者として、出展計画から当日の運営、終了後のフォローアップまでを一貫して担当。海外パートナーや来場者への日英対応も行い、1回あたり平均30件のリードを獲得、平均3件が商談化しています。</div>
+          <div class="stat-label" data-i18n="numbers.s3.label">展示会の企画・運営（日英対応）</div>
+          <div class="stat-num" data-i18n="numbers.s3.num">20回以上</div>
+          <div class="stat-note" data-i18n="numbers.s3.note">展示会の企画・運営責任者として、出展計画から当日の運営、終了後のフォローアップまでを一貫して担当。海外パートナーや来場者への日英対応も行い、1回あたり平均30件のリードを獲得、平均3件が商談化しています。</div>
         </div>
       </div>
     </section>
 
     <!-- ===== アズレージョ帯 ===== -->
-    <div class="azulejo az1" role="img" aria-label="トレンカディス（割れタイルモザイク）"></div>
-    <p class="azulejo-cap">これまでつくってきたもの</p>
+    <div class="azulejo az1" role="img" aria-label="トレンカディス（割れタイルモザイク）" data-i18n-aria="azulejo.aria"></div>
+    <p class="azulejo-cap" data-i18n="azulejo.cap">これまでつくってきたもの</p>
 
     <!-- ===== 制作実績 ===== -->
     <section class="block" id="works">
       <div class="block-head">
         <span class="kicker solo">WORKS</span>
-        <h2>制作実績</h2>
-        <p class="block-lede">自分のスキルを磨くために制作した見本・教材です。実際の利用者は自分のみですが、公開中のものはカードをクリックするとサイトが開きます。</p>
+        <h2 data-i18n="works.h2">制作実績</h2>
+        <p class="block-lede" data-i18n="works.lede">自分のスキルを磨くために制作した見本・教材です。実際の利用者は自分のみですが、公開中のものはカードをクリックするとサイトが開きます。</p>
       </div>
       <div class="works">
         <a class="work-card w-content" href="https://miho-okomee.github.io/daily-automation-textbook/" target="_blank" rel="noopener">
-          <div class="work-thumb" role="img" aria-label="日常業務自動化の教科書 サムネイル"></div>
+          <div class="work-thumb" role="img" aria-label="日常業務自動化の教科書 サムネイル" data-i18n-aria="works.w1.aria"></div>
           <div class="work-body">
-            <span class="work-cat">教材 / Web</span>
-            <h3>日常業務自動化の教科書</h3>
-            <p>Claude・Cowork・Claude Code の使い分けで通常業務を半自動化する全29レシピ。1ファイル完結のWeb教科書として制作。</p>
-            <span class="work-link">サイトを見る ↗</span>
+            <span class="work-cat" data-i18n="works.w1.cat">教材 / Web</span>
+            <h3 data-i18n="works.w1.h3">日常業務自動化の教科書</h3>
+            <p data-i18n="works.w1.p">Claude・Cowork・Claude Code の使い分けで通常業務を半自動化する全29レシピ。1ファイル完結のWeb教科書として制作。</p>
+            <span class="work-link" data-i18n="works.link">サイトを見る ↗</span>
           </div>
         </a>
         <a class="work-card w-office" href="https://local-meo.github.io/meo-master-cource/" target="_blank" rel="noopener">
-          <div class="work-thumb" role="img" aria-label="MEO対策実践マスター サムネイル"></div>
+          <div class="work-thumb" role="img" aria-label="MEO対策実践マスター サムネイル" data-i18n-aria="works.w2.aria"></div>
           <div class="work-body">
-            <span class="work-cat">学習コース</span>
-            <h3>ゼロから学ぶ MEO対策実践マスター</h3>
-            <p>Googleビジネスプロフィールの基礎から口コミ運用・上位化まで。5段階12レッスン、記事・チェックリスト・クイズ付きの実践コース。</p>
-            <span class="work-link">サイトを見る ↗</span>
+            <span class="work-cat" data-i18n="works.w2.cat">学習コース</span>
+            <h3 data-i18n="works.w2.h3">ゼロから学ぶ MEO対策実践マスター</h3>
+            <p data-i18n="works.w2.p">Googleビジネスプロフィールの基礎から口コミ運用・上位化まで。5段階12レッスン、記事・チェックリスト・クイズ付きの実践コース。</p>
+            <span class="work-link" data-i18n="works.link">サイトを見る ↗</span>
           </div>
         </a>
         <a class="work-card w-sns" href="https://miho-okomee.github.io/meo-shindan-lp/" target="_blank" rel="noopener">
-          <div class="work-thumb" role="img" aria-label="MEO無料診断LP サムネイル"></div>
+          <div class="work-thumb" role="img" aria-label="MEO無料診断LP サムネイル" data-i18n-aria="works.w3.aria"></div>
           <div class="work-body">
-            <span class="work-cat">サービスLP</span>
-            <h3>Googleマップ集客 MEO無料診断</h3>
-            <p>お店のGoogleマップを10分・無料で診断するサービスのランディングページ。15項目で現状を数値化し改善点を提示する設計。</p>
-            <span class="work-link">サイトを見る ↗</span>
+            <span class="work-cat" data-i18n="works.w3.cat">サービスLP</span>
+            <h3 data-i18n="works.w3.h3">Googleマップ集客 MEO無料診断</h3>
+            <p data-i18n="works.w3.p">お店のGoogleマップを10分・無料で診断するサービスのランディングページ。15項目で現状を数値化し改善点を提示する設計。</p>
+            <span class="work-link" data-i18n="works.link">サイトを見る ↗</span>
           </div>
         </a>
       </div>
@@ -472,29 +480,29 @@
     <section class="block" id="ventures">
       <div class="block-head">
         <span class="kicker solo">REAL IMPACT</span>
-        <h2>業務効率化の実績</h2>
-        <p class="block-lede">実際の利用者が第三者にいて、人の役に立ち、収入や実務の成果につながっている実績です。守秘に関わる部分は面談でご説明します。</p>
+        <h2 data-i18n="ventures.h2">業務効率化の実績</h2>
+        <p class="block-lede" data-i18n="ventures.lede">実際の利用者が第三者にいて、人の役に立ち、収入や実務の成果につながっている実績です。守秘に関わる部分は面談でご説明します。</p>
       </div>
       <div class="ventures">
         <div class="venture-card v1">
-          <span class="v-cat">海外クライアント / 業務委託</span>
-          <h3>海外クライアントとの業務委託契約</h3>
-          <p>海外のマーケティング会社から受注。東京開催のテックイベントを日本市場につなぐ業務と、発表スライドの英日翻訳を担当。契約から報酬受領まで英語で完結（2025年）。</p>
+          <span class="v-cat" data-i18n="ventures.v1.cat">海外クライアント / 業務委託</span>
+          <h3 data-i18n="ventures.v1.h3">海外クライアントとの業務委託契約</h3>
+          <p data-i18n="ventures.v1.p">海外のマーケティング会社から受注。東京開催のテックイベントを日本市場につなぐ業務と、発表スライドの英日翻訳を担当。契約から報酬受領まで英語で完結（2025年）。</p>
         </div>
         <div class="venture-card v2">
-          <span class="v-cat">士業事務所 / 業務効率化</span>
-          <h3>士業事務所の業務効率化支援</h3>
-          <p>確定申告関連の業務効率化を支援。お客様の情報を含むため、詳細は面談でご説明します。</p>
+          <span class="v-cat" data-i18n="ventures.v2.cat">士業事務所 / 業務効率化</span>
+          <h3 data-i18n="ventures.v2.h3">士業事務所の業務効率化支援</h3>
+          <p data-i18n="ventures.v2.p">確定申告関連の業務効率化を支援。お客様の情報を含むため、詳細は面談でご説明します。</p>
         </div>
         <div class="venture-card v3">
-          <span class="v-cat">カスタムAI / 採用業務</span>
-          <h3>Gemini「Gems」採用スクリーニングAI</h3>
-          <p>Gemini の「Gems」（ユーザーが独自に作れるカスタムAIアシスタント）で、履歴書スクリーニングの判断基準とプロンプトを自分で設計。Gemini上で動くカスタムAIを自作し、採用フローに組み込んで運用中。社内で実運用中。</p>
+          <span class="v-cat" data-i18n="ventures.v3.cat">カスタムAI / 採用業務</span>
+          <h3 data-i18n="ventures.v3.h3">Gemini「Gems」採用スクリーニングAI</h3>
+          <p data-i18n="ventures.v3.p">Gemini の「Gems」（ユーザーが独自に作れるカスタムAIアシスタント）で、履歴書スクリーニングの判断基準とプロンプトを自分で設計。Gemini上で動くカスタムAIを自作し、採用フローに組み込んで運用中。社内で実運用中。</p>
         </div>
         <div class="venture-card v4">
-          <span class="v-cat">GAS×生成AI / 業務効率化</span>
-          <h3>GAS×生成AIによるメール業務の自動化</h3>
-          <p>定型メールの作成・送信フローをGoogle Apps Script（GAS）と生成AIを組み合わせてテンプレート化。文面のたたき台作成から送信までにかかっていた時間を90分→30分に短縮し、月間約30時間の工数を削減。社内で実運用中。</p>
+          <span class="v-cat" data-i18n="ventures.v4.cat">GAS×生成AI / 業務効率化</span>
+          <h3 data-i18n="ventures.v4.h3">GAS×生成AIによるメール業務の自動化</h3>
+          <p data-i18n="ventures.v4.p">定型メールの作成・送信フローをGoogle Apps Script（GAS）と生成AIを組み合わせてテンプレート化。文面のたたき台作成から送信までにかかっていた時間を90分→30分に短縮し、月間約30時間の工数を削減。社内で実運用中。</p>
         </div>
       </div>
     </section>
@@ -506,10 +514,10 @@
     <section class="block" id="contact">
       <div class="contact">
         <span class="kicker solo" style="justify-content:center">CONTACT</span>
-        <h2>お仕事のご相談</h2>
-        <p>「こんなこと頼める？」という段階のご相談も歓迎です。下記フォームよりお気軽にお問い合わせください。内容を確認のうえ、折り返しご連絡します。</p>
+        <h2 data-i18n="contact.h2">お仕事のご相談</h2>
+        <p data-i18n="contact.p">「こんなこと頼める？」という段階のご相談も歓迎です。下記フォームよりお気軽にお問い合わせください。内容を確認のうえ、折り返しご連絡します。</p>
         <!-- ===== 要確認: Notion記載は編集用URL(/edit)だったため回答用(/viewform)に変換。公開リンクが正しいか開いて確認し、必要なら差し替え ===== -->
-        <a href="https://docs.google.com/forms/d/1-MzFBNA1icIArQNUmUfvRYeAbYsF1Q8TVnbBryG-yg8/viewform" target="_blank" rel="noopener" class="btn btn-primary" style="font-size:15px;padding:14px 34px">お問い合わせフォームへ →</a>
+        <a href="https://docs.google.com/forms/d/1-MzFBNA1icIArQNUmUfvRYeAbYsF1Q8TVnbBryG-yg8/viewform" target="_blank" rel="noopener" class="btn btn-primary" style="font-size:15px;padding:14px 34px" data-i18n="contact.cta">お問い合わせフォームへ →</a>
       </div>
     </section>
 
@@ -521,6 +529,149 @@
 
   <script>
     document.getElementById('yr').textContent = new Date().getFullYear();
+  </script>
+
+  <!-- ===== 日英切り替え（JAが原本・ENは辞書で上書き） ===== -->
+  <script>
+  (function () {
+    var EN = {
+      'nav.about': 'Profile',
+      'nav.services': 'Services',
+      'nav.works': 'Works',
+      'nav.contact': 'Contact',
+
+      'hero.title': 'Finding where work gets stuck, turning it into a <em>system</em>, and building it until it runs.',
+      'hero.lede': 'Alongside admin support for a sales and marketing team at a global company, I work on workflow automation with Notion, GAS and AI, local business growth (MEO), and clear, practical course content. I turn &ldquo;I want to do this but can&rsquo;t get to it&rdquo; into something that actually runs day to day.',
+      'hero.meta1': 'Workflow Automation',
+      'hero.meta3': 'Sales &amp; Admin Support',
+      'hero.meta4': 'MEO &amp; Course Content',
+      'hero.cta1': 'Get in Touch →',
+      'hero.cta2': 'See My Work',
+
+      'about.h2': 'Profile',
+      'about.p1': 'Hi, I\'m <b>Miho</b>. I provide admin support for a sales and marketing team at a global company, and I&rsquo;m good at solving the small day-to-day frustrations of a sales team with <b>workflow automation</b> in mind.',
+      'about.p2': 'Rather than starting from a tool, I <b>work backward from the problem</b> to design a system and build it all the way to something that actually runs. I cover everything from Notion / GAS / AI automation to sales and admin support, MEO, and course content.',
+      'about.fact1': '<span>Location</span>Tokyo, Japan (remote OK)',
+      'about.fact2': '<span>Availability</span>Weekday evenings &amp; weekends (approx. 10&ndash;20 hrs/week)',
+      'about.fact3': '<span>Experience</span>DX promotion / Workflow automation / Sales support / Data management',
+      'about.point1.h3': 'Hands-on AI &amp; Automation',
+      'about.point1.p': 'I&rsquo;ve built and run automation systems using Notion AI and GAS on real projects.',
+      'about.point2.h3': 'Problem-First Thinking',
+      'about.point2.p': 'Instead of starting from a tool, I work backward from the problem to propose the right solution.',
+      'about.point3.h3': 'Structured Information Design',
+      'about.point3.p': 'Skilled at organizing knowledge and work information organically using an Input / Output / Tag structure.',
+
+      'services.h2': 'What I Do',
+      'services.lede': 'I work backward from the problem and can help with just the parts you need &mdash; happy to keep things flexible based on what you&rsquo;re looking for.',
+      'services.c1.h3': 'Workflow Automation',
+      'services.c1.li1': 'Automation via Notion AI + GAS integration',
+      'services.c1.li2': 'Systemizing FAQ handling and routine tasks',
+      'services.c1.li3': 'Proposing improvements to work processes',
+      'services.c1.li4': 'Creating and maintaining SOPs and manuals',
+      'services.c2.h3': 'Sales &amp; Admin Support',
+      'services.c2.li1': 'CRM operations &amp; data upkeep (Salesforce / Notion)',
+      'services.c2.li2': 'Organizing quotes, invoices, meeting notes, and activity records',
+      'services.c2.li3': 'Trade show / event prep through follow-up',
+      'services.c2.li4': 'Proposal materials &amp; Japanese&ndash;English translation',
+      'services.c3.h3': 'MEO &amp; Content Creation',
+      'services.c3.li1': 'Google Business Profile management &amp; diagnostics',
+      'services.c3.li2': 'Designing and producing learning courses &amp; materials',
+      'services.c3.li3': 'Landing pages &amp; article writing',
+      'services.c3.li4': 'Turning ideas into diagrams and checklists',
+
+      'numbers.h2': 'By the Numbers',
+      'numbers.lede': 'These are real results from work I&rsquo;ve handled myself. Since impact varies by environment, I always assess the situation first before proposing anything.',
+      'numbers.s1.label': 'Email tasks (GAS × generative AI)',
+      'numbers.s1.num': '90 min → 30 min',
+      'numbers.s1.note': 'After hearing across departments that email replies were taking too long, I combined Google Apps Script (GAS) with generative AI to automate drafting routine emails. This cut the time per email from 90 minutes to 30, saving the team about 30 hours a month in total.',
+      'numbers.s2.label': 'Security questionnaire responses',
+      'numbers.s2.num': '80%+ less time spent',
+      'numbers.s2.note': 'Answering security questionnaires, whose format differs by client, used to mean manually researching and writing each response &mdash; a heavy workload. I built a system that feeds 150 past responses into NotebookLM and Gemini to auto-generate drafts, leaving only review and minor edits, cutting the workload by more than 80%.',
+      'numbers.s3.label': 'Trade show planning &amp; operations (bilingual JP/EN)',
+      'numbers.s3.num': '20+ events',
+      'numbers.s3.note': 'As the lead for trade show planning and operations, I&rsquo;ve handled everything end to end &mdash; from exhibit planning to on-site running and post-event follow-up &mdash; including bilingual (Japanese/English) support for overseas partners and visitors. Each event has generated an average of 30 leads, with about 3 turning into active deals.',
+
+      'azulejo.cap': 'What I&rsquo;ve Built So Far',
+
+      'works.h2': 'Selected Works',
+      'works.lede': 'These are sample projects and course materials I built to sharpen my own skills. I&rsquo;m currently the only user of most of them, but the ones marked as live will open the site when you click the card.',
+      'works.w1.cat': 'Course Material / Web',
+      'works.w1.h3': 'The Daily Task Automation Textbook',
+      'works.w1.p': '29 recipes for semi-automating everyday work by combining Claude, Cowork, and Claude Code &mdash; built as a single self-contained web textbook.',
+      'works.w2.cat': 'Learning Course',
+      'works.w2.h3': 'MEO Practical Mastery: From Zero',
+      'works.w2.p': 'From Google Business Profile basics to review management and ranking higher &mdash; a hands-on course with 12 lessons across 5 stages, plus articles, checklists, and quizzes.',
+      'works.w3.cat': 'Service Landing Page',
+      'works.w3.h3': 'Free MEO Diagnosis for Google Maps Growth',
+      'works.w3.p': 'A landing page for a free, 10-minute Google Maps diagnosis service, designed to score a business across 15 metrics and surface areas for improvement.',
+      'works.link': 'Visit site ↗',
+
+      'ventures.h2': 'Automation Impact',
+      'ventures.lede': 'These are results with real third-party users &mdash; work that has helped people and led to actual income or operational impact. I&rsquo;ll cover anything confidential in person.',
+      'ventures.v1.cat': 'Overseas Client / Contract Work',
+      'ventures.v1.h3': 'Contract Work for an Overseas Client',
+      'ventures.v1.p': 'Contracted by an overseas marketing firm to connect a Tokyo tech event with the Japanese market, plus English translation of presentation slides. Handled the entire process &mdash; contract through payment &mdash; in English (2025).',
+      'ventures.v2.cat': 'Professional Firm / Workflow Automation',
+      'ventures.v2.h3': 'Workflow Automation for a Professional Services Firm',
+      'ventures.v2.p': 'Supported workflow automation related to tax filing. As this involves client information, I&rsquo;ll share details in person.',
+      'ventures.v3.cat': 'Custom AI / Recruiting',
+      'ventures.v3.h3': 'A Gemini &ldquo;Gems&rdquo; Recruiting Screener',
+      'ventures.v3.p': 'Designed the screening criteria and prompts myself using Gemini&rsquo;s &ldquo;Gems&rdquo; (custom AI assistants users can build). Built a custom AI that runs on Gemini and folded it into the hiring workflow &mdash; currently in active in-house use.',
+      'ventures.v4.cat': 'GAS × Generative AI / Automation',
+      'ventures.v4.h3': 'Automating Email Work with GAS × Generative AI',
+      'ventures.v4.p': 'Templated the routine email creation and sending flow by combining Google Apps Script (GAS) with generative AI. Cut the time from drafting to sending from 90 minutes to 30, saving about 30 hours a month &mdash; currently in active in-house use.',
+
+      'contact.h2': 'Get in Touch',
+      'contact.p': 'Even a &ldquo;could you help with something like this?&rdquo; question at the earliest stage is welcome. Please reach out using the form below &mdash; I&rsquo;ll review your message and get back to you.',
+      'contact.cta': 'Go to Contact Form →'
+    };
+
+    var EN_ARIA = {
+      'azulejo.aria': 'Trencadís (broken-tile mosaic)',
+      'works.w1.aria': 'Thumbnail: The Daily Task Automation Textbook',
+      'works.w2.aria': 'Thumbnail: MEO Practical Mastery Course',
+      'works.w3.aria': 'Thumbnail: Free MEO Diagnosis Landing Page'
+    };
+
+    var TITLE_JA = document.title;
+    var TITLE_EN = 'Miho | Workflow Automation & Ops Support (Notion / GAS / AI) | VelaCotta Works';
+    var STORAGE_KEY = 'vw-lang';
+
+    var nodes = Array.prototype.slice.call(document.querySelectorAll('[data-i18n]'));
+    var original = new Map();
+    nodes.forEach(function (el) { original.set(el, el.innerHTML); });
+
+    var ariaNodes = Array.prototype.slice.call(document.querySelectorAll('[data-i18n-aria]'));
+    var originalAria = new Map();
+    ariaNodes.forEach(function (el) { originalAria.set(el, el.getAttribute('aria-label')); });
+
+    var btn = document.getElementById('lang-toggle');
+
+    function apply(lang) {
+      document.documentElement.lang = lang;
+      nodes.forEach(function (el) {
+        var key = el.getAttribute('data-i18n');
+        el.innerHTML = (lang === 'en' && EN[key] != null) ? EN[key] : original.get(el);
+      });
+      ariaNodes.forEach(function (el) {
+        var key = el.getAttribute('data-i18n-aria');
+        el.setAttribute('aria-label', (lang === 'en' && EN_ARIA[key] != null) ? EN_ARIA[key] : originalAria.get(el));
+      });
+      document.title = lang === 'en' ? TITLE_EN : TITLE_JA;
+      if (btn) btn.textContent = lang === 'en' ? '日本語' : 'EN';
+      try { localStorage.setItem(STORAGE_KEY, lang); } catch (e) {}
+    }
+
+    var saved = null;
+    try { saved = localStorage.getItem(STORAGE_KEY); } catch (e) {}
+    apply(saved === 'en' ? 'en' : 'ja');
+
+    if (btn) {
+      btn.addEventListener('click', function () {
+        apply(document.documentElement.lang === 'en' ? 'ja' : 'en');
+      });
+    }
+  })();
   </script>
 </body>
 </html>
