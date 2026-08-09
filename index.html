@@ -290,6 +290,39 @@
   .venture-card p { font-size: 13px; color: var(--ink-soft); }
   .venture-card.v1 { --vc: var(--content); } .venture-card.v2 { --vc: var(--office); } .venture-card.v3 { --vc: var(--sns); } .venture-card.v4 { --vc: var(--content); }
   @media (max-width: 880px) { .stats, .ventures { grid-template-columns: 1fr; } }
+
+  /* ───────── ご一緒できること（できること内の具体メニュー・追加） ───────── */
+  .offers-head {
+    display: flex; align-items: center; gap: 14px;
+    margin: 44px 0 20px;
+  }
+  .offers-head::before, .offers-head::after { content: ""; height: 1px; background: var(--line); flex: 1; }
+  .offers-head span {
+    font-family: var(--serif); font-size: 15px; font-weight: 800; letter-spacing: .08em;
+    color: var(--ink); white-space: nowrap;
+  }
+  .offers { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+  .offer {
+    background: rgba(255,255,255,.55); border: 1px solid var(--line); border-left: 4px solid var(--oc);
+    border-radius: 6px; padding: 18px 20px 16px; box-shadow: 0 3px 12px rgba(37,32,26,.05);
+  }
+  .offer .o-no { font-family: var(--mono); font-size: 11px; font-weight: 700; letter-spacing: .12em; color: var(--oc); }
+  .offer h4 { font-family: var(--serif); font-size: 16.5px; font-weight: 800; line-height: 1.5; margin: 2px 0 8px; }
+  .offer p { font-size: 13px; color: var(--ink-soft); }
+  .offer p b { color: var(--ink); font-weight: 700; }
+  .offer.o1 { --oc: var(--content); } .offer.o2 { --oc: var(--sns); }   .offer.o3 { --oc: var(--office); }
+  .offer.o4 { --oc: var(--sns); }     .offer.o5 { --oc: var(--office); } .offer.o6 { --oc: var(--content); }
+  .offer.o7 { --oc: var(--azul-deep); }
+  .offers-note {
+    margin-top: 18px; padding: 14px 20px; font-size: 13px; color: var(--ink-soft);
+    background: rgba(255,255,255,.45); border: 1px dashed var(--line); border-radius: 6px; text-align: center;
+  }
+  .offers-note b { color: var(--ink); font-weight: 700; }
+
+  /* ───────── 制作実績（おまけ扱い・控えめ表示） ───────── */
+  #works .work-thumb { height: 104px; }
+  @media (max-width: 880px) { .offers { grid-template-columns: 1fr; } }
+  @media (max-width: 380px) { .offers-head span { white-space: normal; } }
 </style>
 </head>
 <body>
@@ -300,7 +333,7 @@
       <span class="links">
         <a href="#about" data-i18n="nav.about">プロフィール</a>
         <a href="#services" data-i18n="nav.services">できること</a>
-        <a href="#works" data-i18n="nav.works">制作実績</a>
+        <a href="#ventures" data-i18n="nav.ventures">業務効率化の実績</a>
       </span>
       <a href="#contact" class="cta" data-i18n="nav.contact">お問い合わせ</a>
       <button type="button" id="lang-toggle" class="lang-switch" aria-label="Switch to English / 英語表示に切り替え">EN</button>
@@ -326,7 +359,7 @@
       </div>
       <div class="actions">
         <a href="#contact" class="btn btn-primary" data-i18n="hero.cta1">お仕事のご相談 →</a>
-        <a href="#works" class="btn btn-ghost" data-i18n="hero.cta2">制作実績を見る</a>
+        <a href="#ventures" class="btn btn-ghost" data-i18n="hero.cta2">業務効率化の実績を見る</a>
       </div>
     </header>
 
@@ -406,6 +439,47 @@
           </ul>
         </div>
       </div>
+
+      <!-- ===== ご一緒できること（具体メニュー・追加） ===== -->
+      <div class="offers-head"><span data-i18n="offers.head">こんなご依頼をお受けしています</span></div>
+      <div class="offers">
+        <div class="offer o1">
+          <div class="o-no">01</div>
+          <h4 data-i18n="offers.o1.h4">メール・書類作成の自動化</h4>
+          <p data-i18n="offers.o1.p">GAS×Claudeで差し込みメールの一括下書き、請求書リマインダーなどを実装します。<b>士業事務所への展開実績あり。</b></p>
+        </div>
+        <div class="offer o2">
+          <div class="o-no">02</div>
+          <h4 data-i18n="offers.o2.h4">AI導入の初期設計・使い方サポート</h4>
+          <p data-i18n="offers.o2.p">Claude Code のCLAUDE.md設計・MCP接続・セキュリティ設定まで。<b>「入れて終わり」にしない定着支援</b>をします。</p>
+        </div>
+        <div class="offer o3">
+          <div class="o-no">03</div>
+          <h4 data-i18n="offers.o3.h4">新規開拓営業のゼロからの立ち上げ</h4>
+          <p data-i18n="offers.o3.p">外資系AI/SaaS企業の創業期に、営業体制をリスト作成→アプローチ→ヒアリング→提案・デモ→契約までゼロから構築しました。展示会20回以上の運営経験もあります。<b>新規開拓の型づくり・改善に伴走します。</b></p>
+        </div>
+        <div class="offer o4">
+          <div class="o-no">04</div>
+          <h4 data-i18n="offers.o4.h4">補助金申請の逆算スケジュール・要件整理の伴走</h4>
+          <p data-i18n="offers.o4.p">本業で担当している補助事業の月次経費精算を、証憑管理から事務局折衝まで単独で内製しています。自身も創業補助金の申請経験あり。<b>書類の代筆ではなく</b>、締切から逆算した工程表づくりと要件整理の壁打ち相手として伴走します。</p>
+        </div>
+        <div class="offer o5">
+          <div class="o-no">05</div>
+          <h4 data-i18n="offers.o5.h4">税理士事務所・バックオフィスへの現場支援</h4>
+          <p data-i18n="offers.o5.p">事務職15年の現場経験を活かし、<b>業務整理・DX化を現場に入って実施します。</b>派遣・常駐にも対応します。</p>
+        </div>
+        <div class="offer o6">
+          <div class="o-no">06</div>
+          <h4 data-i18n="offers.o6.h4">Notion・Slack・GASを使った業務整備</h4>
+          <p data-i18n="offers.o6.p">議事録テンプレート・自動通知・ダッシュボード構築など。<b>引き継ぎ可能な運用設計まで担当します。</b></p>
+        </div>
+        <div class="offer o7">
+          <div class="o-no">07</div>
+          <h4 data-i18n="offers.o7.h4">日英対応が必要な業務</h4>
+          <p data-i18n="offers.o7.p">英語での商談・資料作成・海外チームとの調整に対応します。<b>グローバルチームとの協働経験あり。</b></p>
+        </div>
+      </div>
+      <p class="offers-note" data-i18n="offers.note">リモート可 ／ スポット相談〜継続サポート対応 ／ <b>小さく始めて、確実に定着させる</b>スタイルで支援します。</p>
     </section>
 
     <!-- ===== 数字で見る実務（追加） ===== -->
@@ -436,12 +510,47 @@
 
     <!-- ===== アズレージョ帯 ===== -->
     <div class="azulejo az1" role="img" aria-label="トレンカディス（割れタイルモザイク）" data-i18n-aria="azulejo.aria"></div>
+    <p class="azulejo-cap" data-i18n="azulejo.cap1">実際に使われているもの</p>
+
+    <!-- ===== 個人事業の実績（追加） ===== -->
+    <section class="block" id="ventures">
+      <div class="block-head">
+        <span class="kicker solo">REAL IMPACT</span>
+        <h2 data-i18n="ventures.h2">業務効率化の実績</h2>
+        <p class="block-lede" data-i18n="ventures.lede">実際の利用者が第三者にいて、人の役に立ち、収入や実務の成果につながっている実績です。守秘に関わる部分は面談でご説明します。</p>
+      </div>
+      <div class="ventures">
+        <div class="venture-card v1">
+          <span class="v-cat" data-i18n="ventures.v1.cat">海外クライアント / 業務委託</span>
+          <h3 data-i18n="ventures.v1.h3">海外クライアントとの業務委託契約</h3>
+          <p data-i18n="ventures.v1.p">海外のマーケティング会社から受注。東京開催のテックイベントを日本市場につなぐ業務と、発表スライドの英日翻訳を担当。契約から報酬受領まで英語で完結（2025年）。</p>
+        </div>
+        <div class="venture-card v2">
+          <span class="v-cat" data-i18n="ventures.v2.cat">士業事務所 / 業務効率化</span>
+          <h3 data-i18n="ventures.v2.h3">士業事務所の業務効率化支援</h3>
+          <p data-i18n="ventures.v2.p">確定申告関連の業務効率化を支援。お客様の情報を含むため、詳細は面談でご説明します。</p>
+        </div>
+        <div class="venture-card v3">
+          <span class="v-cat" data-i18n="ventures.v3.cat">カスタムAI / 採用業務</span>
+          <h3 data-i18n="ventures.v3.h3">Gemini「Gems」採用スクリーニングAI</h3>
+          <p data-i18n="ventures.v3.p">Gemini の「Gems」（ユーザーが独自に作れるカスタムAIアシスタント）で、履歴書スクリーニングの判断基準とプロンプトを自分で設計。Gemini上で動くカスタムAIを自作し、採用フローに組み込んで運用中。社内で実運用中。</p>
+        </div>
+        <div class="venture-card v4">
+          <span class="v-cat" data-i18n="ventures.v4.cat">GAS×生成AI / 業務効率化</span>
+          <h3 data-i18n="ventures.v4.h3">GAS×生成AIによるメール業務の自動化</h3>
+          <p data-i18n="ventures.v4.p">定型メールの作成・送信フローをGoogle Apps Script（GAS）と生成AIを組み合わせてテンプレート化。文面のたたき台作成から送信までにかかっていた時間を90分→30分に短縮し、月間約30時間の工数を削減。社内で実運用中。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== アズレージョ帯 ===== -->
+    <div class="azulejo az2" role="img" aria-label="トレンカディス（割れタイルモザイク）" data-i18n-aria="azulejo.aria"></div>
     <p class="azulejo-cap" data-i18n="azulejo.cap">これまでつくってきたもの</p>
 
-    <!-- ===== 制作実績 ===== -->
+    <!-- ===== 制作実績（おまけ／見本・教材。実案件の実績は上の「業務効率化の実績」） ===== -->
     <section class="block" id="works">
       <div class="block-head">
-        <span class="kicker solo">WORKS</span>
+        <span class="kicker solo">SAMPLES</span>
         <h2 data-i18n="works.h2">制作実績</h2>
         <p class="block-lede" data-i18n="works.lede">自分のスキルを磨くために制作した見本・教材です。実際の利用者は自分のみですが、公開中のものはカードをクリックするとサイトが開きます。</p>
       </div>
@@ -476,40 +585,6 @@
       </div>
     </section>
 
-    <!-- ===== 個人事業の実績（追加） ===== -->
-    <section class="block" id="ventures">
-      <div class="block-head">
-        <span class="kicker solo">REAL IMPACT</span>
-        <h2 data-i18n="ventures.h2">業務効率化の実績</h2>
-        <p class="block-lede" data-i18n="ventures.lede">実際の利用者が第三者にいて、人の役に立ち、収入や実務の成果につながっている実績です。守秘に関わる部分は面談でご説明します。</p>
-      </div>
-      <div class="ventures">
-        <div class="venture-card v1">
-          <span class="v-cat" data-i18n="ventures.v1.cat">海外クライアント / 業務委託</span>
-          <h3 data-i18n="ventures.v1.h3">海外クライアントとの業務委託契約</h3>
-          <p data-i18n="ventures.v1.p">海外のマーケティング会社から受注。東京開催のテックイベントを日本市場につなぐ業務と、発表スライドの英日翻訳を担当。契約から報酬受領まで英語で完結（2025年）。</p>
-        </div>
-        <div class="venture-card v2">
-          <span class="v-cat" data-i18n="ventures.v2.cat">士業事務所 / 業務効率化</span>
-          <h3 data-i18n="ventures.v2.h3">士業事務所の業務効率化支援</h3>
-          <p data-i18n="ventures.v2.p">確定申告関連の業務効率化を支援。お客様の情報を含むため、詳細は面談でご説明します。</p>
-        </div>
-        <div class="venture-card v3">
-          <span class="v-cat" data-i18n="ventures.v3.cat">カスタムAI / 採用業務</span>
-          <h3 data-i18n="ventures.v3.h3">Gemini「Gems」採用スクリーニングAI</h3>
-          <p data-i18n="ventures.v3.p">Gemini の「Gems」（ユーザーが独自に作れるカスタムAIアシスタント）で、履歴書スクリーニングの判断基準とプロンプトを自分で設計。Gemini上で動くカスタムAIを自作し、採用フローに組み込んで運用中。社内で実運用中。</p>
-        </div>
-        <div class="venture-card v4">
-          <span class="v-cat" data-i18n="ventures.v4.cat">GAS×生成AI / 業務効率化</span>
-          <h3 data-i18n="ventures.v4.h3">GAS×生成AIによるメール業務の自動化</h3>
-          <p data-i18n="ventures.v4.p">定型メールの作成・送信フローをGoogle Apps Script（GAS）と生成AIを組み合わせてテンプレート化。文面のたたき台作成から送信までにかかっていた時間を90分→30分に短縮し、月間約30時間の工数を削減。社内で実運用中。</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== アズレージョ帯 ===== -->
-    <div class="azulejo az2" role="img" aria-label="トレンカディス（割れタイルモザイク）"></div>
-
     <!-- ===== お問い合わせ ===== -->
     <section class="block" id="contact">
       <div class="contact">
@@ -537,7 +612,7 @@
     var EN = {
       'nav.about': 'Profile',
       'nav.services': 'Services',
-      'nav.works': 'Works',
+      'nav.ventures': 'Automation Impact',
       'nav.contact': 'Contact',
 
       'hero.title': 'Finding where work gets stuck, turning it into a <em>system</em>, and building it until it runs.',
@@ -546,7 +621,7 @@
       'hero.meta3': 'Sales &amp; Admin Support',
       'hero.meta4': 'MEO &amp; Course Content',
       'hero.cta1': 'Get in Touch →',
-      'hero.cta2': 'See My Work',
+      'hero.cta2': 'See Real Impact',
 
       'about.h2': 'Profile',
       'about.p1': 'Hi, I\'m <b>Miho</b>. I provide admin support for a sales and marketing team at a global company, and I&rsquo;m good at solving the small day-to-day frustrations of a sales team with <b>workflow automation</b> in mind.',
@@ -579,6 +654,23 @@
       'services.c3.li3': 'Landing pages &amp; article writing',
       'services.c3.li4': 'Turning ideas into diagrams and checklists',
 
+      'offers.head': 'Requests I Take On',
+      'offers.o1.h4': 'Automating Emails &amp; Document Work',
+      'offers.o1.p': 'I build bulk email drafting with GAS × Claude, invoice reminders, and similar tools. <b>Already deployed at a professional services firm.</b>',
+      'offers.o2.h4': 'Setting Up AI &mdash; and Helping You Actually Use It',
+      'offers.o2.p': 'From CLAUDE.md design for Claude Code to MCP connections and security settings. <b>Support that doesn&rsquo;t stop at installation</b> &mdash; I stay until it sticks.',
+      'offers.o3.h4': 'Building an Outbound Sales Function from Scratch',
+      'offers.o3.p': 'At a foreign AI/SaaS company in its founding phase, I built the sales operation from the ground up &mdash; list building, outreach, discovery, proposals and demos, through to signed contracts. I&rsquo;ve also run 20+ trade shows. <b>I&rsquo;ll work alongside you to shape and improve your own approach.</b>',
+      'offers.o4.h4': 'Grant Applications: Backward Scheduling &amp; Requirements',
+      'offers.o4.p': 'In my main role I handle the monthly expense settlement for a subsidised project single-handedly, from document control through to liaising with the administering office. I&rsquo;ve also applied for a startup grant myself. <b>I don&rsquo;t ghostwrite your application</b> &mdash; I build the schedule backward from the deadline and act as a sounding board for sorting out the requirements.',
+      'offers.o5.h4': 'On-Site Support for Tax Firms &amp; Back Offices',
+      'offers.o5.p': 'Drawing on 15 years of hands-on admin experience, <b>I come on site to reorganise operations and drive DX.</b> Available for dispatch or on-site placement.',
+      'offers.o6.h4': 'Setting Up Operations with Notion, Slack &amp; GAS',
+      'offers.o6.p': 'Meeting-note templates, automated notifications, dashboards, and more. <b>I handle the operational design so it can be handed over.</b>',
+      'offers.o7.h4': 'Work That Needs Japanese&ndash;English Support',
+      'offers.o7.p': 'Negotiations, materials, and coordination with overseas teams in English. <b>Experienced working with global teams.</b>',
+      'offers.note': 'Remote OK ／ from one-off consultations to ongoing support ／ <b>start small, and make it stick</b> &mdash; that&rsquo;s how I work.',
+
       'numbers.h2': 'By the Numbers',
       'numbers.lede': 'These are real results from work I&rsquo;ve handled myself. Since impact varies by environment, I always assess the situation first before proposing anything.',
       'numbers.s1.label': 'Email tasks (GAS × generative AI)',
@@ -592,6 +684,7 @@
       'numbers.s3.note': 'As the lead for trade show planning and operations, I&rsquo;ve handled everything end to end &mdash; from exhibit planning to on-site running and post-event follow-up &mdash; including bilingual (Japanese/English) support for overseas partners and visitors. Each event has generated an average of 30 leads, with about 3 turning into active deals.',
 
       'azulejo.cap': 'What I&rsquo;ve Built So Far',
+      'azulejo.cap1': 'Work That&rsquo;s Actually in Use',
 
       'works.h2': 'Selected Works',
       'works.lede': 'These are sample projects and course materials I built to sharpen my own skills. I&rsquo;m currently the only user of most of them, but the ones marked as live will open the site when you click the card.',
