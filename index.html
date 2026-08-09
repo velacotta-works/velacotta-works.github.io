@@ -323,6 +323,13 @@
   #works .work-thumb { height: 104px; }
   @media (max-width: 880px) { .offers { grid-template-columns: 1fr; } }
   @media (max-width: 380px) { .offers-head span { white-space: normal; } }
+
+  /* ───────── 英語表示時のラベル幅（JAの2文字前提だと Availability 等がはみ出すため） ───────── */
+  html[lang="en"] .about-facts li span { width: 8.2em; }
+  @media (max-width: 480px) {
+    html[lang="en"] .about-facts li { flex-direction: column; gap: 2px; }
+    html[lang="en"] .about-facts li span { width: auto; }
+  }
 </style>
 </head>
 <body>
