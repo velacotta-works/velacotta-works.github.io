@@ -762,13 +762,30 @@
       try { localStorage.setItem(STORAGE_KEY, lang); } catch (e) {}
     }
 
+    // 切り替えた言語をURLにも反映する（このURLをそのままコピーして人に送れるようにするため）
+    function syncUrl(lang) {
+      try {
+        if (!window.history || !history.replaceState || !window.URL) return;
+        var url = new URL(location.href);
+        url.searchParams.set('lang', lang);
+        history.replaceState(null, '', url.toString());
+      } catch (e) {}
+    }
+
     var saved = null;
     try { saved = localStorage.getItem(STORAGE_KEY); } catch (e) {}
-    apply(saved === 'en' ? 'en' : 'ja');
+
+    // 優先順位: URLの ?lang=en / ?lang=ja → 前回選んだ言語 → 日本語
+    var queryLang = null;
+    try { queryLang = new URLSearchParams(location.search).get('lang'); } catch (e) {}
+    if (queryLang !== 'en' && queryLang !== 'ja') queryLang = null;
+    apply(queryLang || (saved === 'en' ? 'en' : 'ja'));
 
     if (btn) {
       btn.addEventListener('click', function () {
-        apply(document.documentElement.lang === 'en' ? 'ja' : 'en');
+        var next = document.documentElement.lang === 'en' ? 'ja' : 'en';
+        apply(next);
+        syncUrl(next);
       });
     }
   })();
