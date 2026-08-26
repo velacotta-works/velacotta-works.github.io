@@ -330,7 +330,9 @@
   @media (max-width: 380px) { .offers-head span { white-space: normal; } }
 
   /* ───────── 英語表示時のラベル幅（JAの2文字前提だと Availability 等がはみ出すため） ───────── */
-  html[lang="en"] .about-facts li span { width: 8.2em; }
+  /* /can-do/ は日本語のみのページ。英語表示のときはナビに出さない（英語版を作ったら解除する） */
+    html[lang="en"] .nav-cando { display: none; }
+    html[lang="en"] .about-facts li span { width: 8.2em; }
   @media (max-width: 480px) {
     html[lang="en"] .about-facts li { flex-direction: column; gap: 2px; }
     html[lang="en"] .about-facts li span { width: auto; }
@@ -345,6 +347,7 @@
       <span class="links">
         <a href="#about" data-i18n="nav.about">プロフィール</a>
         <a href="#services" data-i18n="nav.services">できること</a>
+        <a href="/can-do/" class="nav-cando">できること一覧</a>
         <a href="#ventures" data-i18n="nav.ventures">業務効率化の実績</a>
       </span>
       <a href="#contact" class="cta" data-i18n="nav.contact">お問い合わせ</a>
