@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>業務効率化でできること一覧 ｜ Miho / VelaCotta Works</title>
+<meta name="description" content="「こういうことは頼めますか？」にお答えするページです。問い合わせ対応・予約受付・メール・書類の転記・議事録・レポート集計など、現場の困りごと別に、できることと進め方をまとめました。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://velacotta-works.github.io/can-do/">
+<meta property="og:site_name" content="VelaCotta Works">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:title" content="業務効率化でできること一覧 ｜ Miho / VelaCotta Works">
+<meta property="og:description" content="困りごと別に「できること」と「進め方」をまとめました。新しいツールを増やす前に、いま使っているもので減らせないかから考えます。">
+<meta property="og:image" content="https://velacotta-works.github.io/can-do/ogp.png">
+<meta property="og:image:alt" content="業務効率化でできること一覧 — 「これ、頼めますか？」にお答えするページです。VelaCotta Works / Miho">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="業務効率化でできること一覧 ｜ Miho / VelaCotta Works">
+<meta name="twitter:description" content="困りごと別に「できること」と「進め方」をまとめました。">
+<meta name="twitter:image" content="https://velacotta-works.github.io/can-do/ogp.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@600;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f6f1e7; --paper-deep:#efe7d8; --card:#fffdf8;
+  --ink:#25201a; --ink-soft:#5c544a; --line:#d8cdb9;
+  --sns:#c2402d;      /* 朱 */
+  --azul:#2b5ea7; --azul-deep:#1c3f78; --azul-pale:#c5d5ea;  /* 瑠璃 */
+  --matsu:#3c7a4a;    /* 松葉 */
+  --serif:"Shippori Mincho B1","Hiragino Mincho ProN",serif;
+  --sans:"Zen Kaku Gothic New","Hiragino Kaku Gothic ProN",sans-serif;
+  --mono:"IBM Plex Mono","Menlo",monospace;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:76px}
+body{
+  margin:0; background:var(--paper); color:var(--ink);
+  font-family:var(--sans); font-size:16px; line-height:1.9;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:var(--azul-deep)}
+
+/* ---- top nav ---- */
+.topnav{
+  position:sticky; top:0; z-index:50;
+  display:flex; align-items:center; justify-content:space-between; gap:16px;
+  padding:12px 20px; background:rgba(246,241,231,.94);
+  backdrop-filter:blur(8px); border-bottom:1px solid var(--line);
+}
+.topnav .logo{font-family:var(--serif);font-weight:800;font-size:17px;letter-spacing:.04em}
+.topnav .logo small{
+  display:block;font-family:var(--sans);font-weight:500;font-size:10px;
+  letter-spacing:.18em;color:var(--ink-soft);margin-top:1px
+}
+.topnav nav{display:flex;align-items:center;gap:14px;flex-wrap:wrap;justify-content:flex-end}
+.topnav a{font-size:13px;text-decoration:none;color:var(--ink-soft)}
+.topnav a:hover{color:var(--ink)}
+.topnav a.cta{
+  padding:7px 14px;border-radius:999px;background:var(--azul-deep);color:#fff;
+  font-weight:700;letter-spacing:.02em
+}
+
+.wrap{max-width:960px;margin:0 auto;padding:0 20px 80px}
+
+/* ---- hero ---- */
+.hero{padding:56px 0 40px;border-bottom:1px solid var(--line)}
+.kicker{
+  display:inline-block;font-family:var(--mono);font-size:11px;letter-spacing:.22em;
+  color:var(--sns);border:1px solid var(--line);border-radius:999px;padding:4px 12px;background:var(--card)
+}
+.hero h1{
+  font-family:var(--serif);font-size:clamp(28px,5.2vw,42px);line-height:1.45;
+  margin:20px 0 18px;font-weight:800;letter-spacing:.01em
+}
+.hero h1 em{font-style:normal;color:var(--azul-deep);border-bottom:4px solid var(--azul-pale)}
+.lede{max-width:44em;color:var(--ink-soft);margin:0 0 8px}
+.hero-note{
+  margin-top:24px;padding:16px 18px;background:var(--card);
+  border:1px solid var(--line);border-left:4px solid var(--sns);border-radius:6px;
+  font-size:14.5px;line-height:1.85
+}
+
+/* ---- section ---- */
+.block{padding:52px 0 8px}
+.block-head{margin-bottom:24px}
+.block-head h2{
+  font-family:var(--serif);font-size:clamp(21px,3.4vw,27px);font-weight:800;
+  margin:10px 0 6px;letter-spacing:.02em
+}
+.block-head p{margin:0;color:var(--ink-soft);font-size:14.5px;max-width:46em}
+
+/* ---- 早見表 ---- */
+.grp{margin:26px 0 0}
+.grp-title{
+  display:flex;align-items:center;gap:10px;
+  font-family:var(--serif);font-weight:700;font-size:16px;
+  padding-bottom:8px;border-bottom:2px solid var(--ink);margin-bottom:0
+}
+.grp-title .n{
+  font-family:var(--mono);font-size:11px;color:#fff;background:var(--ink);
+  border-radius:4px;padding:2px 7px;letter-spacing:.06em
+}
+.row{
+  display:grid;grid-template-columns:1fr 1fr auto;gap:10px 20px;align-items:start;
+  padding:14px 4px;border-bottom:1px solid var(--line);text-decoration:none;color:inherit
+}
+.row:hover{background:var(--paper-deep)}
+.row .q{font-weight:700;font-size:15px;line-height:1.65}
+.row .q::before{content:"「";color:var(--ink-soft)}
+.row .q::after{content:"」";color:var(--ink-soft)}
+.row .a{font-size:14.5px;color:var(--ink-soft);line-height:1.7}
+.row .a::before{content:"→ ";color:var(--azul);font-weight:700}
+.size{
+  flex:none;align-self:center;font-family:var(--mono);font-size:11px;letter-spacing:.08em;
+  border-radius:999px;padding:3px 10px;white-space:nowrap;border:1px solid
+}
+.s-s{color:var(--matsu);border-color:var(--matsu);background:#f0f6f1}
+.s-m{color:var(--azul-deep);border-color:var(--azul-pale);background:#eef3fa}
+.s-l{color:var(--sns);border-color:#e6bdb5;background:#fbf0ee}
+.legend{
+  margin-top:18px;font-size:12.5px;color:var(--ink-soft);
+  display:flex;gap:16px;flex-wrap:wrap;align-items:center
+}
+
+/* ---- 進め方 ---- */
+.stance{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px}
+.stance div{
+  background:var(--card);border:1px solid var(--line);border-radius:8px;padding:20px 20px 18px
+}
+.stance h3{
+  font-family:var(--serif);font-size:16.5px;margin:0 0 10px;font-weight:700;line-height:1.6
+}
+.stance .num{
+  display:block;font-family:var(--mono);font-size:11px;letter-spacing:.2em;
+  color:var(--sns);margin-bottom:8px
+}
+.stance p{margin:0;font-size:14px;color:var(--ink-soft);line-height:1.85}
+
+/* ---- 解説 ---- */
+.item{
+  background:var(--card);border:1px solid var(--line);border-radius:8px;
+  padding:22px 22px 18px;margin:16px 0
+}
+.item h3{
+  font-family:var(--serif);font-size:18px;font-weight:800;margin:0 0 4px;line-height:1.6
+}
+.item .tag{
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;color:var(--ink-soft);
+  display:block;margin-bottom:6px
+}
+.item p{margin:10px 0 0;font-size:14.5px;line-height:1.9}
+.item .before{color:var(--ink-soft)}
+.item .after{
+  margin-top:12px;padding:12px 14px;background:#eef3fa;border-radius:6px;
+  border-left:3px solid var(--azul);font-size:14.5px
+}
+.item .after b{color:var(--azul-deep)}
+.item .how{
+  margin-top:12px;font-size:13.5px;color:var(--ink-soft);
+  padding-top:10px;border-top:1px dashed var(--line)
+}
+.item .how b{color:var(--ink);font-weight:700}
+
+/* ---- 実績 ---- */
+.nums{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin-bottom:22px}
+.nums div{
+  background:var(--card);border:1px solid var(--line);border-radius:8px;padding:18px;text-align:center
+}
+.nums .big{
+  display:block;font-family:var(--serif);font-size:26px;font-weight:800;
+  color:var(--azul-deep);line-height:1.3;margin-bottom:6px
+}
+.nums .lbl{font-size:12.5px;color:var(--ink-soft);line-height:1.65}
+.works{border-top:1px solid var(--line)}
+.works li{
+  list-style:none;padding:14px 0;border-bottom:1px solid var(--line);font-size:14.5px;line-height:1.8
+}
+.works ul{margin:0;padding:0}
+.badge{
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;border-radius:4px;
+  padding:2px 8px;margin-right:10px;white-space:nowrap
+}
+.b-side{background:var(--sns);color:#fff}
+.b-main{background:var(--ink);color:#fff}
+.note{font-size:13px;color:var(--ink-soft);margin-top:16px;line-height:1.8}
+
+/* ---- CTA ---- */
+.cta-box{
+  margin-top:48px;background:var(--card);border:1px solid var(--line);
+  border-top:5px solid var(--azul-deep);border-radius:8px;padding:32px 26px;text-align:center
+}
+.cta-box h2{font-family:var(--serif);font-size:22px;margin:0 0 12px;font-weight:800}
+.cta-box p{margin:0 auto 22px;max-width:36em;font-size:14.5px;color:var(--ink-soft)}
+.btn{
+  display:inline-block;padding:13px 28px;border-radius:999px;text-decoration:none;
+  font-weight:700;font-size:15px;margin:5px
+}
+.btn-primary{background:var(--azul-deep);color:#fff}
+.btn-ghost{border:1px solid var(--ink);color:var(--ink)}
+footer{
+  border-top:1px solid var(--line);padding:28px 20px;text-align:center;
+  font-family:var(--mono);font-size:11.5px;color:var(--ink-soft)
+}
+
+@media(max-width:640px){
+  .row{grid-template-columns:1fr;gap:6px}
+  .size{align-self:start;justify-self:start}
+  .topnav .links{display:none}
+}
+@media print{
+  .topnav,.cta-box .btn{display:none}
+  body{background:#fff;font-size:11pt}
+  .item,.stance div,.nums div{break-inside:avoid}
+}
+</style>
+</head>
+<body>
+
+<div class="topnav">
+  <span class="logo">Miho <small>VELACOTTA WORKS</small></span>
+  <nav>
+    <span class="links">
+      <a href="https://velacotta-works.github.io/">プロフィール</a>
+      <a href="#list">できること一覧</a>
+      <a href="#detail">それぞれの説明</a>
+      <a href="#jisseki">実際に出した結果</a>
+    </span>
+    <a href="https://docs.google.com/forms/d/1-MzFBNA1icIArQNUmUfvRYeAbYsF1Q8TVnbBryG-yg8/viewform" class="cta">ご相談</a>
+  </nav>
+</div>
+
+<div class="wrap">
+
+  <header class="hero">
+    <span class="kicker">WHAT I CAN DO</span>
+    <h1>「これ、頼めますか？」に<br><em>お答えするページ</em>です。</h1>
+    <p class="lede">
+      業務効率化・自動化のご相談を受けています。ただ「DXできます」と書いてあっても、
+      何を頼めるのかは分かりにくいと思います。そこでこのページでは、
+      <b>現場でよく聞く困りごとの言葉のまま</b>並べて、それぞれに何ができるか・どう進めるかを書きました。
+    </p>
+    <p class="lede">
+      当てはまるものがなくても大丈夫です。「これは近いかもしれない」が1つでもあれば、そこからお話しさせてください。
+    </p>
+    <div class="hero-note">
+      <b>ツールを増やす提案はしません。</b>
+      新しいツールを入れると、そのツールへの入力や転記がまた増えます。
+      まずは、いま契約されているツール（Google・Microsoft など）の機能や拡張でできないかを先に調べます。
+      それで足りないときにはじめて、別の手を考えます。
+    </div>
+  </header>
+
+  <!-- ========== 早見表 ========== -->
+  <section class="block" id="list">
+    <div class="block-head">
+      <span class="kicker">01 &nbsp;LIST</span>
+      <h2>できること一覧</h2>
+      <p>左が「よく聞く困りごと」、右が「できること」です。行をクリックすると、下の詳しい説明に移動します。</p>
+    </div>
+
+    <div class="grp">
+      <div class="grp-title"><span class="n">A</span>問い合わせ・予約のまわり</div>
+      <a class="row" href="#a1">
+        <span class="q">ホームページから来た問い合わせに、返事が追いつかない</span>
+        <span class="a">受付から一次返信の下書きまでを自動で用意する</span>
+        <span class="size s-m">中</span>
+      </a>
+      <a class="row" href="#a2">
+        <span class="q">予約や申込の受付を、電話とメールで人が捌いている</span>
+        <span class="a">受付 → 確認連絡 → 前日リマインドまでを自動化する</span>
+        <span class="size s-m">中</span>
+      </a>
+      <a class="row" href="#a3">
+        <span class="q">受け付けたあと、追いかけきれずに終わっている</span>
+        <span class="a">対応状況を一覧にして、次にやることを自動で知らせる</span>
+        <span class="size s-s">小</span>
+      </a>
+    </div>
+
+    <div class="grp">
+      <div class="grp-title"><span class="n">B</span>メール・書類・転記</div>
+      <a class="row" href="#a4">
+        <span class="q">同じような内容のメールを、宛先ごとに何十通も書いている</span>
+        <span class="a">名簿から一通ずつの下書きを、まとめて自動作成する</span>
+        <span class="size s-s">小</span>
+      </a>
+      <a class="row" href="#a5">
+        <span class="q">紙やPDFで届く請求書・注文書を、手で打ち直している</span>
+        <span class="a">撮影・スキャンからデータ化して、転記まで自動化する</span>
+        <span class="size s-m">中</span>
+      </a>
+      <a class="row" href="#a6">
+        <span class="q">見積書や請求書を、毎回コピーして作っている</span>
+        <span class="a">1回の入力で書類ができあがる形に組み替える</span>
+        <span class="size s-s">小</span>
+      </a>
+    </div>
+
+    <div class="grp">
+      <div class="grp-title"><span class="n">C</span>社内の情報・引き継ぎ</div>
+      <a class="row" href="#a7">
+        <span class="q">過去の資料やノウハウが、どこにあるか分からない</span>
+        <span class="a">資料を1か所に集めて、聞けば答えが返る状態にする</span>
+        <span class="size s-s">小</span>
+      </a>
+      <a class="row" href="#a8">
+        <span class="q">この作業はベテランしか分からない、という業務がある</span>
+        <span class="a">手順書に落として、ほかの人でも回せる形にする</span>
+        <span class="size s-m">中</span>
+      </a>
+    </div>
+
+    <div class="grp">
+      <div class="grp-title"><span class="n">D</span>記録・レポート・顧客管理</div>
+      <a class="row" href="#a9">
+        <span class="q">打ち合わせの議事録づくりに時間がかかる</span>
+        <span class="a">録音から議事録の下書きを自動でつくる</span>
+        <span class="size s-s">小</span>
+      </a>
+      <a class="row" href="#a10">
+        <span class="q">日報・週報・月報の集計に、毎週時間を取られている</span>
+        <span class="a">入力を軽くして、集計とレポートを自動で出す</span>
+        <span class="size s-m">中</span>
+      </a>
+      <a class="row" href="#a11">
+        <span class="q">応募書類や問い合わせの一次チェックに時間がかかる</span>
+        <span class="a">判断のものさしを決めたAIに、一次の仕分けを任せる</span>
+        <span class="size s-m">中</span>
+      </a>
+      <a class="row" href="#a12">
+        <span class="q">顧客管理のシステムに、誰も入力してくれない</span>
+        <span class="a">入力項目を減らし選択式にして、続く形に作り替える</span>
+        <span class="size s-m">中</span>
+      </a>
+    </div>
+
+    <div class="grp">
+      <div class="grp-title"><span class="n">E</span>はじめる前と、あとのこと</div>
+      <a class="row" href="#a13">
+        <span class="q">何から手をつければいいか分からない</span>
+        <span class="a">業務を書き出して、どこから直すと一番効くかを決める</span>
+        <span class="size s-s">小</span>
+      </a>
+      <a class="row" href="#a14">
+        <span class="q">前に入れたけれど、使われないまま止まっている</span>
+        <span class="a">手順書を残して、社内の方だけで回る状態にする</span>
+        <span class="size s-s">小</span>
+      </a>
+    </div>
+
+    <div class="legend">
+      <span><b>規模の目安</b></span>
+      <span class="size s-s">小</span> 数日〜1週間ほど
+      <span class="size s-m">中</span> 2〜4週間ほど
+      <span class="size s-l">大</span> 1〜2か月ほど
+    </div>
+    <p class="note">
+      ※ 実際の期間は、現在の業務の形やデータの持ち方によって変わります。まず内容を伺ってから、期間とご費用をお見積りします。
+    </p>
+  </section>
+
+  <!-- ========== 進め方 ========== -->
+  <section class="block">
+    <div class="block-head">
+      <span class="kicker">02 &nbsp;HOW</span>
+      <h2>進め方で大事にしていること</h2>
+      <p>やり方の考え方が合うかどうかは、内容そのものと同じくらい大事だと思っています。3つだけ書きます。</p>
+    </div>
+    <div class="stance">
+      <div>
+        <span class="num">01</span>
+        <h3>いま使っているもので<br>できないかを、先に調べます</h3>
+        <p>ツールを増やすと、そのツールへの転記がまた始まります。すでに契約されている環境の機能や拡張で足りることは意外と多いので、そこから探します。それで足りないと分かってから、次の手を考えます。</p>
+      </div>
+      <div>
+        <span class="num">02</span>
+        <h3>AIより先に、<br>紙をなくすところから</h3>
+        <p>「AIはちょっと」という現場もあります。それでいいと思っています。紙で来たものを打ち直している、同じ数字を2か所に入れている——そこを減らすだけで一段楽になります。AIは、必要になったときの選択肢です。</p>
+      </div>
+      <div>
+        <span class="num">03</span>
+        <h3>手順書を残して、<br>社内で回る形にします</h3>
+        <p>あとで直したいたびに私に頼まなければいけないのは、申し訳ないと思っています。仕組みと一緒に手順書をお渡しして、社内の方が触れる状態にしてから引き渡します。</p>
+      </div>
+    </div>
+    <p class="note">
+      ※ 県や市で、生成AI活用・IT導入に関する補助金が出ていることがあります。ご希望があれば、使えそうな制度があるかも含めてご相談に乗ります（申請書類の作成代行は行っていません）。
+    </p>
+  </section>
+
+  <!-- ========== 解説 ========== -->
+  <section class="block" id="detail">
+    <div class="block-head">
+      <span class="kicker">03 &nbsp;DETAIL</span>
+      <h2>それぞれの説明</h2>
+      <p>専門用語はできるだけ使わずに書きました。気になったところだけ読んでいただければ十分です。</p>
+    </div>
+
+    <div class="item" id="a1">
+      <span class="tag">A-1 ／ 問い合わせ・予約のまわり</span>
+      <h3>ホームページから来た問い合わせに、返事が追いつかない</h3>
+      <p class="before">フォームから届いたメールを担当者が見て、内容を確認して、返信を書く。この一連が全部手作業だと、忙しい日にどうしても後回しになります。返事が遅れているあいだに、お客様がご自身で他社を探してしまうこともあります。</p>
+      <div class="after"><b>変わること：</b>問い合わせが届いた時点で、内容に応じて担当者へ自動で通知し（メール・チャット・LINE など、お使いのものへ）、お客様への受付連絡と、担当者が送る返信の下書きまで用意された状態にします。担当者の仕事は「読んで、直して、送る」だけになります。</div>
+      <p class="how"><b>進め方：</b>いまフォームがどこに届いていて、誰が何を見て判断しているかを一度書き出します。そのうえで、機械に任せられる部分（受付連絡・振り分け・下書き）と、人が判断する部分を分けます。<b>判断は人に残します。</b></p>
+    </div>
+
+    <div class="item" id="a2">
+      <span class="tag">A-2 ／ 問い合わせ・予約のまわり</span>
+      <h3>予約や申込の受付を、電話とメールで人が捌いている</h3>
+      <p class="before">電話を受けながら手元の台帳に書き、あとでメールの分も転記する。接客中に電話が鳴ると、どちらも中途半端になります。繁忙期ほどこれが効いてきます。</p>
+      <div class="after"><b>変わること：</b>受付を1か所にまとめ、そこから確認のご連絡・前日のリマインドまで自動で流れるようにします。台帳への転記がなくなり、当日の一覧がいつでも同じ場所で見られます。</div>
+      <p class="how"><b>進め方：</b>まず、いまの受付から当日までの流れを一本の線にして描きます。電話は残したままで構いません（電話でしか申し込まないお客様は必ずいます）。手で入れる箇所を1か所に減らすところを目指します。</p>
+    </div>
+
+    <div class="item" id="a3">
+      <span class="tag">A-3 ／ 問い合わせ・予約のまわり</span>
+      <h3>受け付けたあと、追いかけきれずに終わっている</h3>
+      <p class="before">問い合わせは来ている。担当者もいる。ただ、最初の返信のあと「そういえばあの件どうなったか」が見えなくなり、そのまま流れてしまう。もったいないのは、ここです。</p>
+      <div class="after"><b>変わること：</b>いま何件が「返信待ち」「見積提出済み」「返事待ち」なのかが一覧で見える状態になります。動きがないまま一定日数が過ぎた案件は、担当者に自動でお知らせが飛びます。</div>
+      <p class="how"><b>進め方：</b>新しい顧客管理システムを買う必要はありません。多くの場合、いまお使いのスプレッドシートに状態の列を1つ足して、自動通知をつけるところから始められます。</p>
+    </div>
+
+    <div class="item" id="a4">
+      <span class="tag">B-4 ／ メール・書類・転記</span>
+      <h3>同じような内容のメールを、宛先ごとに何十通も書いている</h3>
+      <p class="before">宛名のない一斉送信にすると読まれません。かといって一通ずつ会社名とお名前をコピーして貼るのは、30件あれば1時間以上かかりますし、貼り間違いも起きます。</p>
+      <div class="after"><b>変わること：</b>名簿（スプレッドシート）を用意してボタンを1つ押すと、宛名も本文も差し替わった<b>下書き</b>が人数分できます。中身を確認してから送れるので、誤送信のこわさがありません。</div>
+      <p class="how"><b>進め方：</b>私自身が本業で最初につくって、いちばん長く使っている仕組みです。展示会でいただいた名刺30名分へのお礼メールで、<b>90分かかっていた作業が30分</b>になりました。副業でお手伝いした士業事務所でも、同じ形をお渡ししています。</p>
+    </div>
+
+    <div class="item" id="a5">
+      <span class="tag">B-5 ／ メール・書類・転記</span>
+      <h3>紙やPDFで届く請求書・注文書を、手で打ち直している</h3>
+      <p class="before">月末になると、届いた紙をひたすらExcelに入力して、それをまた別のシステムに上げる。残業がここに集中する会社は多いです。</p>
+      <div class="after"><b>変わること：</b>スマホで撮る、またはスキャンするだけで、日付・金額・取引先などが読み取られて表に並びます。人は「読み取り結果が合っているか」を見るだけになります。</div>
+      <p class="how"><b>進め方：</b>まず1か月分をお預かりして、どのくらいの精度で読めるかを実際に試します。<b>そこで精度が出なければ、無理に進めません。</b>紙の様式が数種類に決まっている場合ほど、うまくいきます。</p>
+    </div>
+
+    <div class="item" id="a6">
+      <span class="tag">B-6 ／ メール・書類・転記</span>
+      <h3>見積書や請求書を、毎回コピーして作っている</h3>
+      <p class="before">前回のファイルを複製して、日付を直して、金額を直して、名前を直す。直し忘れが起きるのはたいていここです。</p>
+      <div class="after"><b>変わること：</b>1か所に入力すれば、書類が決まった書式で出てくる形にします。番号の採番や控えの保存も自動になるので、あとから探すのも楽になります。</div>
+      <p class="how"><b>進め方：</b>いまお使いの書式のまま移します。書式を変えると社内で覚え直しが発生するので、<b>見た目は変えない</b>ことを基本にしています。</p>
+    </div>
+
+    <div class="item" id="a7">
+      <span class="tag">C-7 ／ 社内の情報・引き継ぎ</span>
+      <h3>過去の資料やノウハウが、どこにあるか分からない</h3>
+      <p class="before">「あの見積、去年どうしたっけ」「あの手順、誰か知ってる？」を毎回人に聞いている状態です。聞かれる側の時間も取られます。</p>
+      <div class="after"><b>変わること：</b>社内の資料を1か所に集め、質問を投げると、<b>自社の資料の中だけから</b>答えが返ってくる状態にします。よそのインターネットの情報は混ざりません。</div>
+      <p class="how"><b>進め方：</b>本業では、過去の資料を集約して調べものを短縮する形をつくっています。取引先ごとに書式が違うセキュリティチェックシートの回答では、過去150件分を参照させて下書きを出すようにし、<b>回答にかかる時間を8割以上減らしました</b>。同じ考え方を、社内マニュアルや過去の見積にも使えます。</p>
+    </div>
+
+    <div class="item" id="a8">
+      <span class="tag">C-8 ／ 社内の情報・引き継ぎ</span>
+      <h3>この作業はベテランしか分からない、という業務がある</h3>
+      <p class="before">その人が休むと止まる業務。本人も「教える時間がない」と言う。よくある話ですが、放っておくと一番こわいところです。</p>
+      <div class="after"><b>変わること：</b>作業を手順書に落として、ほかの方でも回せるようにします。あわせて、手で繰り返している部分は自動化して、そもそも覚える量を減らします。</div>
+      <p class="how"><b>進め方：</b>本人へのヒアリングと、実際の作業画面を見せていただくところから始めます。前職では業務を文書化して、<b>新任の方が独り立ちするまでの期間を約半分</b>にしました。</p>
+    </div>
+
+    <div class="item" id="a9">
+      <span class="tag">D-9 ／ 記録・レポート・顧客管理</span>
+      <h3>打ち合わせの議事録づくりに時間がかかる</h3>
+      <p class="before">終わったあとに録音を聞き返しながら書き起こす。1時間の会議に、また1時間かかります。</p>
+      <div class="after"><b>変わること：</b>録音から議事録の下書きが自動で出ます。決まったこと・宿題・担当者が分かれた形で、前回の振り返りと次回話すべきことも一緒に付きます。</div>
+      <p class="how"><b>進め方：</b>私自身が本業の定例会議で使っている形です。まず1回分でお試しいただいて、書式（項目の並び）をお使いの形に合わせてから本運用にします。</p>
+    </div>
+
+    <div class="item" id="a10">
+      <span class="tag">D-10 ／ 記録・レポート・顧客管理</span>
+      <h3>日報・週報・月報の集計に、毎週時間を取られている</h3>
+      <p class="before">各担当から集まった報告を、担当者が1つのシートに転記して、グラフにして、上に出す。転記のミスも起きますし、何より毎週まるまる時間が消えます。</p>
+      <div class="after"><b>変わること：</b>入力する側の項目を減らして選びやすくし、集計とレポートは自動で出るようにします。上長が見たい形（誰が・何件・どこまで進んだか）に整えて出します。</div>
+      <p class="how"><b>進め方：</b>まず「上長は本当は何が見たいのか」を先に決めます。ここが決まらないまま項目を増やすと、入力する側の負担だけが増えて、結局書かれなくなります。</p>
+    </div>
+
+    <div class="item" id="a11">
+      <span class="tag">D-11 ／ 記録・レポート・顧客管理</span>
+      <h3>応募書類や問い合わせの一次チェックに時間がかかる</h3>
+      <p class="before">送られてきた書類を1件ずつ開いて読む。件数が増えるほど、全員で読むのは現実的でなくなります。</p>
+      <div class="after"><b>変わること：</b>「どういう条件なら次に進めるか」というものさしを先に決め、それに沿って一次の仕分けをAIに任せます。人は絞られたものを読むところから始められます。</div>
+      <p class="how"><b>進め方：</b>本業では、採用の書類選考用にこの仕組みを自分で設計し、いまも採用の流れの中で使っています。<b>合否そのものは必ず人が決める</b>形にしています。AIがやるのは、読む順番をつくるところまでです。</p>
+    </div>
+
+    <div class="item" id="a12">
+      <span class="tag">D-12 ／ 記録・レポート・顧客管理</span>
+      <h3>顧客管理のシステムに、誰も入力してくれない</h3>
+      <p class="before">高いお金を払って導入したのに、入力する人としない人が分かれる。入っていないデータは使えないので、結局みんなが見なくなる、という順番で形骸化します。</p>
+      <div class="after"><b>変わること：</b>入力項目そのものを減らし、手打ちだったところを選択式にして、入力が続く形に作り替えます。</div>
+      <p class="how"><b>進め方：</b>本業でSalesforceの管理者をしていたときに、自分も入力する側だったので「これは面倒だ」と思う箇所を実際に直していきました。結果として、<b>営業の活動履歴の入力率が50%から100%</b>になりました。ツールを替えるより、入力の面倒くささを削るほうが先です。</p>
+    </div>
+
+    <div class="item" id="a13">
+      <span class="tag">E-13 ／ はじめる前と、あとのこと</span>
+      <h3>何から手をつければいいか分からない</h3>
+      <p class="before">困っていることはたくさんあるけれど、どれが一番効くのか分からない。いちばん多いご相談です。</p>
+      <div class="after"><b>変わること：</b>いまの業務を一度書き出して、「時間がかかっている × 毎月必ず起きる × 直しやすい」の3つで並べ替えます。どこから手をつけるかが決まった状態になります。</div>
+      <p class="how"><b>進め方：</b>オンラインでのヒアリングから始められます。この段階で「これは自動化しないほうがいい」という結論になることもあります。<b>それも含めてお伝えします。</b></p>
+    </div>
+
+    <div class="item" id="a14">
+      <span class="tag">E-14 ／ はじめる前と、あとのこと</span>
+      <h3>前に入れたけれど、使われないまま止まっている</h3>
+      <p class="before">導入のときは説明を受けたけれど、担当が替わって誰も分からなくなった。契約だけ残っている、という状態もよくあります。</p>
+      <div class="after"><b>変わること：</b>いま何が動いていて何が止まっているかを整理し、使えるものは手順書をつけ直して復活させます。使わないものは、やめる判断もお手伝いします。</div>
+      <p class="how"><b>進め方：</b>新しく何かを入れる前に、まずここを見せていただくことが多いです。すでに払っている費用の中で解決することもあります。</p>
+    </div>
+  </section>
+
+  <!-- ========== 実績 ========== -->
+  <section class="block" id="jisseki">
+    <div class="block-head">
+      <span class="kicker">04 &nbsp;RESULTS</span>
+      <h2>実際に出した結果</h2>
+      <p>自分の担当業務、またはお客様の現場で実際に出た数字です。効果は環境によって変わるので、まず見極めてからご提案します。</p>
+    </div>
+
+    <div class="nums">
+      <div>
+        <span class="big">90分 → 30分</span>
+        <span class="lbl">差し込みメールの作成<br>（月あたり約30時間の削減）</span>
+      </div>
+      <div>
+        <span class="big">8割以上削減</span>
+        <span class="lbl">書式の異なる回答業務<br>（過去150件分を参照させて下書き）</span>
+      </div>
+      <div>
+        <span class="big">50% → 100%</span>
+        <span class="lbl">営業活動履歴の入力率<br>（顧客管理の入力しやすさ改善）</span>
+      </div>
+      <div>
+        <span class="big">約50%短縮</span>
+        <span class="lbl">新任者が独り立ちするまでの期間<br>（業務の文書化）</span>
+      </div>
+    </div>
+
+    <div class="works">
+      <ul>
+        <li><span class="badge b-side">副業</span><b>士業事務所の業務効率化支援</b>　確定申告に関わる業務の効率化をお手伝いしました。お客様の情報を含むため、詳細は面談でご説明します。</li>
+        <li><span class="badge b-side">副業</span><b>海外クライアントとの業務委託</b>　海外のマーケティング会社から受注し、日本市場向けの業務と資料の英日翻訳を担当。契約から報酬の受け取りまで英語で完結しました（2025年）。</li>
+        <li><span class="badge b-main">本業</span><b>差し込みメールの一括下書き</b>　部門をまたいで「メール対応に時間がかかる」という声を聞き取り、自動化して社内に展開。いまも使われています。</li>
+        <li><span class="badge b-main">本業</span><b>書類選考の一次仕分けAI</b>　判断のものさしと指示文を自分で設計し、採用の流れの中で運用中です。</li>
+        <li><span class="badge b-main">本業</span><b>営業レポートの自動生成・議事録の自動作成</b>　週次の集計と転記、会議記録の作成を自動化しました。</li>
+        <li><span class="badge b-main">本業</span><b>補助事業の月次経費精算</b>　証憑の突き合わせから月次報告書の作成・提出まで、一人で内製しています。</li>
+      </ul>
+    </div>
+    <p class="note">
+      ※ 会社名・取引先名は差し控えています。差し支えない範囲で、面談で具体的にご説明できます。<br>
+      ※ 本業（正社員）での実績は、勤務先の業務として行ったものです。同じ考え方・同じ作り方を、副業でのご支援にも使っています。
+    </p>
+  </section>
+
+  <div class="cta-box">
+    <h2>まずは、困っていることを聞かせてください</h2>
+    <p>
+      「これは頼めるのか分からない」という段階のご相談で大丈夫です。
+      伺ったうえで、そもそも自動化しないほうがいいと思えば、そうお伝えします。
+      オンラインでも、ご希望があれば現地に伺うこともできます。
+    </p>
+    <a class="btn btn-primary" href="https://docs.google.com/forms/d/1-MzFBNA1icIArQNUmUfvRYeAbYsF1Q8TVnbBryG-yg8/viewform">お問い合わせフォームへ →</a>
+    <a class="btn btn-ghost" href="https://velacotta-works.github.io/">プロフィールを見る</a>
+  </div>
+
+</div>
+
+<footer>
+  <p>© <span id="yr"></span> VelaCotta Works / Miho — 業務効率化でできること</p>
+</footer>
+<script>document.getElementById('yr').textContent=new Date().getFullYear();</script>
+
+</body>
+</html>
