@@ -214,12 +214,30 @@ footer{
   body{background:#fff;font-size:11pt}
   .item,.stance div,.nums div{break-inside:avoid}
 }
+
+  /* ───────── ロゴをトップへのリンクに ＋ 「先頭に戻る」ボタン ───────── */
+  .topnav a.logo { text-decoration: none; color: inherit; display: inline-block; }
+  .topnav a.logo:hover { color: inherit; opacity: .72; }
+  .to-top {
+    position: fixed; right: 20px; bottom: 20px; z-index: 200;
+    width: 46px; height: 46px; border-radius: 50%;
+    border: 1px solid var(--line); background: rgba(255,253,248,.92);
+    color: var(--ink); font-size: 17px; line-height: 1; cursor: pointer;
+    display: grid; place-items: center;
+    box-shadow: 0 2px 10px rgba(40,20,10,.12); backdrop-filter: blur(6px);
+    opacity: 0; visibility: hidden; transform: translateY(8px);
+    transition: opacity .2s, visibility .2s, transform .2s, border-color .15s, color .15s;
+  }
+  .to-top.show { opacity: 1; visibility: visible; transform: none; }
+  .to-top:hover { border-color: var(--sns); color: var(--sns); }
+  @media (max-width: 480px) { .to-top { right: 14px; bottom: 14px; width: 42px; height: 42px; } }
+  @media print { .to-top { display: none; } }
 </style>
 </head>
 <body>
 
 <div class="topnav">
-  <span class="logo">Miho <small>VELACOTTA WORKS</small></span>
+  <a href="https://velacotta-works.github.io/" class="logo" aria-label="トップページへ">Miho <small>VELACOTTA WORKS</small></a>
   <nav>
     <span class="links">
       <a href="https://velacotta-works.github.io/">プロフィール</a>
@@ -572,5 +590,29 @@ footer{
 </footer>
 <script>document.getElementById('yr').textContent=new Date().getFullYear();</script>
 
+<button type="button" id="to-top" class="to-top" aria-label="ページの先頭に戻る">↑</button>
+<script>
+  (function () {
+    var b = document.getElementById('to-top');
+    if (!b) return;
+    function onScroll() { b.classList.toggle('show', window.scrollY > 400); }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+    b.addEventListener('click', function () {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+    // トップページ内でロゴを押したときは再読み込みせずに先頭へスクロール
+    var logo = document.querySelector('a.logo');
+    if (logo) {
+      logo.addEventListener('click', function (e) {
+        var here = location.pathname.replace(/index\.html$/, '');
+        if (here === '/' || here === '') {
+          e.preventDefault();
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+      });
+    }
+  })();
+  </script>
 </body>
 </html>
