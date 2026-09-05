@@ -766,8 +766,8 @@
         <a href="shindan/" class="btn btn-ghost" style="font-size:14px;padding:12px 26px;margin:6px" data-i18n="contact.shindan">10分でできるミニ診断へ →</a>
       </div>
 
-      <!-- 送信先(GAS)が未設定のときは #cf-fallback に自動で切り替わる -->
-      <div class="cform" id="cf-wrap" hidden>
+      <!-- 送信先(GAS)が未設定のあいだは、送信でメールソフトが開く形に切り替わる -->
+      <div class="cform" id="cf-wrap">
         <form id="cform" novalidate>
           <div class="cf-row">
             <label class="cf-field">
@@ -794,8 +794,8 @@
         </form>
       </div>
 
-      <p class="form-embed-alt" id="cf-fallback" hidden>
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdsbaPOFnbH2ohYBqTe6wTVRXs1EG2h5FgJaL0SOs2tQASR4w/viewform" target="_blank" rel="noopener" class="btn btn-primary" style="font-size:15px;padding:14px 34px" data-i18n="cform.gform">お問い合わせフォームへ →</a>
+      <p class="form-embed-alt" id="cf-fallback">
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdsbaPOFnbH2ohYBqTe6wTVRXs1EG2h5FgJaL0SOs2tQASR4w/viewform" target="_blank" rel="noopener" data-i18n="cform.gform">うまく送れないときは、こちらのフォームからもどうぞ ↗</a>
       </p>
     </section>
 
@@ -812,15 +812,14 @@
   <!-- ===== お問い合わせフォーム ===== -->
   <script>
   (function () {
-    // 送信先（Google Apps Script Web App の /exec URL）。空のあいだは自前フォームを出さず、Googleフォームへ誘導する
+    // 送信先（Google Apps Script Web App の /exec URL）。
+    // 空のあいだは、送信でメールソフトを開いて Miho + ご本人(Cc) 宛のメールを組み立てる。
+    // URLを入れると、そのままページ内で送信が完了する形に自動で切り替わる。
     var GAS_ENDPOINT = "";
+    var MAIL_TO = ['okome05313', 'gmail.com'].join('@');   // 平文で置かない（収集対策）
 
     var wrap = document.getElementById('cf-wrap');
-    var fallback = document.getElementById('cf-fallback');
-    if (!wrap || !fallback) return;
-
-    if (!GAS_ENDPOINT) { fallback.hidden = false; return; }
-    wrap.hidden = false;
+    if (!wrap) return;
 
     var form = document.getElementById('cform');
     var btn = document.getElementById('cf-submit');
@@ -848,6 +847,26 @@
       }
       if (hpEl.value) { return; }   // ハニーポット: botは静かに捨てる
 
+      // --- 送信先が未設定のあいだ: メールソフトを開き、Miho宛＋ご本人にもCcで控えが残る形にする ---
+      if (!GAS_ENDPOINT) {
+        var subject = t('お問い合わせ（' + name + ' 様）', 'Enquiry from ' + name);
+        var body = t(
+          ['お名前: ' + name, 'メールアドレス: ' + email, '', 'お問い合わせ内容:', message, '',
+           '--', 'このメールは velacotta-works.github.io のお問い合わせフォームから作成されました。'].join('\n'),
+          ['Name: ' + name, 'Email: ' + email, '', 'Message:', message, '',
+           '--', 'Composed from the contact form at velacotta-works.github.io'].join('\n')
+        );
+        window.location.href = 'mailto:' + MAIL_TO
+          + '?cc=' + encodeURIComponent(email)
+          + '&subject=' + encodeURIComponent(subject)
+          + '&body=' + encodeURIComponent(body);
+        say('ok', t(
+          'メールソフトが開きます。内容をご確認のうえ、そのまま送信してください（' + email + ' にも控えが残ります）。開かない場合は、下のフォームからお送りください。',
+          'Your email app should open. Please review and send it as it is — a copy will also go to ' + email + '. If nothing opens, use the form linked below.'
+        ));
+        return;
+      }
+
       btn.disabled = true;
       var label = btn.textContent;
       btn.textContent = t('送信中…', 'Sending…');
@@ -873,7 +892,6 @@
             '送信できませんでした。お手数ですが、しばらく置いてもう一度お試しいただくか、下のフォームからお送りください。',
             'Sending failed. Please try again shortly, or use the form linked below.'
           ));
-          fallback.hidden = false;
         })
         .finally(function () { btn.disabled = false; btn.textContent = label; });
     });
@@ -1024,7 +1042,7 @@
       'cform.req': 'required',
       'cform.hint': 'A rough &ldquo;could you help with something like this?&rdquo; is fine. One line about the task taking up most of your time is plenty.',
       'cform.submit': 'Send',
-      'cform.gform': 'Go to Contact Form →'
+      'cform.gform': 'Having trouble sending? You can also use this form ↗'
     };
 
     var EN_ARIA = {
