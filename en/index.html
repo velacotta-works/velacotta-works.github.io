@@ -293,8 +293,56 @@
   .venture-card .v-cat { font-size: 10.5px; font-weight: 700; letter-spacing: .1em; color: #fff; background: var(--vc); padding: 2px 10px; border-radius: 999px; display: inline-block; }
   .venture-card h3 { font-family: var(--serif); font-size: 18px; font-weight: 800; margin: 12px 0 8px; line-height: 1.45; }
   .venture-card p { font-size: 13px; color: var(--ink-soft); }
-  .venture-card.v1 { --vc: var(--content); } .venture-card.v2 { --vc: var(--office); } .venture-card.v3 { --vc: var(--sns); } .venture-card.v4 { --vc: var(--content); }
+  .venture-card.v1 { --vc: var(--content); } .venture-card.v2 { --vc: var(--office); } .venture-card.v3 { --vc: var(--sns); } .venture-card.v4 { --vc: var(--content); } .venture-card.v5 { --vc: var(--office); }
   @media (max-width: 880px) { .stats, .ventures { grid-template-columns: 1fr; } }
+
+  /* ===== 費用対効果（stat内のROI行・venture内のROI行） ===== */
+  .stat { display: flex; flex-direction: column; }
+  .stat .stat-note { flex: 1; }
+  .stat-roi {
+    margin-top: 14px; padding-top: 12px; border-top: 1px dashed var(--line);
+    display: flex; flex-direction: column; gap: 5px;
+  }
+  .stat-roi .roi-k {
+    font-size: 10px; font-weight: 700; letter-spacing: .12em; color: #fff;
+    background: var(--acc); padding: 2px 9px; border-radius: 999px; align-self: flex-start;
+  }
+  .stat-roi .roi-v { font-size: 12.5px; color: var(--ink); line-height: 1.65; }
+  .stat-roi .roi-v b { font-weight: 800; color: var(--acc); }
+  .roi-disclaimer {
+    margin-top: 20px; font-size: 11.5px; line-height: 1.85; color: var(--ink-soft);
+    max-width: 60em; padding: 12px 14px; background: rgba(255,255,255,.45);
+    border-left: 3px solid var(--line); border-radius: 0 4px 4px 0;
+  }
+  .venture-card .v-roi {
+    margin-top: 12px; padding-top: 10px; border-top: 1px dashed var(--line);
+    font-size: 12.5px; color: var(--ink); line-height: 1.6;
+  }
+  .venture-card .v-roi b { font-weight: 800; color: var(--vc); }
+
+  /* ===== 投資回収の目安 ===== */
+  .roi-flow { display: grid; grid-template-columns: 1fr auto 1fr auto 1fr; align-items: stretch; gap: 14px; }
+  .roi-step {
+    background: rgba(255,255,255,.62); border: 1px solid var(--line);
+    border-top: 4px solid var(--azul); border-radius: 6px; padding: 20px 20px 18px;
+    box-shadow: 0 4px 16px rgba(37,32,26,.06);
+    display: flex; flex-direction: column; gap: 8px;
+  }
+  .roi-step-last { border-top-color: var(--office); }
+  .roi-step-k { font-size: 11.5px; font-weight: 700; letter-spacing: .08em; color: var(--ink-soft); }
+  .roi-step-v {
+    font-family: var(--serif); font-weight: 800; font-size: clamp(20px, 2.8vw, 27px);
+    color: var(--azul-deep); letter-spacing: .02em; line-height: 1.3;
+  }
+  .roi-step-last .roi-step-v { color: var(--office); }
+  .roi-step-n { font-size: 12.5px; color: var(--ink-soft); line-height: 1.7; }
+  .roi-arrow {
+    align-self: center; font-size: 22px; color: var(--line); font-weight: 700;
+  }
+  @media (max-width: 880px) {
+    .roi-flow { grid-template-columns: 1fr; }
+    .roi-arrow { transform: rotate(90deg); justify-self: center; }
+  }
 
   /* ───────── ご一緒できること（できること内の具体メニュー・追加） ───────── */
   .offers-head {
@@ -366,6 +414,7 @@
         <a href="#about" data-i18n="nav.about">プロフィール</a>
         <a href="#services" data-i18n="nav.services">できること</a>
         <a href="/can-do/" class="nav-cando">困りごと別に探す</a>
+        <a href="#roi" data-i18n="nav.roi">投資回収の目安</a>
         <a href="#ventures" data-i18n="nav.ventures">業務効率化の実績</a>
       </span>
       <a href="#contact" class="cta" data-i18n="nav.contact">お問い合わせ</a>
@@ -499,7 +548,7 @@
         <div class="offer o5">
           <div class="o-no">05</div>
           <h4 data-i18n="offers.o5.h4">税理士事務所・バックオフィスへの現場支援</h4>
-          <p data-i18n="offers.o5.p">事務職15年の現場経験を活かし、<b>業務整理・DX化を現場に入って実施します。</b>派遣・常駐にも対応します。</p>
+          <p data-i18n="offers.o5.p">事務の現場に約20年いた経験を活かし、<b>業務整理・DX化を現場に入って実施します。</b></p>
         </div>
         <div class="offer o6">
           <div class="o-no">06</div>
@@ -520,25 +569,67 @@
       <div class="block-head">
         <span class="kicker solo">BY THE NUMBERS</span>
         <h2 data-i18n="numbers.h2">数字で見る実務</h2>
-        <p class="block-lede" data-i18n="numbers.lede">これまで自分の担当業務で実際に出してきた結果です。効果は環境によって変わるため、まず見極めてからご提案します。</p>
+        <p class="block-lede" data-i18n="numbers.lede">これまで自分の担当業務で実際に出してきた結果です。削減した時間は、金額に換算するとどのくらいになるかも併せて載せています。効果は環境によって変わるため、まず見極めてからご提案します。</p>
       </div>
       <div class="stats">
         <div class="stat s2">
           <div class="stat-label" data-i18n="numbers.s1.label">メール作業（GAS×生成AI）</div>
           <div class="stat-num" data-i18n="numbers.s1.num">90分 → 30分</div>
           <div class="stat-note" data-i18n="numbers.s1.note">部門横断で「メール対応に時間がかかる」という声をヒアリングし、GAS（Google Apps Script）と生成AIを組み合わせて定型メールの下書き作成を自動化。1件あたりの作業時間を90分から30分に短縮し、チーム全体で月間約30時間分の工数を削減しました。</div>
+          <div class="stat-roi">
+            <span class="roi-k" data-i18n="numbers.roi.label">費用対効果</span>
+            <span class="roi-v" data-i18n="numbers.s1.roi">月30時間 ／ 年360時間の削減 ＝ <b>年間約90万円相当</b></span>
+          </div>
         </div>
         <div class="stat s3">
           <div class="stat-label" data-i18n="numbers.s2.label">セキュリティチェックシート回答</div>
           <div class="stat-num stat-num-sm" data-i18n="numbers.s2.num">工数80%以上削減</div>
           <div class="stat-note" data-i18n="numbers.s2.note">取引先ごとに書式が異なるセキュリティチェックシートへの回答は、内容を都度調べて手作業で作成する負担の大きい業務でした。過去150件分の回答実績をNotebookLMとGeminiに参照させて下書きを自動生成する仕組みを構築し、確認・微修正だけで済むようにして回答工数を80%以上削減しました。</div>
+          <div class="stat-roi">
+            <span class="roi-k" data-i18n="numbers.roi.label">費用対効果</span>
+            <span class="roi-v" data-i18n="numbers.s2.roi">1件ずつ調べ直していた回答が<b>5分の1以下の工数</b>に。150件の回答が再利用できる資産に変わりました</span>
+          </div>
         </div>
         <div class="stat s1">
           <div class="stat-label" data-i18n="numbers.s3.label">展示会の企画・運営（日英対応）</div>
           <div class="stat-num" data-i18n="numbers.s3.num">20回以上</div>
           <div class="stat-note" data-i18n="numbers.s3.note">展示会の企画・運営責任者として、出展計画から当日の運営、終了後のフォローアップまでを一貫して担当。海外パートナーや来場者への日英対応も行い、1回あたり平均30件のリードを獲得、平均3件が商談化しています。</div>
+          <div class="stat-roi">
+            <span class="roi-k" data-i18n="numbers.roi.label">費用対効果</span>
+            <span class="roi-v" data-i18n="numbers.s3.roi">20回換算で<b>累計600件以上のリード・60件以上の商談化</b>。出展費を回収する側の運営です</span>
+          </div>
         </div>
       </div>
+      <p class="roi-disclaimer" data-i18n="numbers.disclaimer">※ 金額は「削減した業務時間 × 人件費単価」で算出した参考値です。単価は社会保険料などを含む人件費として時給2,500円と控えめに仮定しています（正社員の時間単価は3,000〜5,000円とされることが多く、それより低い前提です）。実際の効果は業務量・体制によって変わります。</p>
+    </section>
+
+    <!-- ===== 投資回収の目安 ===== -->
+    <section class="block" id="roi">
+      <div class="block-head">
+        <span class="kicker solo">RETURN ON INVESTMENT</span>
+        <h2 data-i18n="roi.h2">投資回収の目安</h2>
+        <p class="block-lede" data-i18n="roi.lede">業務効率化は「いくらかかるか」より「いつ回収できるか」で判断できます。実際に私が出した削減時間を、そのまま金額に置き換えるとこうなります。</p>
+      </div>
+      <div class="roi-flow">
+        <div class="roi-step">
+          <span class="roi-step-k" data-i18n="roi.step1.k">削減した時間</span>
+          <strong class="roi-step-v" data-i18n="roi.step1.v">月30時間</strong>
+          <span class="roi-step-n" data-i18n="roi.step1.n">メール作業を90分→30分にした実績値。年間では360時間です。</span>
+        </div>
+        <div class="roi-arrow" aria-hidden="true">→</div>
+        <div class="roi-step">
+          <span class="roi-step-k" data-i18n="roi.step2.k">金額に換算すると</span>
+          <strong class="roi-step-v" data-i18n="roi.step2.v">月7.5万円 ／ 年90万円</strong>
+          <span class="roi-step-n" data-i18n="roi.step2.n">人件費を時給2,500円と控えめに見積もった場合の相当額です。</span>
+        </div>
+        <div class="roi-arrow" aria-hidden="true">→</div>
+        <div class="roi-step roi-step-last">
+          <span class="roi-step-k" data-i18n="roi.step3.k">回収までの期間</span>
+          <strong class="roi-step-v" data-i18n="roi.step3.v">1〜2ヶ月</strong>
+          <span class="roi-step-n" data-i18n="roi.step3.n">この規模の自動化であれば、導入にかかった費用は1〜2ヶ月で取り戻せる計算になります。以降は削減分がそのまま残ります。</span>
+        </div>
+      </div>
+      <p class="roi-disclaimer" data-i18n="roi.note">※ 費用は業務の内容と量によって変わるため、ヒアリングのうえでお見積りします。効果が見込めないと判断した場合は、その旨を先にお伝えします。数字が出せない業務を無理に自動化することはしません。</p>
     </section>
 
     <!-- ===== アズレージョ帯 ===== -->
@@ -561,7 +652,8 @@
         <div class="venture-card v2">
           <span class="v-cat" data-i18n="ventures.v2.cat">士業事務所 / 業務効率化</span>
           <h3 data-i18n="ventures.v2.h3">士業事務所の業務効率化支援</h3>
-          <p data-i18n="ventures.v2.p">確定申告関連の業務効率化を支援。お客様の情報を含むため、詳細は面談でご説明します。</p>
+          <p data-i18n="ventures.v2.p">確定申告関連の業務効率化を支援。Slackへの自動通知の構築、催促メールの整備、担当者しか分からない状態になっていた業務の解消、お客様から必要書類を集める流れの仕組み化までを担当しました。お客様の情報を含むため、詳細は面談でご説明します。</p>
+          <p class="v-roi" data-i18n="ventures.v2.roi">面談で伺った「これをやりたい」をその場で形にしながら組み立てる進め方です</p>
         </div>
         <div class="venture-card v3">
           <span class="v-cat" data-i18n="ventures.v3.cat">カスタムAI / 採用業務</span>
@@ -572,6 +664,13 @@
           <span class="v-cat" data-i18n="ventures.v4.cat">GAS×生成AI / 業務効率化</span>
           <h3 data-i18n="ventures.v4.h3">GAS×生成AIによるメール業務の自動化</h3>
           <p data-i18n="ventures.v4.p">定型メールの作成・送信フローをGoogle Apps Script（GAS）と生成AIを組み合わせてテンプレート化。文面のたたき台作成から送信までにかかっていた時間を90分→30分に短縮し、月間約30時間の工数を削減。社内で実運用中。</p>
+          <p class="v-roi" data-i18n="ventures.v4.roi">年360時間の削減＝<b>年間約90万円相当</b>（時給2,500円換算）</p>
+        </div>
+        <div class="venture-card v5">
+          <span class="v-cat" data-i18n="ventures.v5.cat">GAS / 営業フォロー</span>
+          <h3 data-i18n="ventures.v5.h3">展示会フォローメールの一括下書き生成</h3>
+          <p data-i18n="ventures.v5.p">展示会で名刺交換した方へのお礼メールは、1回あたり2〜3時間かけて手打ちしていました。GASで下書きを一括生成する仕組みを構築し、各営業が自分のメールアドレスから、商談で話した内容を一言だけ添えて送れる形に。自分用に作ったものでしたが、他の営業から「使いたい」と声が上がり、現在は営業メンバー全員が使っています。</p>
+          <p class="v-roi" data-i18n="ventures.v5.roi">作った本人だけで終わらず、<b>チーム全体に定着</b>したツールです</p>
         </div>
       </div>
     </section>
@@ -626,6 +725,7 @@
         <p data-i18n="contact.p">「こんなこと頼める？」という段階のご相談も歓迎です。下記フォームよりお気軽にお問い合わせください。内容を確認のうえ、折り返しご連絡します。</p>
         <!-- ===== 要確認: Notion記載は編集用URL(/edit)だったため回答用(/viewform)に変換。公開リンクが正しいか開いて確認し、必要なら差し替え ===== -->
         <a href="https://docs.google.com/forms/d/1-MzFBNA1icIArQNUmUfvRYeAbYsF1Q8TVnbBryG-yg8/viewform" target="_blank" rel="noopener" class="btn btn-primary" style="font-size:15px;padding:14px 34px" data-i18n="contact.cta">お問い合わせフォームへ →</a>
+        <a href="shindan/" class="btn btn-ghost" style="font-size:14px;padding:12px 26px;margin:6px" data-i18n="contact.shindan">10分でできるミニ診断へ →</a>
       </div>
     </section>
 
@@ -645,6 +745,7 @@
     var EN = {
       'nav.about': 'Profile',
       'nav.services': 'Services',
+      'nav.roi': 'Payback',
       'nav.ventures': 'Automation Impact',
       'nav.contact': 'Contact',
 
@@ -697,7 +798,7 @@
       'offers.o4.h4': 'Grant Applications: Backward Scheduling &amp; Requirements',
       'offers.o4.p': 'In my main role I handle the monthly expense settlement for a subsidised project single-handedly, from document control through to liaising with the administering office. I&rsquo;ve also applied for a startup grant myself. <b>I don&rsquo;t ghostwrite your application</b> &mdash; I build the schedule backward from the deadline and act as a sounding board for sorting out the requirements.',
       'offers.o5.h4': 'On-Site Support for Tax Firms &amp; Back Offices',
-      'offers.o5.p': 'Drawing on 15 years of hands-on admin experience, <b>I come on site to reorganise operations and drive DX.</b> Available for dispatch or on-site placement.',
+      'offers.o5.p': 'Drawing on some 20 years in admin roles, <b>I come on site to reorganise operations and drive DX.</b>',
       'offers.o6.h4': 'Setting Up Operations with Notion, Slack &amp; GAS',
       'offers.o6.p': 'Meeting-note templates, automated notifications, dashboards, and more. <b>I handle the operational design so it can be handed over.</b>',
       'offers.o7.h4': 'Work That Needs Japanese&ndash;English Support',
@@ -705,16 +806,34 @@
       'offers.note': 'Remote OK ／ from one-off consultations to ongoing support ／ <b>start small, and make it stick</b> &mdash; that&rsquo;s how I work.',
 
       'numbers.h2': 'By the Numbers',
-      'numbers.lede': 'These are real results from work I&rsquo;ve handled myself. Since impact varies by environment, I always assess the situation first before proposing anything.',
+      'numbers.lede': 'These are real results from work I&rsquo;ve handled myself, along with what the hours saved are worth in money. Since impact varies by environment, I always assess the situation first before proposing anything.',
+      'numbers.roi.label': 'RETURN',
       'numbers.s1.label': 'Email tasks (GAS × generative AI)',
       'numbers.s1.num': '90 → 30 min',
       'numbers.s1.note': 'After hearing across departments that email replies were taking too long, I combined Google Apps Script (GAS) with generative AI to automate drafting routine emails. This cut the time per email from 90 minutes to 30, saving the team about 30 hours a month in total.',
+      'numbers.s1.roi': '30 hours a month, 360 hours a year &mdash; <b>roughly &yen;900,000 a year</b>',
       'numbers.s2.label': 'Security questionnaire responses',
       'numbers.s2.num': '80%+ less time spent',
       'numbers.s2.note': 'Answering security questionnaires, whose format differs by client, used to mean manually researching and writing each response &mdash; a heavy workload. I built a system that feeds 150 past responses into NotebookLM and Gemini to auto-generate drafts, leaving only review and minor edits, cutting the workload by more than 80%.',
+      'numbers.s2.roi': 'Work that meant researching every answer from scratch now takes <b>a fifth of the time or less</b> &mdash; 150 past responses turned into a reusable asset',
       'numbers.s3.label': 'Trade show planning &amp; operations (JP/EN)',
       'numbers.s3.num': '20+ events',
       'numbers.s3.note': 'As the lead for trade show planning and operations, I&rsquo;ve handled everything end to end &mdash; from exhibit planning to on-site running and post-event follow-up &mdash; including bilingual (Japanese/English) support for overseas partners and visitors. Each event has generated an average of 30 leads, with about 3 turning into active deals.',
+      'numbers.s3.roi': 'Across 20 events that is <b>600+ leads and 60+ deals in the pipeline</b> &mdash; the kind of operation that earns back the cost of exhibiting',
+      'numbers.disclaimer': '* Monetary figures are reference values calculated as &ldquo;hours saved &times; hourly labour cost&rdquo;. I deliberately assume a conservative &yen;2,500 per hour including social insurance and related costs &mdash; full-time hourly costs in Japan are often put at &yen;3,000&ndash;5,000, so this sits below that. Actual impact depends on your volume and team.',
+
+      'roi.h2': 'What It Takes to Pay Back',
+      'roi.lede': 'Automation is easier to judge by when it pays for itself than by what it costs. Here is what the hours I have actually saved look like translated into money.',
+      'roi.step1.k': 'Hours saved',
+      'roi.step1.v': '30 hours a month',
+      'roi.step1.n': 'The real figure from cutting email work from 90 minutes to 30 &mdash; 360 hours over a year.',
+      'roi.step2.k': 'In money',
+      'roi.step2.v': '&yen;75,000/mo &middot; &yen;900,000/yr',
+      'roi.step2.n': 'What those hours are worth at a conservative &yen;2,500 per hour of labour cost.',
+      'roi.step3.k': 'Time to pay back',
+      'roi.step3.v': '1&ndash;2 months',
+      'roi.step3.n': 'At this scale, the cost of building it is recovered within one to two months. Everything saved after that stays with you.',
+      'roi.note': '* Cost depends on the nature and volume of the work, so I quote after talking it through. If I don&rsquo;t think the numbers will work, I say so first &mdash; I won&rsquo;t automate work that can&rsquo;t justify it.',
 
       'azulejo.cap': 'What I&rsquo;ve Built So Far',
       'azulejo.cap1': 'Work That&rsquo;s Actually in Use',
@@ -739,17 +858,24 @@
       'ventures.v1.p': 'Contracted by an overseas marketing firm to connect a Tokyo tech event with the Japanese market, plus English translation of presentation slides. Handled the entire process &mdash; contract through payment &mdash; in English (2025).',
       'ventures.v2.cat': 'Professional Firm / Workflow Automation',
       'ventures.v2.h3': 'Workflow Automation for a Professional Services Firm',
-      'ventures.v2.p': 'Supported workflow automation related to tax filing. As this involves client information, I&rsquo;ll share details in person.',
+      'ventures.v2.p': 'Supported workflow automation related to tax filing: building automated Slack notifications, putting reminder emails in order, untangling work that only one person understood, and turning the collection of required documents from clients into a defined process. As this involves client information, I&rsquo;ll share details in person.',
+      'ventures.v2.roi': 'Built on the spot, from what the client said they wanted during our meetings',
       'ventures.v3.cat': 'Custom AI / Recruiting',
       'ventures.v3.h3': 'A Gemini &ldquo;Gems&rdquo; Recruiting Screener',
       'ventures.v3.p': 'Designed the screening criteria and prompts myself using Gemini&rsquo;s &ldquo;Gems&rdquo; (custom AI assistants users can build). Built a custom AI that runs on Gemini and folded it into the hiring workflow &mdash; currently in active in-house use.',
       'ventures.v4.cat': 'GAS × Generative AI / Automation',
       'ventures.v4.h3': 'Automating Email Work with GAS × Generative AI',
       'ventures.v4.p': 'Templated the routine email creation and sending flow by combining Google Apps Script (GAS) with generative AI. Cut the time from drafting to sending from 90 minutes to 30, saving about 30 hours a month &mdash; currently in active in-house use.',
+      'ventures.v4.roi': '360 hours a year &mdash; <b>roughly &yen;900,000 a year</b> at &yen;2,500 per hour',
+      'ventures.v5.cat': 'GAS / Sales Follow-up',
+      'ventures.v5.h3': 'Bulk Draft Generation for Trade Show Follow-ups',
+      'ventures.v5.p': 'Thank-you emails to everyone we exchanged cards with at a trade show used to take two to three hours of typing per event. I built a GAS tool that generates all the drafts at once, so each salesperson can send from their own address after adding one line about what they discussed. I built it for myself, but other salespeople asked to use it, and the whole sales team now does.',
+      'ventures.v5.roi': 'Not a tool that stopped with the person who built it &mdash; <b>the whole team adopted it</b>',
 
       'contact.h2': 'Get in Touch',
       'contact.p': 'Even a &ldquo;could you help with something like this?&rdquo; question at the earliest stage is welcome. Please reach out using the form below &mdash; I&rsquo;ll review your message and get back to you.',
-      'contact.cta': 'Go to Contact Form →'
+      'contact.cta': 'Go to Contact Form →',
+      'contact.shindan': 'Start with a 10-minute self-check →'
     };
 
     var EN_ARIA = {
