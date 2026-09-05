@@ -225,27 +225,40 @@
   .contact h2 { font-family: var(--serif); font-weight: 800; font-size: clamp(22px, 3.2vw, 30px); }
   .contact p { color: var(--ink-soft); max-width: 34em; margin: 14px auto 26px; font-size: 14.5px; }
 
-  /* ───────── 埋め込みフォーム ───────── */
-  .form-embed { margin-top: 28px; }
-  .form-embed-head { text-align: center; margin-bottom: 16px; }
-  .form-embed-head h3 {
-    font-family: var(--serif); font-size: 19px; font-weight: 800; letter-spacing: .02em;
+  /* ───────── お問い合わせフォーム ───────── */
+  .cform { max-width: 640px; margin: 26px auto 0; text-align: left; }
+  .cf-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .cf-field { display: block; margin-bottom: 18px; }
+  .cf-label {
+    display: block; font-size: 13px; font-weight: 700; letter-spacing: .04em;
+    color: var(--ink); margin-bottom: 7px;
   }
-  .form-embed-head p {
-    color: var(--ink-soft); font-size: 12.5px; line-height: 1.8;
-    max-width: 34em; margin: 8px auto 0;
+  .cf-req {
+    font-family: var(--mono); font-size: 10px; font-weight: 700; letter-spacing: .1em;
+    color: #fff; background: var(--sns); border-radius: 999px;
+    padding: 1px 8px; margin-left: 8px; vertical-align: 1px;
   }
-  .form-embed iframe {
-    display: block; width: 100%; max-width: 720px; margin: 0 auto;
-    border: 1px solid var(--line); border-radius: 8px;
-    background: #fff; box-shadow: 0 4px 16px rgba(37,32,26,.06);
+  .cform input[type=text], .cform input[type=email], .cform textarea {
+    width: 100%; font-family: var(--sans); font-size: 15px; color: var(--ink);
+    background: #fff; border: 1px solid var(--line); border-radius: 8px;
+    padding: 11px 13px; transition: border-color .15s, box-shadow .15s;
   }
-  .form-embed-alt { text-align: center; margin-top: 14px; }
-  .form-embed-alt a {
-    font-size: 12.5px; color: var(--ink-soft); text-decoration: underline;
-    text-underline-offset: 3px;
+  .cform input:focus, .cform textarea:focus {
+    outline: none; border-color: var(--content);
+    box-shadow: 0 0 0 3px rgba(43,94,167,.14);
   }
-  .form-embed-alt a:hover { color: var(--ink); }
+  .cform input[aria-invalid="true"], .cform textarea[aria-invalid="true"] { border-color: var(--sns); }
+  .cform textarea { resize: vertical; min-height: 130px; line-height: 1.8; }
+  .cf-hint { display: block; font-size: 12px; color: var(--ink-soft); margin-top: 7px; line-height: 1.75; }
+  .cf-hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+  .cf-actions { text-align: center; margin-top: 22px; }
+  .cf-actions .btn:disabled { opacity: .55; cursor: wait; transform: none; }
+  .cf-msg { font-size: 13.5px; line-height: 1.8; margin: 14px auto 0; max-width: 34em; min-height: 1.2em; }
+  .cf-msg.ok { color: var(--office); font-weight: 700; }
+  .cf-msg.ng { color: var(--sns); }
+  @media (max-width: 620px) { .cf-row { grid-template-columns: 1fr; gap: 0; } }
+
+  .form-embed-alt { text-align: center; margin-top: 20px; }
 
   /* ───────── フッター ───────── */
   footer { border-top: 1px solid var(--line); margin-top: 80px; padding: 30px clamp(20px, 5vw, 56px); text-align: center; }
@@ -749,28 +762,41 @@
       <div class="contact">
         <span class="kicker solo" style="justify-content:center">CONTACT</span>
         <h2 data-i18n="contact.h2">お仕事のご相談</h2>
-        <p data-i18n="contact.p">「こんなこと頼める？」という段階のご相談も歓迎です。下記フォームよりお気軽にお問い合わせください。内容を確認のうえ、折り返しご連絡します。</p>
+        <p data-i18n="contact.p">「こんなこと頼める？」という段階のご相談も歓迎です。下のフォームからお気軽にどうぞ。私が読んで、折り返しご連絡します。</p>
         <a href="shindan/" class="btn btn-ghost" style="font-size:14px;padding:12px 26px;margin:6px" data-i18n="contact.shindan">10分でできるミニ診断へ →</a>
       </div>
 
-      <div class="form-embed">
-        <div class="form-embed-head">
-          <h3 data-i18n="contact.form.h3">お仕事のご相談フォーム</h3>
-          <p data-i18n="contact.form.note">このページのまま入力・送信できます。うまく表示されないときは、下の「別のタブで開く」からどうぞ。</p>
-        </div>
-        <iframe
-          src="https://docs.google.com/forms/d/e/1FAIpQLSdsbaPOFnbH2ohYBqTe6wTVRXs1EG2h5FgJaL0SOs2tQASR4w/viewform?embedded=true"
-          title="お仕事のご相談フォーム"
-          aria-label="お仕事のご相談フォーム"
-          data-i18n-aria="contact.form.aria"
-          loading="lazy"
-          width="100%" height="900" frameborder="0" marginheight="0" marginwidth="0">
-          <span data-i18n="contact.form.loading">読み込んでいます…</span>
-        </iframe>
-        <p class="form-embed-alt">
-          <a href="https://docs.google.com/forms/d/e/1FAIpQLSdsbaPOFnbH2ohYBqTe6wTVRXs1EG2h5FgJaL0SOs2tQASR4w/viewform" target="_blank" rel="noopener" data-i18n="contact.form.newtab">別のタブでフォームを開く ↗</a>
-        </p>
+      <!-- 送信先(GAS)が未設定のときは #cf-fallback に自動で切り替わる -->
+      <div class="cform" id="cf-wrap" hidden>
+        <form id="cform" novalidate>
+          <div class="cf-row">
+            <label class="cf-field">
+              <span class="cf-label" data-i18n="cform.name">お名前<b class="cf-req" data-i18n="cform.req">必須</b></span>
+              <input type="text" name="name" autocomplete="name" required>
+            </label>
+            <label class="cf-field">
+              <span class="cf-label" data-i18n="cform.email">メールアドレス<b class="cf-req" data-i18n="cform.req">必須</b></span>
+              <input type="email" name="email" autocomplete="email" required placeholder="you@example.com">
+            </label>
+          </div>
+          <label class="cf-field">
+            <span class="cf-label" data-i18n="cform.body">お問い合わせ内容<b class="cf-req" data-i18n="cform.req">必須</b></span>
+            <textarea name="message" rows="6" required></textarea>
+            <span class="cf-hint" data-i18n="cform.hint">「こんなこと頼める？」の段階で構いません。今いちばん手間になっている作業を一行いただければ十分です。</span>
+          </label>
+          <div class="cf-hp" aria-hidden="true">
+            <label>ご記入不要です<input type="text" name="website" tabindex="-1" autocomplete="off"></label>
+          </div>
+          <div class="cf-actions">
+            <button type="submit" class="btn btn-primary" id="cf-submit" data-i18n="cform.submit">送信する</button>
+            <p class="cf-msg" id="cf-msg" role="status" aria-live="polite"></p>
+          </div>
+        </form>
       </div>
+
+      <p class="form-embed-alt" id="cf-fallback" hidden>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdsbaPOFnbH2ohYBqTe6wTVRXs1EG2h5FgJaL0SOs2tQASR4w/viewform" target="_blank" rel="noopener" class="btn btn-primary" style="font-size:15px;padding:14px 34px" data-i18n="cform.gform">お問い合わせフォームへ →</a>
+      </p>
     </section>
 
   </div><!-- /.wrap -->
@@ -781,6 +807,77 @@
 
   <script>
     document.getElementById('yr').textContent = new Date().getFullYear();
+  </script>
+
+  <!-- ===== お問い合わせフォーム ===== -->
+  <script>
+  (function () {
+    // 送信先（Google Apps Script Web App の /exec URL）。空のあいだは自前フォームを出さず、Googleフォームへ誘導する
+    var GAS_ENDPOINT = "";
+
+    var wrap = document.getElementById('cf-wrap');
+    var fallback = document.getElementById('cf-fallback');
+    if (!wrap || !fallback) return;
+
+    if (!GAS_ENDPOINT) { fallback.hidden = false; return; }
+    wrap.hidden = false;
+
+    var form = document.getElementById('cform');
+    var btn = document.getElementById('cf-submit');
+    var msg = document.getElementById('cf-msg');
+
+    function t(ja, en) { return document.documentElement.lang === 'en' ? en : ja; }
+    function say(kind, text) { msg.className = 'cf-msg ' + kind; msg.textContent = text; }
+    function mark(el, bad) { el.setAttribute('aria-invalid', bad ? 'true' : 'false'); }
+
+    // form.name はフォーム自身の name 属性を指してしまうため、elements 経由で取る
+    var nameEl = form.elements['name'], emailEl = form.elements['email'],
+        msgEl = form.elements['message'], hpEl = form.elements['website'];
+
+    form.addEventListener('submit', function (ev) {
+      ev.preventDefault();
+      var name = nameEl.value.trim();
+      var email = emailEl.value.trim();
+      var message = msgEl.value.trim();
+
+      mark(nameEl, !name); mark(emailEl, false); mark(msgEl, !message);
+      if (!name || !message) { say('ng', t('お名前とお問い合わせ内容をご記入ください。', 'Please fill in your name and message.')); return; }
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        mark(emailEl, true);
+        say('ng', t('メールアドレスをご確認ください。', 'Please check your email address.')); return;
+      }
+      if (hpEl.value) { return; }   // ハニーポット: botは静かに捨てる
+
+      btn.disabled = true;
+      var label = btn.textContent;
+      btn.textContent = t('送信中…', 'Sending…');
+      say('', '');
+
+      var fd = new FormData();
+      fd.append('type', 'contact');
+      fd.append('name', name);
+      fd.append('email', email);
+      fd.append('message', message);
+      fd.append('page', location.href);
+
+      fetch(GAS_ENDPOINT, { method: 'POST', mode: 'no-cors', body: fd })
+        .then(function () {
+          form.reset();
+          say('ok', t(
+            'お送りいただきありがとうございます。控えを ' + email + ' にお送りしました。内容を読んで、1〜2営業日のうちにご連絡します。',
+            'Thank you. A copy has been sent to ' + email + '. I’ll read it and get back to you within one or two business days.'
+          ));
+        })
+        .catch(function () {
+          say('ng', t(
+            '送信できませんでした。お手数ですが、しばらく置いてもう一度お試しいただくか、下のフォームからお送りください。',
+            'Sending failed. Please try again shortly, or use the form linked below.'
+          ));
+          fallback.hidden = false;
+        })
+        .finally(function () { btn.disabled = false; btn.textContent = label; });
+    });
+  })();
   </script>
 
   <!-- ===== 日英切り替え（JAが原本・ENは辞書で上書き） ===== -->
@@ -919,20 +1016,22 @@
       'ventures.v5.roi': 'Not a tool that stopped with the person who built it &mdash; <b>the whole team adopted it</b>',
 
       'contact.h2': 'Get in Touch',
-      'contact.p': 'Even a &ldquo;could you help with something like this?&rdquo; question at the earliest stage is welcome. Please reach out using the form below &mdash; I&rsquo;ll review your message and get back to you.',
+      'contact.p': 'Even a &ldquo;could you help with something like this?&rdquo; question at the earliest stage is welcome. Use the form below &mdash; I&rsquo;ll read it myself and get back to you.',
       'contact.shindan': 'Start with a 10-minute self-check →',
-      'contact.form.h3': 'Enquiry Form',
-      'contact.form.note': 'You can fill this in and send it without leaving the page. If it doesn&rsquo;t display properly, use the link below to open it in a new tab.',
-      'contact.form.loading': 'Loading&hellip;',
-      'contact.form.newtab': 'Open the form in a new tab ↗'
+      'cform.name': 'Your name<b class="cf-req">required</b>',
+      'cform.email': 'Email address<b class="cf-req">required</b>',
+      'cform.body': 'Your message<b class="cf-req">required</b>',
+      'cform.req': 'required',
+      'cform.hint': 'A rough &ldquo;could you help with something like this?&rdquo; is fine. One line about the task taking up most of your time is plenty.',
+      'cform.submit': 'Send',
+      'cform.gform': 'Go to Contact Form →'
     };
 
     var EN_ARIA = {
       'azulejo.aria': 'Trencadís (broken-tile mosaic)',
       'works.w1.aria': 'Thumbnail: The Daily Task Automation Textbook',
       'works.w2.aria': 'Thumbnail: MEO Practical Mastery Course',
-      'works.w3.aria': 'Thumbnail: Free MEO Diagnosis Landing Page',
-      'contact.form.aria': 'Enquiry form'
+      'works.w3.aria': 'Thumbnail: Free MEO Diagnosis Landing Page'
     };
 
     var TITLE_JA = document.title;
