@@ -243,7 +243,7 @@
     <label class="consent"><input type="checkbox" name="consent" required><span>送っていただいた内容は、相談の準備にだけ使い、ほかには使いません。第三者に渡すこともありません。この内容に同意して送信します。</span></label>
 
     <div class="actions">
-      <button type="submit" class="btn btn-primary" id="submitBtn">診断結果を見る（送信）</button>
+      <button type="submit" class="btn btn-primary" id="submitBtn">診断結果を見る</button>
       <div class="err" id="err"></div>
     </div>
   </form>
@@ -265,11 +265,14 @@
   // ===== 送信先（Google Apps Script Web App の /exec URL）。空のままだと「テスト表示」になり送信されない =====
   var GAS_ENDPOINT = "";
   // ===== 送信に失敗したときの逃げ道（既存の問い合わせフォーム）=====
-  var FALLBACK_FORM = "https://docs.google.com/forms/d/1-MzFBNA1icIArQNUmUfvRYeAbYsF1Q8TVnbBryG-yg8/viewform";
+  var FALLBACK_FORM = "https://docs.google.com/forms/d/e/1FAIpQLSdsbaPOFnbH2ohYBqTe6wTVRXs1EG2h5FgJaL0SOs2tQASR4w/viewform";
   var HOURLY_YEN = 2500;       // 時給の仮置き（結果画面に明記）。Miho裁定2026-09-05: 実績の費用対効果と同じ人件費単価2,500円/h（控えめ側の仮定値）
   var WEEKS_PER_YEAR = 52;
 
   document.getElementById('yr').textContent = new Date().getFullYear();
+  // 送信先が未設定の間は「送信」と名乗らない（結果は端末内の計算のみ）
+  var BTN_LABEL = GAS_ENDPOINT ? '診断結果を見る（送信）' : '診断結果を見る';
+  document.getElementById('submitBtn').textContent = BTN_LABEL;
 
   var HOURS_MID = { '1時間未満': 0.5, '1〜3時間': 2, '3〜5時間': 4, '5〜10時間': 7.5, '10時間以上': 12 };
 
@@ -328,13 +331,13 @@
       var r = document.getElementById('result'); r.classList.add('show'); r.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
 
-    if (!GAS_ENDPOINT) { show('', '結果は上のとおりです。送信の仕組みを準備中のため、この回答はまだ私に届いていません。お手数ですが <a href="' + FALLBACK_FORM + '" target="_blank" rel="noopener">こちらのフォーム</a> に「いちばんの手作業」と連絡先を書いてお送りください。'); btn.disabled = false; btn.textContent = '診断結果を見る（送信）'; return; }
+    if (!GAS_ENDPOINT) { show('', 'この結果はお使いの端末の中だけで計算しています。<b>私にはまだ届いていません。</b>続きを相談されたい場合は、<a href="' + FALLBACK_FORM + '" target="_blank" rel="noopener">お仕事のご相談フォーム</a> から、上の「いちばん時間がかかっている作業」とご連絡先をお送りください。内容を読んで折り返しご連絡します。'); btn.disabled = false; btn.textContent = BTN_LABEL; return; }
 
     var fd = new FormData(); Object.keys(a).forEach(function (k) { fd.append(k, a[k]); });
     fetch(GAS_ENDPOINT, { method: 'POST', mode: 'no-cors', body: fd })
       .then(function () { show('ok', '受け付けました。折り返し、メールでご連絡します。'); })
       .catch(function () { show('', '送信に失敗しました。お手数ですが <a href="' + FALLBACK_FORM + '" target="_blank" rel="noopener">こちらのフォーム</a> から同じ内容をお送りください。'); })
-      .finally(function () { btn.disabled = false; btn.textContent = '診断結果を見る（送信）'; });
+      .finally(function () { btn.disabled = false; btn.textContent = BTN_LABEL; });
   });
 })();
 </script>
