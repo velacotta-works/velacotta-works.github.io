@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>業務効率化ミニ診断 ｜ 10分で手作業の時間の目安が出ます ｜ Miho / VelaCotta Works</title>
+<meta name="description" content="毎週いちばん時間を取られている手作業について13問に答えると、その場で「かかっている時間と金額の目安」が出ます。10分ほどで書けます。分からないところは空欄で大丈夫です。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://velacotta-works.github.io/shindan/">
+<meta property="og:site_name" content="VelaCotta Works">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:title" content="業務効率化ミニ診断 ｜ 10分で手作業の時間の目安が出ます">
+<meta property="og:description" content="毎週いちばん時間を取られている手作業について13問。その場で「かかっている時間と金額の目安」が出ます。分からないところは空欄で大丈夫です。">
+<meta property="og:image" content="https://velacotta-works.github.io/shindan/ogp.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="業務効率化ミニ診断 — 10分で手作業の時間の目安が出ます / VelaCotta Works">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="業務効率化ミニ診断 ｜ 10分で手作業の時間の目安が出ます">
+<meta name="twitter:description" content="13問に答えると、その場で「かかっている時間と金額の目安」が出ます。分からないところは空欄で大丈夫です。">
+<meta name="twitter:image" content="https://velacotta-works.github.io/shindan/ogp.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@600;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #f6f1e7; --paper-deep: #efe7d8; --ink: #25201a; --ink-soft: #5c544a; --line: #d8cdb9;
+    --sns: #c2402d; --content: #2b5ea7; --office: #3c7a4a; --azul-pale: #c5d5ea;
+    --serif: "Shippori Mincho B1", "Hiragino Mincho ProN", serif;
+    --sans: "Zen Kaku Gothic New", "Hiragino Kaku Gothic ProN", sans-serif;
+    --mono: "IBM Plex Mono", "Menlo", monospace;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--sans); font-size: 15px; line-height: 1.85; -webkit-font-smoothing: antialiased; }
+  a { color: var(--content); }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 28px 20px 80px; }
+  .top { display: flex; justify-content: space-between; align-items: center; gap: 12px; font-family: var(--mono); font-size: 12px; color: var(--ink-soft); }
+  .top a { color: var(--ink-soft); text-decoration: none; border-bottom: 1px solid var(--line); }
+  .kicker { display: inline-flex; align-items: center; gap: 8px; font-family: var(--mono); font-size: 11px; letter-spacing: .18em; color: var(--sns); margin-top: 40px; }
+  .kicker::before { content: ""; width: 22px; height: 1px; background: var(--sns); }
+  h1 { font-family: var(--serif); font-weight: 800; font-size: clamp(26px, 4.6vw, 38px); letter-spacing: .03em; line-height: 1.35; margin: 10px 0 14px; }
+  .lede { color: var(--ink-soft); font-size: 15px; max-width: 40em; margin: 0 0 8px; }
+  .note { font-size: 13px; color: var(--ink-soft); }
+  .card { background: rgba(255,255,255,.55); border: 1px solid var(--line); border-radius: 14px; padding: 22px 22px 18px; margin: 22px 0; }
+  .q { margin: 0 0 26px; padding-bottom: 22px; border-bottom: 1px dashed var(--line); }
+  .q:last-of-type { border-bottom: 0; margin-bottom: 0; padding-bottom: 0; }
+  .q-label { display: flex; gap: 10px; align-items: baseline; font-weight: 700; font-size: 15.5px; margin-bottom: 8px; }
+  .q-num { font-family: var(--mono); font-size: 12px; color: var(--sns); letter-spacing: .08em; flex: none; }
+  .req { font-family: var(--mono); font-size: 10.5px; color: #fff; background: var(--sns); border-radius: 999px; padding: 1px 8px; margin-left: 6px; letter-spacing: .08em; }
+  .opt { font-family: var(--mono); font-size: 10.5px; color: var(--ink-soft); border: 1px solid var(--line); border-radius: 999px; padding: 1px 8px; margin-left: 6px; letter-spacing: .08em; }
+  .hint { font-size: 13px; color: var(--ink-soft); margin: -4px 0 10px; }
+  .choices { display: flex; flex-wrap: wrap; gap: 8px 10px; }
+  .choices label { display: inline-flex; align-items: center; gap: 7px; background: #fff; border: 1px solid var(--line); border-radius: 999px; padding: 7px 14px 7px 10px; cursor: pointer; font-size: 14px; transition: all .15s; }
+  .choices label:hover { border-color: var(--ink); }
+  .choices input { accent-color: var(--sns); margin: 0; }
+  .choices label:has(input:checked) { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+  .choices.col { flex-direction: column; align-items: flex-start; }
+  .choices.col label { border-radius: 10px; }
+  input[type=text], input[type=email], input[type=number], textarea { width: 100%; font-family: var(--sans); font-size: 15px; color: var(--ink); background: #fff; border: 1px solid var(--line); border-radius: 10px; padding: 11px 13px; }
+  input:focus, textarea:focus { outline: 2px solid var(--azul-pale); border-color: var(--content); }
+  textarea { min-height: 96px; resize: vertical; }
+  .row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  @media (max-width: 560px) { .row { grid-template-columns: 1fr; } }
+  .inline { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+  .inline input[type=number] { width: 90px; }
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; font-family: var(--sans); font-size: 15px; font-weight: 700; letter-spacing: .04em; text-decoration: none; border: 0; border-radius: 999px; padding: 14px 34px; cursor: pointer; transition: all .18s; }
+  .btn-primary { color: #fff; background: var(--sns); box-shadow: 0 6px 18px rgba(194,64,45,.24); }
+  .btn-primary:hover { background: var(--ink); box-shadow: 0 8px 22px rgba(37,32,26,.24); transform: translateY(-1px); }
+  .btn-primary:disabled { opacity: .55; cursor: wait; transform: none; }
+  .btn-ghost { color: var(--ink); background: rgba(255,255,255,.6); border: 1px solid var(--line); }
+  .consent { display: flex; gap: 10px; align-items: flex-start; font-size: 13.5px; color: var(--ink-soft); margin: 18px 0 16px; }
+  .consent input { accent-color: var(--sns); margin-top: 5px; }
+  .actions { display: flex; flex-direction: column; align-items: center; gap: 12px; }
+  .err { color: var(--sns); font-size: 13.5px; min-height: 1.5em; text-align: center; }
+  .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+  /* 結果 */
+  #result { display: none; }
+  #result.show { display: block; }
+  .res-head { font-family: var(--serif); font-weight: 800; font-size: clamp(22px, 3.6vw, 28px); margin: 0 0 6px; }
+  .res-line { display: grid; grid-template-columns: 9.5em 1fr; gap: 10px; padding: 12px 0; border-bottom: 1px dashed var(--line); }
+  .res-line:last-child { border-bottom: 0; }
+  .res-k { font-family: var(--mono); font-size: 12px; color: var(--ink-soft); letter-spacing: .06em; padding-top: 4px; }
+  .res-v { font-size: 15px; }
+  .res-big { font-family: var(--serif); font-size: 26px; font-weight: 800; color: var(--content); letter-spacing: .02em; }
+  .res-big small { font-family: var(--sans); font-size: 13px; font-weight: 400; color: var(--ink-soft); margin-left: 6px; }
+  @media (max-width: 560px) { .res-line { grid-template-columns: 1fr; gap: 2px; } }
+  .banner { background: #fff7e0; border: 1px solid #e8d9a8; border-radius: 10px; padding: 10px 14px; font-size: 13px; color: #6b5a1e; margin: 14px 0; }
+  .banner.ok { background: #e9f3ea; border-color: #bfd9c4; color: #2c5a37; }
+  footer { margin-top: 56px; text-align: center; font-family: var(--mono); font-size: 12px; color: var(--ink-soft); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top">
+    <a href="../">← VelaCotta Works</a>
+    <span>MINI SHINDAN</span>
+  </div>
+
+  <span class="kicker">業務効率化ミニ診断</span>
+  <h1>毎週の手作業、<br>時間にするとどのくらいか。</h1>
+  <p class="lede">13の質問に答えると、その場で「かかっている時間と金額の目安」が出ます。10分ほどで書けます。</p>
+  <p class="note">分からないところは空欄で大丈夫です。数字は「だいたい」で構いません。送っていただいた内容は、私（Miho）が読んで折り返しご連絡します。</p>
+
+  <form id="f" class="card" novalidate>
+    <div class="hp" aria-hidden="true"><label>website<input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
+
+    <div class="q">
+      <div class="q-label"><span class="q-num">01</span><span>会社名・業種・従業員数</span></div>
+      <div class="row">
+        <input type="text" name="q1_company" placeholder="会社名（屋号でも）">
+        <input type="text" name="q1_industry" placeholder="業種（例：製造・小売・士業）">
+      </div>
+      <div class="choices" style="margin-top:10px">
+        <label><input type="radio" name="q1_size" value="1〜5人">1〜5人</label>
+        <label><input type="radio" name="q1_size" value="6〜20人">6〜20人</label>
+        <label><input type="radio" name="q1_size" value="21〜50人">21〜50人</label>
+        <label><input type="radio" name="q1_size" value="51人以上">51人以上</label>
+      </div>
+    </div>
+
+    <div class="q">
+      <div class="q-label"><span class="q-num">02</span><span>ご回答いただく方のお立場</span></div>
+      <div class="choices">
+        <label><input type="radio" name="q2_role" value="社長・役員">社長・役員</label>
+        <label><input type="radio" name="q2_role" value="担当者">担当者</label>
+        <label><input type="radio" name="q2_role" value="その他">その他</label>
+      </div>
+    </div>
+
+    <div class="q">
+      <div class="q-label"><span class="q-num">03</span><span>毎週やっていて、いちばん時間を取られている手作業を1つ<span class="req">必須</span></span></div>
+      <p class="hint">例：注文ごとに伝票を手で打っている／請求書を毎月まとめて作っている／同じ内容のメールを何通も書いている</p>
+      <textarea name="q3_task" required placeholder="言葉のままで大丈夫です"></textarea>
+    </div>
+
+    <div class="q">
+      <div class="q-label"><span class="q-num">04</span><span>その作業は、誰が、週にどのくらいやっていますか</span></div>
+      <div class="inline" style="margin-bottom:10px"><span>やっている人数</span><input type="number" name="q4_people" min="1" max="500" value="1"><span>人</span></div>
+      <p class="hint">1人あたりの時間（週）</p>
+      <div class="choices">
+        <label><input type="radio" name="q4_hours" value="1時間未満">1時間未満</label>
+        <label><input type="radio" name="q4_hours" value="1〜3時間">1〜3時間</label>
+        <label><input type="radio" name="q4_hours" value="3〜5時間">3〜5時間</label>
+        <label><input type="radio" name="q4_hours" value="5〜10時間">5〜10時間</label>
+        <label><input type="radio" name="q4_hours" value="10時間以上">10時間以上</label>
+      </div>
+    </div>
+
+    <div class="q">
+      <div class="q-label"><span class="q-num">05</span><span>その方が1週間お休みしたら、その作業はどうなりますか</span></div>
+      <div class="choices">
+        <label><input type="radio" name="q5_absence" value="ほかの人で回る">ほかの人で回る</label>
+        <label><input type="radio" name="q5_absence" value="遅れるが回る">遅れるが回る</label>
+        <label><input type="radio" name="q5_absence" value="止まる">止まる</label>
+      </div>
+    </div>
+
+    <div class="q">
+      <div class="q-label"><span class="q-num">06</span><span>今お使いのもの（当てはまるもの全部）</span></div>
+      <div class="choices">
+        <label><input type="checkbox" name="q6_tools" value="Google Workspace">Google Workspace（Gmail・スプレッドシート等）</label>
+        <label><input type="checkbox" name="q6_tools" value="Microsoft 365">Microsoft 365（Outlook・Excel等）</label>
+        <label><input type="checkbox" name="q6_tools" value="LINE">LINE・LINE公式</label>
+        <label><input type="checkbox" name="q6_tools" value="Excelファイル">Excel（ファイルで管理）</label>
+        <label><input type="checkbox" name="q6_tools" value="ネットショップ">ネットショップ（BASE・Shopify・楽天など）</label>
+        <label><input type="checkbox" name="q6_tools" value="会計ソフト">会計ソフト（freee・マネーフォワード・弥生など）</label>
+        <label><input type="checkbox" name="q6_tools" value="業務システム">顧客管理・業務システム（Salesforce・kintoneなど）</label>
+        <label><input type="checkbox" name="q6_tools" value="紙・FAX">紙・FAX</label>
+        <label><input type="checkbox" name="q6_tools" value="その他">その他</label>
+      </div>
+    </div>
+
+    <div class="q">
+      <div class="q-label"><span class="q-num">07</span><span>同じ情報を、2か所以上に入力している場面はありますか</span></div>
+      <div class="choices" style="margin-bottom:10px">
+        <label><input type="radio" name="q7_double" value="ある">ある</label>
+        <label><input type="radio" name="q7_double" value="ない">ない</label>
+        <label><input type="radio" name="q7_double" value="分からない">分からない</label>
+      </div>
+      <input type="text" name="q7_where" placeholder="「ある」の場合：どこからどこへ（例：注文メール → Excel → 伝票）">
+    </div>
+
+    <div class="q">
+      <div class="q-label"><span class="q-num">08</span><span>外注や月額のツールに、今どのくらい払っていますか（合計・だいたいで）</span></div>
+      <div class="choices">
+        <label><input type="radio" name="q8_spend" value="払っていない">払っていない</label>
+        <label><input type="radio" name="q8_spend" value="月1万円未満">月1万円未満</label>
+        <label><input type="radio" name="q8_spend" value="月1〜5万円">月1〜5万円</label>
+        <label><input type="radio" name="q8_spend" value="月5〜10万円">月5〜10万円</label>
+        <label><input type="radio" name="q8_spend" value="月10万円以上">月10万円以上</label>
+      </div>
+    </div>
+
+    <div class="q">
+      <div class="q-label"><span class="q-num">09</span><span>これまでに試した改善や、途中で止まったもの<span class="opt">任意</span></span></div>
+      <p class="hint">例：ツールを入れたが使われなくなった／担当者が辞めて分からなくなった</p>
+      <textarea name="q9_past"></textarea>
+    </div>
+
+    <div class="q">
+      <div class="q-label"><span class="q-num">10</span><span>改善して、いちばんほしい結果はどれですか（1つ）</span></div>
+      <div class="choices">
+        <label><input type="radio" name="q10_goal" value="作業時間を減らしたい">作業時間を減らしたい</label>
+        <label><input type="radio" name="q10_goal" value="ミスを減らしたい">ミスを減らしたい</label>
+        <label><input type="radio" name="q10_goal" value="人が抜けても回るようにしたい">人が抜けても回るようにしたい</label>
+        <label><input type="radio" name="q10_goal" value="売上につなげたい">売上につなげたい</label>
+        <label><input type="radio" name="q10_goal" value="費用を減らしたい">費用を減らしたい</label>
+      </div>
+    </div>
+
+    <div class="q">
+      <div class="q-label"><span class="q-num">11</span><span>もし何かを頼むと決めるとき、どんな流れになりますか</span></div>
+      <div class="choices">
+        <label><input type="radio" name="q11_decision" value="自分で決められる">自分で決められる</label>
+        <label><input type="radio" name="q11_decision" value="上司・社長に相談する">上司・社長に相談する</label>
+        <label><input type="radio" name="q11_decision" value="分からない">分からない</label>
+      </div>
+    </div>
+
+    <div class="q">
+      <div class="q-label"><span class="q-num">12</span><span>補助金を使ったことはありますか</span></div>
+      <div class="choices">
+        <label><input type="radio" name="q12_subsidy" value="ある">ある</label>
+        <label><input type="radio" name="q12_subsidy" value="ない">ない</label>
+        <label><input type="radio" name="q12_subsidy" value="検討中">検討中</label>
+      </div>
+    </div>
+
+    <div class="q">
+      <div class="q-label"><span class="q-num">13</span><span>相談のときに聞いてみたいこと<span class="opt">任意</span></span></div>
+      <textarea name="q13_question"></textarea>
+    </div>
+
+    <div class="q">
+      <div class="q-label"><span class="q-num">—</span><span>ご連絡先</span></div>
+      <div class="row">
+        <input type="text" name="name" placeholder="お名前（任意）">
+        <input type="email" name="email" required placeholder="メールアドレス（必須・折り返し用）">
+      </div>
+    </div>
+
+    <label class="consent"><input type="checkbox" name="consent" required><span>送っていただいた内容は、相談の準備にだけ使い、ほかには使いません。第三者に渡すこともありません。この内容に同意して送信します。</span></label>
+
+    <div class="actions">
+      <button type="submit" class="btn btn-primary" id="submitBtn">診断結果を見る（送信）</button>
+      <div class="err" id="err"></div>
+    </div>
+  </form>
+
+  <section id="result" class="card" aria-live="polite">
+    <p class="kicker" style="margin-top:0">結果の目安</p>
+    <h2 class="res-head">今の手作業を、時間と金額に置き換えると</h2>
+    <div id="banner"></div>
+    <div id="resBody"></div>
+    <p class="note" style="margin-top:18px">この数字は、いただいた回答からの概算です。実際の時給や件数で計算し直すと変わります。内容を読んで、1〜2営業日のうちに私からメールでご連絡します。</p>
+    <div class="actions" style="margin-top:14px"><a class="btn btn-ghost" href="../">トップに戻る</a></div>
+  </section>
+
+  <footer>© <span id="yr"></span> VelaCotta Works / Miho — 業務効率化ミニ診断</footer>
+</div>
+
+<script>
+(function () {
+  // ===== 送信先（Google Apps Script Web App の /exec URL）。空のままだと「テスト表示」になり送信されない =====
+  var GAS_ENDPOINT = "";
+  // ===== 送信に失敗したときの逃げ道（既存の問い合わせフォーム）=====
+  var FALLBACK_FORM = "https://docs.google.com/forms/d/1-MzFBNA1icIArQNUmUfvRYeAbYsF1Q8TVnbBryG-yg8/viewform";
+  var HOURLY_YEN = 2000;       // 時給の仮置き（結果画面に明記）
+  var WEEKS_PER_YEAR = 52;
+
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  var HOURS_MID = { '1時間未満': 0.5, '1〜3時間': 2, '3〜5時間': 4, '5〜10時間': 7.5, '10時間以上': 12 };
+
+  function val(form, name) { var el = form.elements[name]; if (!el) return ''; if (el.length && el[0] && el[0].type === 'radio') { for (var i = 0; i < el.length; i++) if (el[i].checked) return el[i].value; return ''; } return (el.value || '').trim(); }
+  function vals(form, name) { var out = []; var list = form.querySelectorAll('input[name="' + name + '"]:checked'); for (var i = 0; i < list.length; i++) out.push(list[i].value); return out; }
+  function fmt(n) { return Math.round(n).toLocaleString('ja-JP'); }
+  function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+
+  function estimate(a) {
+    var people = parseInt(a.q4_people, 10); if (!(people > 0)) people = 1;
+    var mid = HOURS_MID[a.q4_hours];
+    if (!mid) return null;
+    var weekH = people * mid, yearH = weekH * WEEKS_PER_YEAR;
+    return { people: people, weekH: weekH, yearH: yearH, yen: yearH * HOURLY_YEN };
+  }
+
+  function render(a, est) {
+    var rows = [];
+    rows.push(['いちばんの作業', esc(a.q3_task).replace(/\n/g, '<br>')]);
+    if (est) {
+      rows.push(['時間の目安', '<span class="res-big">週 約' + fmt(est.weekH) + '時間<small>' + est.people + '人分</small></span><br>年にすると <b>約' + fmt(est.yearH) + '時間</b>']);
+      rows.push(['金額に置き換えると', '<span class="res-big">年 約' + fmt(est.yen / 10000) + '万円分<small>時給' + fmt(HOURLY_YEN) + '円で仮に置いた場合</small></span>']);
+    } else {
+      rows.push(['時間の目安', '週の時間が未記入のため計算していません。相談のときに一緒に出しましょう。']);
+    }
+    var notes = [];
+    if (a.q5_absence === '止まる') notes.push('その方が休むと止まる作業とのことなので、時間を減らすことより先に「ほかの人でも回る形にすること」が効くかもしれません。');
+    if (a.q7_double === 'ある') notes.push('同じ情報を2か所に入れている場面があるとのことなので、私ならまずそこを最初の候補にします。' + (a.q7_where ? '（' + esc(a.q7_where) + '）' : ''));
+    if (a.q10_goal) notes.push('ほしい結果は「' + esc(a.q10_goal) + '」。ご連絡のときは、この結果に近いものから順にお伝えします。');
+    if (notes.length) rows.push(['気になった点', notes.map(function (n) { return '<p style="margin:0 0 8px">' + n + '</p>'; }).join('')]);
+    return rows.map(function (r) { return '<div class="res-line"><div class="res-k">' + r[0] + '</div><div class="res-v">' + r[1] + '</div></div>'; }).join('');
+  }
+
+  var form = document.getElementById('f');
+  form.addEventListener('submit', function (ev) {
+    ev.preventDefault();
+    var err = document.getElementById('err'); err.textContent = '';
+    var a = {};
+    ['q1_company', 'q1_industry', 'q1_size', 'q2_role', 'q3_task', 'q4_people', 'q4_hours', 'q5_absence', 'q7_double', 'q7_where', 'q8_spend', 'q9_past', 'q10_goal', 'q11_decision', 'q12_subsidy', 'q13_question', 'name', 'email', 'website'].forEach(function (k) { a[k] = val(form, k); });
+    a.q6_tools = vals(form, 'q6_tools').join('、');
+    if (!a.q3_task) { err.textContent = '03 の「いちばん時間を取られている手作業」だけは書いてください。'; form.elements['q3_task'].focus(); return; }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(a.email)) { err.textContent = '折り返し用のメールアドレスを入れてください。'; form.elements['email'].focus(); return; }
+    if (!form.elements['consent'].checked) { err.textContent = '内容の取り扱いへの同意にチェックをお願いします。'; return; }
+
+    var est = estimate(a);
+    a.calc_week_h = est ? est.weekH : ''; a.calc_year_h = est ? est.yearH : ''; a.calc_year_yen = est ? est.yen : ''; a.calc_hourly = HOURLY_YEN;
+    a.page = location.href;
+
+    var btn = document.getElementById('submitBtn'); btn.disabled = true; btn.textContent = '送信しています…';
+    var banner = document.getElementById('banner');
+
+    function show(kind, msg) {
+      document.getElementById('resBody').innerHTML = render(a, est);
+      banner.innerHTML = msg ? '<div class="banner ' + kind + '">' + msg + '</div>' : '';
+      form.style.display = 'none';
+      var r = document.getElementById('result'); r.classList.add('show'); r.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    if (!GAS_ENDPOINT) { show('', '結果は上のとおりです。送信の仕組みを準備中のため、この回答はまだ私に届いていません。お手数ですが <a href="' + FALLBACK_FORM + '" target="_blank" rel="noopener">こちらのフォーム</a> に「いちばんの手作業」と連絡先を書いてお送りください。'); btn.disabled = false; btn.textContent = '診断結果を見る（送信）'; return; }
+
+    var fd = new FormData(); Object.keys(a).forEach(function (k) { fd.append(k, a[k]); });
+    fetch(GAS_ENDPOINT, { method: 'POST', mode: 'no-cors', body: fd })
+      .then(function () { show('ok', '受け付けました。折り返し、メールでご連絡します。'); })
+      .catch(function () { show('', '送信に失敗しました。お手数ですが <a href="' + FALLBACK_FORM + '" target="_blank" rel="noopener">こちらのフォーム</a> から同じ内容をお送りください。'); })
+      .finally(function () { btn.disabled = false; btn.textContent = '診断結果を見る（送信）'; });
+  });
+})();
+</script>
+</body>
+</html>
