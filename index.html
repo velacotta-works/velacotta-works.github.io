@@ -225,6 +225,28 @@
   .contact h2 { font-family: var(--serif); font-weight: 800; font-size: clamp(22px, 3.2vw, 30px); }
   .contact p { color: var(--ink-soft); max-width: 34em; margin: 14px auto 26px; font-size: 14.5px; }
 
+  /* ───────── 埋め込みフォーム ───────── */
+  .form-embed { margin-top: 28px; }
+  .form-embed-head { text-align: center; margin-bottom: 16px; }
+  .form-embed-head h3 {
+    font-family: var(--serif); font-size: 19px; font-weight: 800; letter-spacing: .02em;
+  }
+  .form-embed-head p {
+    color: var(--ink-soft); font-size: 12.5px; line-height: 1.8;
+    max-width: 34em; margin: 8px auto 0;
+  }
+  .form-embed iframe {
+    display: block; width: 100%; max-width: 720px; margin: 0 auto;
+    border: 1px solid var(--line); border-radius: 8px;
+    background: #fff; box-shadow: 0 4px 16px rgba(37,32,26,.06);
+  }
+  .form-embed-alt { text-align: center; margin-top: 14px; }
+  .form-embed-alt a {
+    font-size: 12.5px; color: var(--ink-soft); text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .form-embed-alt a:hover { color: var(--ink); }
+
   /* ───────── フッター ───────── */
   footer { border-top: 1px solid var(--line); margin-top: 80px; padding: 30px clamp(20px, 5vw, 56px); text-align: center; }
   footer p { font-size: 12px; color: var(--ink-soft); letter-spacing: .06em; }
@@ -266,6 +288,7 @@
     .work-thumb { height: 120px; }                /* 1カラムなのでサムネを少し高く */
 
     .contact { padding: 36px 20px; }
+    .form-embed iframe { height: 760px; }         /* スマホは少し低くしてページが長くなりすぎないように */
     footer { margin-top: 56px; }
   }
 
@@ -727,9 +750,26 @@
         <span class="kicker solo" style="justify-content:center">CONTACT</span>
         <h2 data-i18n="contact.h2">お仕事のご相談</h2>
         <p data-i18n="contact.p">「こんなこと頼める？」という段階のご相談も歓迎です。下記フォームよりお気軽にお問い合わせください。内容を確認のうえ、折り返しご連絡します。</p>
-        <!-- ===== 要確認: Notion記載は編集用URL(/edit)だったため回答用(/viewform)に変換。公開リンクが正しいか開いて確認し、必要なら差し替え ===== -->
-        <a href="https://docs.google.com/forms/d/1-MzFBNA1icIArQNUmUfvRYeAbYsF1Q8TVnbBryG-yg8/viewform" target="_blank" rel="noopener" class="btn btn-primary" style="font-size:15px;padding:14px 34px" data-i18n="contact.cta">お問い合わせフォームへ →</a>
         <a href="shindan/" class="btn btn-ghost" style="font-size:14px;padding:12px 26px;margin:6px" data-i18n="contact.shindan">10分でできるミニ診断へ →</a>
+      </div>
+
+      <div class="form-embed">
+        <div class="form-embed-head">
+          <h3 data-i18n="contact.form.h3">お仕事のご相談フォーム</h3>
+          <p data-i18n="contact.form.note">このページのまま入力・送信できます。うまく表示されないときは、下の「別のタブで開く」からどうぞ。</p>
+        </div>
+        <iframe
+          src="https://docs.google.com/forms/d/e/1FAIpQLSdsbaPOFnbH2ohYBqTe6wTVRXs1EG2h5FgJaL0SOs2tQASR4w/viewform?embedded=true"
+          title="お仕事のご相談フォーム"
+          aria-label="お仕事のご相談フォーム"
+          data-i18n-aria="contact.form.aria"
+          loading="lazy"
+          width="100%" height="900" frameborder="0" marginheight="0" marginwidth="0">
+          <span data-i18n="contact.form.loading">読み込んでいます…</span>
+        </iframe>
+        <p class="form-embed-alt">
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSdsbaPOFnbH2ohYBqTe6wTVRXs1EG2h5FgJaL0SOs2tQASR4w/viewform" target="_blank" rel="noopener" data-i18n="contact.form.newtab">別のタブでフォームを開く ↗</a>
+        </p>
       </div>
     </section>
 
@@ -880,15 +920,19 @@
 
       'contact.h2': 'Get in Touch',
       'contact.p': 'Even a &ldquo;could you help with something like this?&rdquo; question at the earliest stage is welcome. Please reach out using the form below &mdash; I&rsquo;ll review your message and get back to you.',
-      'contact.cta': 'Go to Contact Form →',
-      'contact.shindan': 'Start with a 10-minute self-check →'
+      'contact.shindan': 'Start with a 10-minute self-check →',
+      'contact.form.h3': 'Enquiry Form',
+      'contact.form.note': 'You can fill this in and send it without leaving the page. If it doesn&rsquo;t display properly, use the link below to open it in a new tab.',
+      'contact.form.loading': 'Loading&hellip;',
+      'contact.form.newtab': 'Open the form in a new tab ↗'
     };
 
     var EN_ARIA = {
       'azulejo.aria': 'Trencadís (broken-tile mosaic)',
       'works.w1.aria': 'Thumbnail: The Daily Task Automation Textbook',
       'works.w2.aria': 'Thumbnail: MEO Practical Mastery Course',
-      'works.w3.aria': 'Thumbnail: Free MEO Diagnosis Landing Page'
+      'works.w3.aria': 'Thumbnail: Free MEO Diagnosis Landing Page',
+      'contact.form.aria': 'Enquiry form'
     };
 
     var TITLE_JA = document.title;
