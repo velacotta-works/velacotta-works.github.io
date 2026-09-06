@@ -762,12 +762,12 @@
       <div class="contact">
         <span class="kicker solo" style="justify-content:center">CONTACT</span>
         <h2 data-i18n="contact.h2">お仕事のご相談</h2>
-        <p data-i18n="contact.p">「こんなこと頼める？」という段階のご相談も歓迎です。下のフォームからお気軽にどうぞ。私が読んで、折り返しご連絡します。</p>
+        <p data-i18n="contact.p">「こんなこと頼める？」という段階のご相談も歓迎です。下記フォームよりお気軽にお問い合わせください。内容を確認のうえ、折り返しご連絡します。</p>
         <a href="shindan/" class="btn btn-ghost" style="font-size:14px;padding:12px 26px;margin:6px" data-i18n="contact.shindan">10分でできるミニ診断へ →</a>
       </div>
 
-      <!-- 送信先(GAS)が未設定のあいだは、送信でメールソフトが開く形に切り替わる -->
-      <div class="cform" id="cf-wrap">
+      <!-- 送信先(GAS)が未設定のあいだは非表示。GAS_ENDPOINT を入れると表示される -->
+      <div class="cform" id="cf-wrap" hidden>
         <form id="cform" novalidate>
           <div class="cf-row">
             <label class="cf-field">
@@ -795,7 +795,7 @@
       </div>
 
       <p class="form-embed-alt" id="cf-fallback">
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdsbaPOFnbH2ohYBqTe6wTVRXs1EG2h5FgJaL0SOs2tQASR4w/viewform" target="_blank" rel="noopener" data-i18n="cform.gform">うまく送れないときは、こちらのフォームからもどうぞ ↗</a>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdsbaPOFnbH2ohYBqTe6wTVRXs1EG2h5FgJaL0SOs2tQASR4w/viewform" target="_blank" rel="noopener" class="btn btn-primary" style="font-size:15px;padding:14px 34px" data-i18n="cform.gform">お問い合わせフォームへ →</a>
       </p>
     </section>
 
@@ -813,13 +813,17 @@
   <script>
   (function () {
     // 送信先（Google Apps Script Web App の /exec URL）。
-    // 空のあいだは、送信でメールソフトを開いて Miho + ご本人(Cc) 宛のメールを組み立てる。
-    // URLを入れると、そのままページ内で送信が完了する形に自動で切り替わる。
+    // ここが空のあいだはフォームを出さず、Googleフォームのボタンだけを見せる。
+    // /exec URL を入れると、フォームが表示されてページ内で送信が完了する形になる。
     var GAS_ENDPOINT = "";
-    var MAIL_TO = ['okome05313', 'gmail.com'].join('@');   // 平文で置かない（収集対策）
 
     var wrap = document.getElementById('cf-wrap');
-    if (!wrap) return;
+    var fallback = document.getElementById('cf-fallback');
+    if (!wrap || !fallback) return;
+
+    if (!GAS_ENDPOINT) return;      // 未開通: フォームは hidden のまま、Googleフォームのボタンを残す
+    wrap.hidden = false;
+    fallback.hidden = true;
 
     var form = document.getElementById('cform');
     var btn = document.getElementById('cf-submit');
@@ -847,26 +851,6 @@
       }
       if (hpEl.value) { return; }   // ハニーポット: botは静かに捨てる
 
-      // --- 送信先が未設定のあいだ: メールソフトを開き、Miho宛＋ご本人にもCcで控えが残る形にする ---
-      if (!GAS_ENDPOINT) {
-        var subject = t('お問い合わせ（' + name + ' 様）', 'Enquiry from ' + name);
-        var body = t(
-          ['お名前: ' + name, 'メールアドレス: ' + email, '', 'お問い合わせ内容:', message, '',
-           '--', 'このメールは velacotta-works.github.io のお問い合わせフォームから作成されました。'].join('\n'),
-          ['Name: ' + name, 'Email: ' + email, '', 'Message:', message, '',
-           '--', 'Composed from the contact form at velacotta-works.github.io'].join('\n')
-        );
-        window.location.href = 'mailto:' + MAIL_TO
-          + '?cc=' + encodeURIComponent(email)
-          + '&subject=' + encodeURIComponent(subject)
-          + '&body=' + encodeURIComponent(body);
-        say('ok', t(
-          'メールソフトが開きます。内容をご確認のうえ、そのまま送信してください（' + email + ' にも控えが残ります）。開かない場合は、下のフォームからお送りください。',
-          'Your email app should open. Please review and send it as it is — a copy will also go to ' + email + '. If nothing opens, use the form linked below.'
-        ));
-        return;
-      }
-
       btn.disabled = true;
       var label = btn.textContent;
       btn.textContent = t('送信中…', 'Sending…');
@@ -892,6 +876,7 @@
             '送信できませんでした。お手数ですが、しばらく置いてもう一度お試しいただくか、下のフォームからお送りください。',
             'Sending failed. Please try again shortly, or use the form linked below.'
           ));
+          fallback.hidden = false;
         })
         .finally(function () { btn.disabled = false; btn.textContent = label; });
     });
@@ -1034,7 +1019,7 @@
       'ventures.v5.roi': 'Not a tool that stopped with the person who built it &mdash; <b>the whole team adopted it</b>',
 
       'contact.h2': 'Get in Touch',
-      'contact.p': 'Even a &ldquo;could you help with something like this?&rdquo; question at the earliest stage is welcome. Use the form below &mdash; I&rsquo;ll read it myself and get back to you.',
+      'contact.p': 'Even a &ldquo;could you help with something like this?&rdquo; question at the earliest stage is welcome. Please reach out using the form below &mdash; I&rsquo;ll review your message and get back to you.',
       'contact.shindan': 'Start with a 10-minute self-check →',
       'cform.name': 'Your name<b class="cf-req">required</b>',
       'cform.email': 'Email address<b class="cf-req">required</b>',
@@ -1042,7 +1027,7 @@
       'cform.req': 'required',
       'cform.hint': 'A rough &ldquo;could you help with something like this?&rdquo; is fine. One line about the task taking up most of your time is plenty.',
       'cform.submit': 'Send',
-      'cform.gform': 'Having trouble sending? You can also use this form ↗'
+      'cform.gform': 'Go to Contact Form →'
     };
 
     var EN_ARIA = {
