@@ -100,7 +100,7 @@
   <span class="kicker">業務効率化ミニ診断</span>
   <h1>毎週の手作業、<br>時間にするとどのくらいか。</h1>
   <p class="lede">13の質問に答えると、その場で「かかっている時間と金額の目安」が出ます。10分ほどで書けます。</p>
-  <p class="note">分からないところは空欄で大丈夫です。数字は「だいたい」で構いません。送っていただいた内容は、私（Miho）が読んで折り返しご連絡します。</p>
+  <p class="note" id="leadNote">分からないところは空欄で大丈夫です。数字は「だいたい」で構いません。送っていただいた内容は、私（Miho）が読んで折り返しご連絡します。</p>
 
   <form id="f" class="card" novalidate>
     <div class="hp" aria-hidden="true"><label>website<input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
@@ -240,7 +240,7 @@
       </div>
     </div>
 
-    <label class="consent"><input type="checkbox" name="consent" required><span>送っていただいた内容は、相談の準備にだけ使い、ほかには使いません。第三者に渡すこともありません。この内容に同意して送信します。</span></label>
+    <label class="consent"><input type="checkbox" name="consent" required><span id="consentNote">送っていただいた内容は、相談の準備にだけ使い、ほかには使いません。第三者に渡すこともありません。この内容に同意して送信します。</span></label>
 
     <div class="actions">
       <button type="submit" class="btn btn-primary" id="submitBtn">診断結果を見る</button>
@@ -253,7 +253,7 @@
     <h2 class="res-head">今の手作業を、時間と金額に置き換えると</h2>
     <div id="banner"></div>
     <div id="resBody"></div>
-    <p class="note" style="margin-top:18px">この数字は、いただいた回答からの概算です。実際の時給や件数で計算し直すと変わります。内容を読んで、1〜2営業日のうちに私からメールでご連絡します。</p>
+    <p class="note" style="margin-top:18px" id="resultNote">この数字は、いただいた回答からの概算です。実際の時給や件数で計算し直すと変わります。内容を読んで、1〜2営業日のうちに私からメールでご連絡します。</p>
     <div class="actions" style="margin-top:14px"><a class="btn btn-ghost" href="../">トップに戻る</a></div>
   </section>
 
@@ -273,6 +273,19 @@
   // 送信先が未設定の間は「送信」と名乗らない（結果は端末内の計算のみ）
   var BTN_LABEL = GAS_ENDPOINT ? '診断結果を見る（送信）' : '診断結果を見る';
   document.getElementById('submitBtn').textContent = BTN_LABEL;
+
+  // 未接続のあいだは「送信される・連絡が来る」と読める文言を出さない（守れない約束をしない）
+  if (!GAS_ENDPOINT) {
+    var swap = {
+      leadNote: '分からないところは空欄で大丈夫です。数字は「だいたい」で構いません。<b>いまは結果を画面に表示するだけで、回答が私に送られることはありません。</b>',
+      consentNote: '入力した内容はお使いの端末の中だけで計算に使われ、どこにも送信されません。',
+      resultNote: 'この数字は、いただいた回答からの概算です。実際の時給や件数で計算し直すと変わります。'
+    };
+    Object.keys(swap).forEach(function (id) {
+      var el = document.getElementById(id);
+      if (el) el.innerHTML = swap[id];
+    });
+  }
 
   var HOURS_MID = { '1時間未満': 0.5, '1〜3時間': 2, '3〜5時間': 4, '5〜10時間': 7.5, '10時間以上': 12 };
 
