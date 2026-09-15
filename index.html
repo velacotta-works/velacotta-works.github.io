@@ -450,11 +450,11 @@
     <a href="/" class="logo" aria-label="ページの先頭に戻る">Miho <small style="font-family:var(--sans);font-weight:500;font-size:10px;letter-spacing:.18em;color:var(--ink-soft)">VELACOTTA WORKS</small></a>
     <nav>
       <span class="links">
-        <a href="#about" data-i18n="nav.about">プロフィール</a>
         <a href="#services" data-i18n="nav.services">できること</a>
         <a href="/can-do/" class="nav-cando">困りごと別に探す</a>
+        <a href="#ventures" data-i18n="nav.ventures">実際に使われている仕事</a>
         <a href="#roi" data-i18n="nav.roi">費用対効果</a>
-        <a href="#ventures" data-i18n="nav.ventures">業務効率化の実績</a>
+        <a href="#about" data-i18n="nav.about">プロフィール</a>
       </span>
       <a href="#contact" class="cta" data-i18n="nav.contact">お問い合わせ</a>
       <button type="button" id="lang-toggle" class="lang-switch" aria-label="Switch to English / 英語表示に切り替え">EN</button>
@@ -467,164 +467,152 @@
     <header class="hero">
       <span class="kicker">PORTFOLIO &amp; WORKS</span>
       <!-- ===== 要編集: キャッチコピー ===== -->
-      <h1 data-i18n="hero.title"><span class="nw">業務の詰まりを見つけ、</span><span class="nw"><em>仕組み</em>にして、動くところまで。</span></h1>
-      <p class="lede" data-i18n="hero.lede">
-        外資系企業で営業・マーケティングチームを支える事務サポートをしながら、Notion・GAS・AIを使った業務効率化、
-        MEO・店舗集客、わかりやすい教材づくりまで手がけています。「やりたいけど手が回らない」を、現場で回る形にします。
-      </p>
+      <h1 data-i18n="hero.title"><span class="nw">手作業のまま回している仕事、</span><span class="nw"><em>仕組み</em>にして動くところまで。</span></h1>
+      <p class="lede" data-i18n="hero.lede">メールの下書き、書類集め、社内への通知。毎回同じ手順でくり返している作業を、GAS・Notion・生成AIで自動にする仕組みをつくります。私自身の担当業務でも使っているやり方です。展示会の準備から当日の営業、終わったあとのフォローまでのご相談もお受けします。</p>
       <div class="meta">
         <span data-i18n="hero.meta1">業務効率化・自動化</span>
-        <span>Notion / GAS / AI</span>
+        <span data-i18n="hero.meta2">展示会の出展サポート</span>
         <span data-i18n="hero.meta3">営業・事務サポート</span>
-        <span data-i18n="hero.meta4">MEO・教材制作</span>
+        <span data-i18n="hero.meta4">日英対応</span>
       </div>
       <div class="actions">
         <a href="#contact" class="btn btn-primary" data-i18n="hero.cta1">お仕事のご相談 →</a>
-        <a href="#ventures" class="btn btn-ghost" data-i18n="hero.cta2">業務効率化の実績を見る</a>
+        <a href="#ventures" class="btn btn-ghost" data-i18n="hero.cta2">使われている仕事を見る</a>
       </div>
     </header>
 
-    <!-- ===== About ===== -->
-    <section class="block" id="about">
-      <div class="block-head">
-        <span class="kicker solo">ABOUT</span>
-        <h2 data-i18n="about.h2">プロフィール</h2>
-      </div>
-      <div class="about-grid">
-        <div class="about-card">
-          <p data-i18n="about.p1">はじめまして、<b>Miho</b>と申します。外資系企業で営業・マーケティングチームを支える事務サポートを担当し、営業現場の「ちょっと困った」を<b>業務効率化</b>を念頭に解決するのが得意です。</p>
-          <p data-i18n="about.p2">ツールありきではなく、<b>課題から逆算</b>して仕組みをつくり、動くところまで作りきることを大切にしています。Notion・GAS・AIを使った自動化から、営業・事務サポート、MEO・教材制作まで幅広く対応します。</p>
-          <ul class="about-facts">
-            <li data-i18n="about.fact1"><span>拠点</span>東京（リモート対応可）</li>
-            <li data-i18n="about.fact2"><span>稼働</span>平日夜・土日（週10〜20時間目安）</li>
-            <li data-i18n="about.fact3"><span>経験</span>DX推進 / 業務効率化 / 営業支援 / データ管理</li>
-          </ul>
-          <p class="sign">— Miho / VelaCotta Works</p>
-        </div>
-        <div class="about-points">
-          <div class="point p1">
-            <div class="pt-no">01</div>
-            <h3 data-i18n="about.point1.h3">AI×業務効率化の実践力</h3>
-            <p data-i18n="about.point1.p">Notion AI・GASを活用した自動化システムを、実案件で構築・運用してきました。</p>
-          </div>
-          <div class="point p2">
-            <div class="pt-no">02</div>
-            <h3 data-i18n="about.point2.h3">課題ファーストの思考</h3>
-            <p data-i18n="about.point2.p">ツールありきではなく、課題から逆算して最適な解決策を提案します。</p>
-          </div>
-          <div class="point p3">
-            <div class="pt-no">03</div>
-            <h3 data-i18n="about.point3.h3">体系的な情報設計</h3>
-            <p data-i18n="about.point3.p">Input / Output / Tag 構造で、知識や業務情報を有機的に管理する設計力。</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== できること ===== -->
+    <!-- ===== できること（強み1つ → 入口別） ===== -->
     <section class="block" id="services">
       <div class="block-head">
         <span class="kicker solo">WHAT I DO</span>
         <h2 data-i18n="services.h2">できること</h2>
-        <p class="block-lede" data-i18n="services.lede">課題から逆算して、必要なところだけでもお手伝いします。ご相談ベースで柔軟に対応します。</p>
+        <p class="block-lede" data-i18n="services.lede"><b>担当者しか分からない手作業を、ほかの人も回せる、動く形にします。</b>業務の効率化でも、展示会でも、やっていることは同じです。</p>
       </div>
-      <div class="cards3">
-        <div class="svc-card c-content">
-          <h3 data-i18n="services.c1.h3">業務効率化・自動化</h3>
-          <div class="form">AI &amp; AUTOMATION</div>
-          <ul>
-            <li data-i18n="services.c1.li1">Notion AI + GAS連携による自動化</li>
-            <li data-i18n="services.c1.li2">FAQ対応・定型作業の仕組み化</li>
-            <li data-i18n="services.c1.li3">業務プロセスの改善提案</li>
-            <li data-i18n="services.c1.li4">手順書・マニュアルの整備</li>
-          </ul>
+      <div class="about-points">
+        <div class="point p1">
+          <div class="pt-no">01</div>
+          <h3 data-i18n="strength.p1.h3">まず動く形で見せる</h3>
+          <p data-i18n="strength.p1.p">完成を待たずに、動く試作品をお見せします。人に渡す前に、自分の仕事で使って確かめています。展示会のお礼メールの仕組みも、私が使っているのを見た営業から広がりました。</p>
         </div>
-        <div class="svc-card c-office">
-          <h3 data-i18n="services.c2.h3">営業・事務サポート</h3>
-          <div class="form">SALES SUPPORT</div>
-          <ul>
-            <li data-i18n="services.c2.li1">CRM運用・データ整備（Salesforce / Notion）</li>
-            <li data-i18n="services.c2.li2">見積・請求・議事録・活動履歴の整理</li>
-            <li data-i18n="services.c2.li3">展示会・イベントの準備〜フォロー</li>
-            <li data-i18n="services.c2.li4">提案資料作成・日英翻訳</li>
-          </ul>
+        <div class="point p2">
+          <div class="pt-no">02</div>
+          <h3 data-i18n="strength.p2.h3">範囲を決めて、小さく作る</h3>
+          <p data-i18n="strength.p2.p">どこまで作るかを先に決めてから、手を動かします。</p>
         </div>
-        <div class="svc-card c-sns">
-          <h3 data-i18n="services.c3.h3">MEO・コンテンツ制作</h3>
-          <div class="form">MEO &amp; CONTENT</div>
-          <ul>
-            <li data-i18n="services.c3.li1">Googleビジネスプロフィール運用・診断</li>
-            <li data-i18n="services.c3.li2">学習コース・教材の設計と制作</li>
-            <li data-i18n="services.c3.li3">ランディングページ・記事ライティング</li>
-            <li data-i18n="services.c3.li4">図解・チェックリストへの落とし込み</li>
-          </ul>
+        <div class="point p3">
+          <div class="pt-no">03</div>
+          <h3 data-i18n="strength.p3.h3">事務と営業、両方の現場を知っている</h3>
+          <p data-i18n="strength.p3.p">事務の現場に約20年いながら、展示会の運営や新規開拓など、営業の側も担当してきました。職場が変わるたびに、新しいやり方にすぐ慣れてきました。</p>
         </div>
       </div>
-
-      <!-- ===== ご一緒できること（具体メニュー・追加） ===== -->
-      <div class="offers-head"><span data-i18n="offers.head">こんなご依頼をお受けしています</span></div>
+      <div class="offers-head"><span data-i18n="offers.g1">手作業・担当者だけの仕事を減らしたい</span></div>
       <div class="offers">
         <div class="offer o1">
           <div class="o-no">01</div>
           <h4 data-i18n="offers.o1.h4">メール・書類作成の自動化</h4>
-          <p data-i18n="offers.o1.p">GAS×Claudeで差し込みメールの一括下書き、請求書リマインダーなどを実装します。<b>士業事務所への展開実績あり。</b></p>
-        </div>
-        <div class="offer o2">
-          <div class="o-no">02</div>
-          <h4 data-i18n="offers.o2.h4">AI導入の初期設計・使い方サポート</h4>
-          <p data-i18n="offers.o2.p">Claude Code のCLAUDE.md設計・MCP接続・セキュリティ設定まで。<b>「入れて終わり」にしない定着支援</b>をします。</p>
-        </div>
-        <div class="offer o3">
-          <div class="o-no">03</div>
-          <h4 data-i18n="offers.o3.h4">新規開拓営業のゼロからの立ち上げ</h4>
-          <p data-i18n="offers.o3.p">外資系AI/SaaS企業の創業期に、営業体制をリスト作成→アプローチ→ヒアリング→提案・デモ→契約までゼロから構築しました。展示会20回以上の運営経験もあります。<b>新規開拓の型づくり・改善に伴走します。</b></p>
-        </div>
-        <div class="offer o4">
-          <div class="o-no">04</div>
-          <h4 data-i18n="offers.o4.h4">補助金申請の逆算スケジュール・要件整理の伴走</h4>
-          <p data-i18n="offers.o4.p">本業で担当している補助事業の月次経費精算を、証憑管理から事務局折衝まで単独で内製しています。自身も創業補助金の申請経験あり。<b>書類の代筆ではなく</b>、締切から逆算した工程表づくりと要件整理の壁打ち相手として伴走します。</p>
-        </div>
-        <div class="offer o5">
-          <div class="o-no">05</div>
-          <h4 data-i18n="offers.o5.h4">税理士事務所・バックオフィスへの現場支援</h4>
-          <p data-i18n="offers.o5.p">事務の現場に約20年いた経験を活かし、<b>業務整理・DX化を現場に入って実施します。</b></p>
+          <p data-i18n="offers.o1.p">差し込みメールの一括下書きや、請求書のリマインダーをGASとClaudeでつくります。<b>士業事務所での導入実績があります。</b></p>
         </div>
         <div class="offer o6">
-          <div class="o-no">06</div>
+          <div class="o-no">02</div>
           <h4 data-i18n="offers.o6.h4">Notion・Slack・GASを使った業務整備</h4>
-          <p data-i18n="offers.o6.p">議事録テンプレート・自動通知・ダッシュボード構築など。<b>引き継ぎ可能な運用設計まで担当します。</b></p>
+          <p data-i18n="offers.o6.p">議事録テンプレート、自動通知、ダッシュボード、手順書やよくある質問の整備など。<b>担当者が替わっても回るように、使い方の決まりまで整えます。</b></p>
+        </div>
+        <div class="offer o5">
+          <div class="o-no">03</div>
+          <h4 data-i18n="offers.o5.h4">税理士事務所・バックオフィスへの現場支援</h4>
+          <p data-i18n="offers.o5.p">事務の現場に約20年いた経験から、業務の整理とDX化を現場に入って進めます。<b>顧客データ（Salesforce / Notion）の整備や、見積・請求・議事録の整理にも対応します。</b></p>
+        </div>
+        <div class="offer o2">
+          <div class="o-no">04</div>
+          <h4 data-i18n="offers.o2.h4">AI導入の初期設計・使い方サポート</h4>
+          <p data-i18n="offers.o2.p">Claude Codeの初期設定をお手伝いします。設定ファイル（CLAUDE.md）、外部ツールとの接続（MCP）、セキュリティ設定まで対応します。<b>入れて終わりにせず、使えるようになるまでお付き合いします。</b></p>
+        </div>
+      </div>
+      <div class="offers-head"><span data-i18n="offers.g2">販路を広げたい（展示会・新規開拓・海外）</span></div>
+      <div class="offers">
+        <div class="offer o2" style="grid-column:1/-1">
+          <div class="o-no">05</div>
+          <h4 data-i18n="offers.expo.h4">展示会の出展サポート（必要なところだけ選べます）</h4>
+          <p data-i18n="offers.expo.p">展示会の企画・運営責任者として、出る展示会の候補を調べて提案し、設営、当日の営業、撤収、終わったあとのフォローまで自分の手でやってきました。次の4つから、必要なものだけ選んでいただけます。<br><b>① 出る展示会を一緒に比べる相談<br>② 準備から撤収までの段取り表<br>③ 当日の同行・ブースでの営業<br>④ 終わったあとのフォローの仕組み（リード一覧・お礼メールの一括下書き・商談の記録）</b><br>初めて出展する方、出ているのに商談につながらない方、海外からの来場者向けに資料や対応を整えたい方に。売上や集客の結果はお約束しません。</p>
+        </div>
+        <div class="offer o3">
+          <div class="o-no">06</div>
+          <h4 data-i18n="offers.o3.h4">新規開拓営業のゼロからの立ち上げ</h4>
+          <p data-i18n="offers.o3.p">外資系AI/SaaS企業の創業期に、リスト作成から契約までの営業の流れをゼロからつくりました。<b>新規開拓の型づくりと改善をご一緒します。</b></p>
         </div>
         <div class="offer o7">
           <div class="o-no">07</div>
           <h4 data-i18n="offers.o7.h4">日英対応が必要な業務</h4>
-          <p data-i18n="offers.o7.p">英語での商談・資料作成・海外チームとの調整に対応します。<b>グローバルチームとの協働経験あり。</b></p>
+          <p data-i18n="offers.o7.p">英語での商談、資料づくりと日英翻訳、海外チームとの調整に対応します。<b>海外のチームと一緒に働いてきた経験があります。</b></p>
         </div>
       </div>
-      <p class="offers-note" data-i18n="offers.note">リモート可 ／ スポット相談〜継続サポート対応 ／ <b>小さく始めて、確実に定着させる</b>スタイルで支援します。</p>
+      <p class="offers-note" data-i18n="offers.g2.note">クラウドファンディングなど、展示会以外の販路のご相談もお受けします。</p>
+      <div class="offers-head"><span data-i18n="offers.g3">そのほかのご相談</span></div>
+      <div class="offers">
+        <div class="offer o4">
+          <div class="o-no">08</div>
+          <h4 data-i18n="offers.o4.h4">補助金申請の工程表づくり・要件整理</h4>
+          <p data-i18n="offers.o4.p">本業で、補助事業の月次経費精算を証憑の管理から事務局とのやり取りまで一人で担当しています。創業補助金の申請経験もあります。<b>書類の代筆はしません。</b>締切から逆算した工程表づくりと、要件整理の相談相手を務めます。</p>
+        </div>
+        <div class="offer o2">
+          <div class="o-no">09</div>
+          <h4 data-i18n="offers.o8.h4">Googleマップのお店情報（MEO）・教材づくり</h4>
+          <p data-i18n="offers.o8.p">Googleビジネスプロフィールの運用と診断、学習コースや教材、LP・記事の文章づくりに対応します。<b>練習用につくった見本を、このページ下の「制作実績」に載せています。</b></p>
+        </div>
+      </div>
+      <p class="offers-note" data-i18n="offers.note">リモート可 ／ 1回のご相談から継続サポートまで ／ <b>範囲を決めて、小さく始める</b>進め方です。</p>
     </section>
 
-    <!-- ===== 数字で見る実務（追加） ===== -->
-    <section class="block" id="numbers">
+    <!-- ===== アズレージョ帯 ===== -->
+    <div class="azulejo az1" role="img" aria-label="トレンカディス（割れタイルモザイク）" data-i18n-aria="azulejo.aria"></div>
+    <p class="azulejo-cap" data-i18n="azulejo.cap1">手作業から、動く形へ</p>
+
+    <!-- ===== 個人事業の実績（追加） ===== -->
+    <section class="block" id="ventures">
       <div class="block-head">
-        <span class="kicker solo">BY THE NUMBERS</span>
-        <h2 data-i18n="numbers.h2">数字で見る実務</h2>
-        <p class="block-lede" data-i18n="numbers.lede">これまで自分の担当業務で実際に出してきた結果です。効果は環境によって変わるため、まず見極めてからご提案します。金額に換算するといくらになるかは、次の「費用対効果」にまとめました。</p>
+        <span class="kicker solo">REAL IMPACT</span>
+        <h2 data-i18n="ventures.h2">実際に使われている仕事</h2>
+        <p class="block-lede" data-i18n="ventures.lede">自分の担当業務で実際に出た数字と、私以外の人が使っている仕事です。守秘に関わる部分は、面談でご説明します。</p>
       </div>
-      <div class="stats">
+      <div class="stats" style="margin-bottom:18px">
         <div class="stat s2">
           <div class="stat-label" data-i18n="numbers.s1.label">メール作業（GAS×生成AI）</div>
           <div class="stat-num" data-i18n="numbers.s1.num">90分 → 30分</div>
-          <div class="stat-note" data-i18n="numbers.s1.note">部門横断で「メール対応に時間がかかる」という声をヒアリングし、GAS（Google Apps Script）と生成AIを組み合わせて定型メールの下書き作成を自動化。1件あたりの作業時間を90分から30分に短縮し、チーム全体で月間約30時間分の工数を削減しました。</div>
+          <div class="stat-note" data-i18n="numbers.s1.note">「メール対応に時間がかかる」という声が、複数の部署から出ていました。GASと生成AIで定型メールの下書きを自動にし、1件90分→30分に。チーム全体で月約30時間の削減です。</div>
         </div>
         <div class="stat s3">
           <div class="stat-label" data-i18n="numbers.s2.label">セキュリティチェックシート回答</div>
           <div class="stat-num stat-num-sm" data-i18n="numbers.s2.num">工数80%以上削減</div>
-          <div class="stat-note" data-i18n="numbers.s2.note">取引先ごとに書式が異なるセキュリティチェックシートへの回答は、内容を都度調べて手作業で作成する負担の大きい業務でした。過去150件分の回答実績をNotebookLMとGeminiに参照させて下書きを自動生成する仕組みを構築し、確認・微修正だけで済むようにして回答工数を80%以上削減しました。</div>
+          <div class="stat-note" data-i18n="numbers.s2.note">取引先ごとに書式が違い、毎回調べて手で書いていた業務です。過去150件の回答をNotebookLMとGeminiに読ませて下書きを作る仕組みにし、あとは確認と手直しだけに。工数は80%以上減りました。</div>
         </div>
         <div class="stat s1">
           <div class="stat-label" data-i18n="numbers.s3.label">展示会の企画・運営（日英対応）</div>
           <div class="stat-num" data-i18n="numbers.s3.num">20回以上</div>
-          <div class="stat-note" data-i18n="numbers.s3.note">展示会の企画・運営責任者として、出展計画から当日の運営、終了後のフォローアップまでを一貫して担当。海外パートナーや来場者への日英対応も行い、1回あたり平均30件のリードを獲得、平均3件が商談化しています。</div>
+          <div class="stat-note" data-i18n="numbers.s3.note">出展の計画から当日の運営、終了後のフォローまで、責任者として担当してきました。海外からの来場者への日英対応と、資料・パネルの翻訳も担当。1回あたり平均30件のリード、うち平均3件が商談につながっています。</div>
+        </div>
+      </div>
+      <div class="ventures">
+        <div class="venture-card v1">
+          <span class="v-cat" data-i18n="ventures.v1.cat">海外クライアント / 業務委託</span>
+          <h3 data-i18n="ventures.v1.h3">海外クライアントとの業務委託契約</h3>
+          <p data-i18n="ventures.v1.p">海外のマーケティング会社から受けた仕事です。東京で開かれたテックイベントを日本の市場につなぐ業務と、発表スライドの英日翻訳を担当しました。契約から報酬の受け取りまで、すべて英語で行いました（2025年）。</p>
+        </div>
+        <div class="venture-card v2">
+          <span class="v-cat" data-i18n="ventures.v2.cat">士業事務所 / 業務効率化</span>
+          <h3 data-i18n="ventures.v2.h3">士業事務所の業務効率化支援</h3>
+          <p data-i18n="ventures.v2.p">確定申告まわりの業務効率化をお手伝いしました。担当したのは次の4つです。①Slackへの自動通知 ②催促メールの整理 ③担当者しか分からなかった業務の解消 ④お客様から書類を集める流れの仕組み化。お客様の情報を含むため、詳細は面談でご説明します。</p>
+          <p class="v-roi" data-i18n="ventures.v2.roi">面談で伺った「これをやりたい」を、その場で形にしながら組み立てていきました</p>
+        </div>
+        <div class="venture-card v3">
+          <span class="v-cat" data-i18n="ventures.v3.cat">カスタムAI / 採用業務</span>
+          <h3 data-i18n="ventures.v3.h3">Gemini「Gems」採用スクリーニングAI</h3>
+          <p data-i18n="ventures.v3.p">Geminiの「Gems」は、自分専用のAIアシスタントを作れる機能です。これを使って、履歴書を見るときの判断基準と指示文を自分で設計しました。採用の流れに組み込み、社内で使われています。</p>
+        </div>
+        <div class="venture-card v5">
+          <span class="v-cat" data-i18n="ventures.v5.cat">GAS / 営業フォロー</span>
+          <h3 data-i18n="ventures.v5.h3">展示会フォローメールの一括下書き生成</h3>
+          <p data-i18n="ventures.v5.p">展示会で名刺交換した方へのお礼メールは、毎回2〜3時間かけて手で打っていました。GASで下書きを一括でつくる仕組みにし、各営業が商談の内容を一言添えて、自分のアドレスから送れる形に。自分用に作ったものでしたが、他の営業から「使いたい」と言われ、今は営業メンバー全員が使っています。</p>
+          <p class="v-roi" data-i18n="ventures.v5.roi">私1人の道具だったものが、<b>営業全員の道具</b>になりました</p>
         </div>
       </div>
     </section>
@@ -634,7 +622,7 @@
       <div class="block-head">
         <span class="kicker solo">COST VS. RETURN</span>
         <h2 data-i18n="roi.h2">費用対効果</h2>
-        <p class="block-lede" data-i18n="roi.lede">前の3つの実績が、それぞれどれだけの効果になったかをまとめました。業務効率化は「いくらかかるか」より「いつ回収できるか」で判断できます。</p>
+        <p class="block-lede" data-i18n="roi.lede">上の3つの数字が、どれくらいの効果になったかをまとめました。業務効率化は「いくらかかるか」より「何ヶ月で元が取れるか」で考えると、判断しやすくなります。</p>
       </div>
       <div class="roi-items">
         <div class="roi-item i1">
@@ -643,75 +631,52 @@
         </div>
         <div class="roi-item i2">
           <span class="roi-item-k" data-i18n="roi.i2.k">セキュリティチェックシート回答</span>
-          <span class="roi-item-v" data-i18n="roi.i2.v">1件ずつ調べ直していた回答が<b>5分の1以下の工数</b>に。150件の回答が再利用できる資産に変わりました</span>
+          <span class="roi-item-v" data-i18n="roi.i2.v">毎回調べ直していた回答が<b>5分の1以下の工数</b>に。過去150件の回答が、使い回せる資料になりました</span>
         </div>
         <div class="roi-item i3">
           <span class="roi-item-k" data-i18n="roi.i3.k">展示会の企画・運営</span>
-          <span class="roi-item-v" data-i18n="roi.i3.v">20回換算で<b>累計600件以上のリード・60件以上の商談化</b>。出展費を回収する側の運営です</span>
+          <span class="roi-item-v" data-i18n="roi.i3.v">20回換算で<b>累計600件以上のリード・60件以上の商談</b>。出展費を回収する側の運営で、費用を下げる工夫も続けています</span>
         </div>
       </div>
-      <p class="roi-bridge" data-i18n="roi.bridge">いちばん上のメール作業を例に、導入費用がいつ回収できるかを分解すると次のようになります。</p>
+      <p class="roi-bridge" data-i18n="roi.bridge">いちばん上のメール作業を例に、何ヶ月で元が取れるかを3段階で見てみます。</p>
       <div class="roi-flow">
         <div class="roi-step">
           <span class="roi-step-k" data-i18n="roi.step1.k">削減した時間</span>
           <strong class="roi-step-v" data-i18n="roi.step1.v">月30時間</strong>
-          <span class="roi-step-n" data-i18n="roi.step1.n">メール作業を90分→30分にした実績値。年間では360時間です。</span>
+          <span class="roi-step-n" data-i18n="roi.step1.n">90分→30分にした実績の数字です。1年では360時間になります。</span>
         </div>
         <div class="roi-arrow" aria-hidden="true">→</div>
         <div class="roi-step">
           <span class="roi-step-k" data-i18n="roi.step2.k">金額に換算すると</span>
-          <strong class="roi-step-v" data-i18n="roi.step2.v">月7.5万円 ／ 年90万円</strong>
-          <span class="roi-step-n" data-i18n="roi.step2.n">人件費を時給2,500円と控えめに見積もった場合の相当額です。</span>
+          <strong class="roi-step-v" data-i18n="roi.step2.v">月7.5万円</strong>
+          <span class="roi-step-n" data-i18n="roi.step2.n">1年では90万円になります。人件費を時給2,500円として計算しました。</span>
         </div>
         <div class="roi-arrow" aria-hidden="true">→</div>
         <div class="roi-step roi-step-last">
           <span class="roi-step-k" data-i18n="roi.step3.k">回収までの期間</span>
           <strong class="roi-step-v" data-i18n="roi.step3.v">1〜2ヶ月</strong>
-          <span class="roi-step-n" data-i18n="roi.step3.n">この規模の自動化であれば、導入にかかった費用は1〜2ヶ月で取り戻せる計算になります。以降は削減分がそのまま残ります。</span>
+          <span class="roi-step-n" data-i18n="roi.step3.n">この規模の自動化なら、かかった費用は1〜2ヶ月で取り戻せる計算です。その後の削減分は、そのまま残ります。</span>
         </div>
       </div>
-      <p class="roi-disclaimer" data-i18n="roi.note">※ 金額は「削減した業務時間 × 人件費単価」で算出した参考値です。単価は社会保険料などを含む人件費として時給2,500円と控えめに仮定しています（正社員の時間単価は3,000〜5,000円とされることが多く、それより低い前提です）。実際の効果は業務量・体制によって変わります。費用も業務の内容と量によって変わるため、ヒアリングのうえでお見積りします。効果が見込めないと判断した場合は、その旨を先にお伝えします。数字が出せない業務を無理に自動化することはしません。</p>
+      <p class="roi-disclaimer" data-i18n="roi.note">※ 金額は「減った時間 × 時給2,500円」で出した参考値です。<br>※ 時給は社会保険料なども含めて、低めに置いています（正社員の場合は3,000〜5,000円とされることが多いです）。<br>※ 効果も費用も、仕事の量や体制で変わります。費用はお話を伺ってからお見積りします。<br>※ 効果が見込めないときは先にそうお伝えし、数字が出ない作業を無理に自動化することはしません。</p>
     </section>
 
-    <!-- ===== アズレージョ帯 ===== -->
-    <div class="azulejo az1" role="img" aria-label="トレンカディス（割れタイルモザイク）" data-i18n-aria="azulejo.aria"></div>
-    <p class="azulejo-cap" data-i18n="azulejo.cap1">実際に使われているもの</p>
-
-    <!-- ===== 個人事業の実績（追加） ===== -->
-    <section class="block" id="ventures">
+    <!-- ===== About ===== -->
+    <section class="block" id="about">
       <div class="block-head">
-        <span class="kicker solo">REAL IMPACT</span>
-        <h2 data-i18n="ventures.h2">業務効率化の実績</h2>
-        <p class="block-lede" data-i18n="ventures.lede">実際の利用者が第三者にいて、人の役に立ち、収入や実務の成果につながっている実績です。守秘に関わる部分は面談でご説明します。</p>
+        <span class="kicker solo">ABOUT</span>
+        <h2 data-i18n="about.h2">プロフィール</h2>
       </div>
-      <div class="ventures">
-        <div class="venture-card v1">
-          <span class="v-cat" data-i18n="ventures.v1.cat">海外クライアント / 業務委託</span>
-          <h3 data-i18n="ventures.v1.h3">海外クライアントとの業務委託契約</h3>
-          <p data-i18n="ventures.v1.p">海外のマーケティング会社から受注。東京開催のテックイベントを日本市場につなぐ業務と、発表スライドの英日翻訳を担当。契約から報酬受領まで英語で完結（2025年）。</p>
-        </div>
-        <div class="venture-card v2">
-          <span class="v-cat" data-i18n="ventures.v2.cat">士業事務所 / 業務効率化</span>
-          <h3 data-i18n="ventures.v2.h3">士業事務所の業務効率化支援</h3>
-          <p data-i18n="ventures.v2.p">確定申告関連の業務効率化を支援。Slackへの自動通知の構築、催促メールの整備、担当者しか分からない状態になっていた業務の解消、お客様から必要書類を集める流れの仕組み化までを担当しました。お客様の情報を含むため、詳細は面談でご説明します。</p>
-          <p class="v-roi" data-i18n="ventures.v2.roi">面談で伺った「これをやりたい」をその場で形にしながら組み立てる進め方です</p>
-        </div>
-        <div class="venture-card v3">
-          <span class="v-cat" data-i18n="ventures.v3.cat">カスタムAI / 採用業務</span>
-          <h3 data-i18n="ventures.v3.h3">Gemini「Gems」採用スクリーニングAI</h3>
-          <p data-i18n="ventures.v3.p">Gemini の「Gems」（ユーザーが独自に作れるカスタムAIアシスタント）で、履歴書スクリーニングの判断基準とプロンプトを自分で設計。Gemini上で動くカスタムAIを自作し、採用フローに組み込んで運用中。社内で実運用中。</p>
-        </div>
-        <div class="venture-card v4">
-          <span class="v-cat" data-i18n="ventures.v4.cat">GAS×生成AI / 業務効率化</span>
-          <h3 data-i18n="ventures.v4.h3">GAS×生成AIによるメール業務の自動化</h3>
-          <p data-i18n="ventures.v4.p">定型メールの作成・送信フローをGoogle Apps Script（GAS）と生成AIを組み合わせてテンプレート化。文面のたたき台作成から送信までにかかっていた時間を90分→30分に短縮し、月間約30時間の工数を削減。社内で実運用中。</p>
-          <p class="v-roi" data-i18n="ventures.v4.roi">年360時間の削減＝<b>年間約90万円相当</b>（時給2,500円換算）</p>
-        </div>
-        <div class="venture-card v5">
-          <span class="v-cat" data-i18n="ventures.v5.cat">GAS / 営業フォロー</span>
-          <h3 data-i18n="ventures.v5.h3">展示会フォローメールの一括下書き生成</h3>
-          <p data-i18n="ventures.v5.p">展示会で名刺交換した方へのお礼メールは、1回あたり2〜3時間かけて手打ちしていました。GASで下書きを一括生成する仕組みを構築し、各営業が自分のメールアドレスから、商談で話した内容を一言だけ添えて送れる形に。自分用に作ったものでしたが、他の営業から「使いたい」と声が上がり、現在は営業メンバー全員が使っています。</p>
-          <p class="v-roi" data-i18n="ventures.v5.roi">作った本人だけで終わらず、<b>チーム全体に定着</b>したツールです</p>
+      <div class="about-grid">
+        <div class="about-card">
+          <p data-i18n="about.p1">はじめまして、<b>Miho</b>です。外資系企業で、営業・マーケティングチームの事務サポートを担当しています。</p>
+          <p data-i18n="about.p2">効率化を始めたきっかけは、展示会のあとに手で打っていたお礼メールでした。それからは、毎日の仕事で「これ、毎回手でやっているな」と気づいた作業を、<b>GAS・Notion・生成AIで仕組みにしてきました</b>。ツールを先に選ぶのではなく、どの作業に時間がかかっているかを伺うところから始めます。</p>
+          <ul class="about-facts">
+            <li data-i18n="about.fact1"><span>拠点</span>東京（リモート対応可）</li>
+            <li data-i18n="about.fact2"><span>稼働</span>平日夜・土日（週10〜20時間目安）。展示会の当日はご相談ください</li>
+            <li data-i18n="about.fact3"><span>経験</span>DX推進 / 業務効率化 / 営業支援 / 展示会の企画・運営 / データ管理</li>
+          </ul>
+          <p class="sign">— Miho / VelaCotta Works</p>
         </div>
       </div>
     </section>
@@ -720,12 +685,12 @@
     <div class="azulejo az2" role="img" aria-label="トレンカディス（割れタイルモザイク）" data-i18n-aria="azulejo.aria"></div>
     <p class="azulejo-cap" data-i18n="azulejo.cap">これまでつくってきたもの</p>
 
-    <!-- ===== 制作実績（おまけ／見本・教材。実案件の実績は上の「業務効率化の実績」） ===== -->
+    <!-- ===== 制作実績（おまけ／見本・教材。実案件の実績は上の「実際に使われている仕事」） ===== -->
     <section class="block" id="works">
       <div class="block-head">
         <span class="kicker solo">SAMPLES</span>
         <h2 data-i18n="works.h2">制作実績</h2>
-        <p class="block-lede" data-i18n="works.lede">自分のスキルを磨くために制作した見本・教材です。実際の利用者は自分のみですが、公開中のものはカードをクリックするとサイトが開きます。</p>
+        <p class="block-lede" data-i18n="works.lede">自分の練習のためにつくった見本・教材です。使っているのは今のところ私だけです。公開中のものは、カードを押すとサイトが開きます。</p>
       </div>
       <div class="works">
         <a class="work-card w-content" href="https://miho-okomee.github.io/daily-automation-textbook/" target="_blank" rel="noopener">
@@ -733,7 +698,7 @@
           <div class="work-body">
             <span class="work-cat" data-i18n="works.w1.cat">教材 / Web</span>
             <h3 data-i18n="works.w1.h3">日常業務自動化の教科書</h3>
-            <p data-i18n="works.w1.p">Claude・Cowork・Claude Code の使い分けで通常業務を半自動化する全29レシピ。1ファイル完結のWeb教科書として制作。</p>
+            <p data-i18n="works.w1.p">Claude・Cowork・Claude Codeを使い分けて、毎日の仕事を半自動にする全29レシピ。1つのファイルで完結するWeb教科書です。</p>
             <span class="work-link" data-i18n="works.link">サイトを見る ↗</span>
           </div>
         </a>
@@ -742,7 +707,7 @@
           <div class="work-body">
             <span class="work-cat" data-i18n="works.w2.cat">学習コース</span>
             <h3 data-i18n="works.w2.h3">ゼロから学ぶ MEO対策実践マスター</h3>
-            <p data-i18n="works.w2.p">Googleビジネスプロフィールの基礎から口コミ運用・上位化まで。5段階12レッスン、記事・チェックリスト・クイズ付きの実践コース。</p>
+            <p data-i18n="works.w2.p">Googleビジネスプロフィールの基本から、口コミの運用、上位に表示されるまで。5段階12レッスンに、記事・チェックリスト・クイズ付きです。</p>
             <span class="work-link" data-i18n="works.link">サイトを見る ↗</span>
           </div>
         </a>
@@ -751,7 +716,7 @@
           <div class="work-body">
             <span class="work-cat" data-i18n="works.w3.cat">サービスLP</span>
             <h3 data-i18n="works.w3.h3">Googleマップ集客 MEO無料診断</h3>
-            <p data-i18n="works.w3.p">お店のGoogleマップを10分・無料で診断するサービスのランディングページ。15項目で現状を数値化し改善点を提示する設計。</p>
+            <p data-i18n="works.w3.p">お店のGoogleマップを10分・無料で診断するサービスの紹介ページ。15項目で今の状態を点数にし、直すところを示す設計です。</p>
             <span class="work-link" data-i18n="works.link">サイトを見る ↗</span>
           </div>
         </a>
@@ -763,7 +728,7 @@
       <div class="contact">
         <span class="kicker solo" style="justify-content:center">CONTACT</span>
         <h2 data-i18n="contact.h2">お仕事のご相談</h2>
-        <p data-i18n="contact.p">「こんなこと頼める？」という段階のご相談も歓迎です。下記フォームよりお気軽にお問い合わせください。内容を確認のうえ、折り返しご連絡します。</p>
+        <p data-i18n="contact.p">「この作業、自動にできる？」「展示会、何から準備すればいい？」という段階でも大丈夫です。下のフォームから送ってください。内容を読んで、折り返しご連絡します。</p>
         <a href="shindan/" class="btn btn-ghost" style="font-size:14px;padding:12px 26px;margin:6px" id="cf-shindan" data-i18n="contact.shindan" hidden>10分でできるミニ診断へ →</a>
       </div>
 
