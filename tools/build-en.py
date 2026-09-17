@@ -22,20 +22,18 @@ DST = ROOT / "en" / "index.html"
 BASE = "https://velacotta-works.github.io/"
 EN_URL = BASE + "en/"
 
-TITLE_EN = "Miho | Workflow Automation &amp; Ops Support (Notion / GAS / AI) | VelaCotta Works"
+TITLE_EN = "Miho | Japan Market Development | VelaCotta Works"
 DESC_EN = (
-    "Workflow automation with Notion, GAS and AI, sales and admin support, MEO and course "
-    "content. I find where work gets stuck, turn it into a system, and build it until it runs. "
-    "Get in touch about working together."
+    "Introducing overseas products to Japan, one at a time. Market research, Japanese localization, "
+    "distribution and trade show support for your brand in Japan. Start small. Each step only with your approval."
 )
 OG_DESC_EN = (
-    "I find where work gets stuck, turn it into a system, and build it until it runs. "
-    "Workflow automation with Notion, GAS and AI, sales and admin support, MEO and course content."
+    "Introducing overseas products to Japan, one at a time. Market research, Japanese localization, "
+    "distribution and trade show support. Start with a free 15-minute online call."
 )
-TW_TITLE_EN = "Miho | Workflow Automation &amp; Ops Support | VelaCotta Works"
+TW_TITLE_EN = "Miho | Japan Market Development | VelaCotta Works"
 OG_ALT_EN = (
-    "VelaCotta Works / Miho - Finding where work gets stuck, turning it into a system, "
-    "and building it until it runs."
+    "VelaCotta Works / Miho - Introducing overseas products to Japan, one at a time."
 )
 
 # (説明, 置換前, 置換後)。置換前が本文にちょうど1回現れることを確認してから置き換える。

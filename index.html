@@ -442,6 +442,74 @@
   .to-top:hover { border-color: var(--sns); color: var(--sns); }
   @media (max-width: 480px) { .to-top { right: 14px; bottom: 14px; width: 42px; height: 42px; } }
   @media print { .to-top { display: none; } }
+
+  /* ───────── 15分相談（受け皿・2026-09追加） ───────── */
+  .phr { display: inline-block; }  /* 文の途中の変なところで折り返さない（句読点のかたまり単位で折る） */
+  .talk-chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 4px 0 26px; }
+  .talk-chips span {
+    font-size: 12px; font-weight: 700; letter-spacing: .06em; padding: 5px 14px;
+    border-radius: 999px; background: var(--ink); color: var(--paper);
+  }
+  .talk-q { font-family: var(--serif); font-size: 15px; font-weight: 800; letter-spacing: .06em; margin: 0 0 14px; }
+  .talk-themes { display: grid; grid-template-columns: repeat(6, 1fr); gap: 14px; }
+  .talk-theme {
+    grid-column: span 2; display: flex; flex-direction: column; gap: 6px;
+    background: rgba(255,255,255,.66); border: 1px solid var(--line); border-top: 4px solid var(--tc);
+    border-radius: 8px; padding: 18px 20px 16px; text-decoration: none; color: inherit;
+    box-shadow: 0 4px 16px rgba(37,32,26,.06); transition: transform .18s, box-shadow .18s, border-color .18s;
+  }
+  .talk-theme:nth-child(4), .talk-theme:nth-child(5) { grid-column: span 3; }
+  .talk-theme:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(37,32,26,.14); border-color: var(--tc); }
+  .talk-theme .t-no { font-family: var(--mono); font-size: 11px; font-weight: 700; letter-spacing: .12em; color: var(--tc); }
+  .talk-theme h3 { font-family: var(--serif); font-size: 17px; font-weight: 800; line-height: 1.45; }
+  .talk-theme h3 .nw { white-space: nowrap; }
+  .talk-theme p { font-size: 12.5px; color: var(--ink-soft); flex: 1; line-height: 1.75; }
+  .talk-theme .t-go { margin-top: 6px; font-size: 12.5px; font-weight: 700; color: var(--tc); letter-spacing: .04em; }
+  .talk-theme.t1 { --tc: var(--sns); } .talk-theme.t2 { --tc: var(--office); } .talk-theme.t3 { --tc: var(--azul-deep); }
+  .talk-theme.t4 { --tc: var(--content); } .talk-theme.t5 { --tc: var(--sns); }
+  .talk-flow { display: grid; grid-template-columns: 1fr auto 1fr auto 1fr; gap: 12px; margin-top: 30px; align-items: stretch; }
+  .talk-step {
+    background: rgba(255,255,255,.5); border: 1px dashed var(--line); border-radius: 8px; padding: 16px 18px;
+    display: flex; flex-direction: column; gap: 6px;
+  }
+  .talk-step .s-no { font-family: var(--serif); font-weight: 800; font-size: 13px; color: var(--sns); letter-spacing: .1em; }
+  .talk-step b { font-family: var(--serif); font-size: 15.5px; font-weight: 800; }
+  .talk-step span { font-size: 12.5px; color: var(--ink-soft); line-height: 1.75; }
+  .talk-arrow { align-self: center; font-size: 20px; color: var(--line); font-weight: 700; }
+  .talk-cta { text-align: center; margin-top: 30px; }
+  .talk-cta .btn { font-size: 15px; padding: 14px 34px; }
+  .talk-cta small { display: block; margin-top: 12px; font-size: 12px; color: var(--ink-soft); }
+  @media (max-width: 880px) {
+    .talk-themes { grid-template-columns: 1fr; }
+    .talk-theme, .talk-theme:nth-child(4), .talk-theme:nth-child(5) { grid-column: auto; }
+    .talk-flow { grid-template-columns: 1fr; }
+    .talk-arrow { transform: rotate(90deg); justify-self: center; }
+  }
+  @media (max-width: 640px) { .talk-theme { padding: 16px 16px 14px; } .talk-cta .btn { width: 100%; justify-content: center; } }
+
+  /* ───────── 日英で出し分ける区画（名刺EN版の内容・2026-09追加） ───────── */
+  html[lang="en"] .only-ja { display: none !important; }
+  html:not([lang="en"]) .only-en { display: none !important; }
+  .brand-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+  #brands .brand-grid { margin-top: 26px; }
+  .brand-item {
+    display: flex; gap: 14px; align-items: flex-start; text-decoration: none; color: inherit;
+    background: rgba(255,255,255,.66); border: 1px solid var(--line); border-radius: 8px; padding: 18px 20px;
+    box-shadow: 0 4px 16px rgba(37,32,26,.06); transition: transform .18s, box-shadow .18s;
+  }
+  .brand-item:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(37,32,26,.14); }
+  .brand-item .b-ico { flex: none; width: 38px; height: 38px; border-radius: 50%; background: rgba(194,64,45,.12); color: var(--sns); display: grid; place-items: center; font-size: 16px; }
+  .brand-item b { display: block; font-family: var(--serif); font-size: 17px; font-weight: 800; }
+  .brand-item span { font-size: 13px; color: var(--ink-soft); }
+  .brand-opt { margin-top: 18px; padding-top: 14px; border-top: 1px solid var(--line); }
+  .brand-opt .o-h { font-size: 11.5px; font-weight: 800; letter-spacing: .18em; color: var(--sns); }
+  .brand-opt ul { list-style: none; display: flex; flex-wrap: wrap; gap: 8px 22px; margin: 8px 0 6px; font-size: 13.5px; }
+  .brand-opt ul li::before { content: "◆ "; font-size: 9px; color: var(--sns); vertical-align: 2px; }
+  .brand-opt em { font-size: 12.5px; color: var(--ink-soft); }
+  .contact-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 22px; margin-top: 22px; font-size: 13px; color: var(--ink-soft); }
+  .contact-links a { color: var(--ink); font-weight: 700; text-decoration: none; border-bottom: 1px solid var(--line); }
+  .contact-links a:hover { color: var(--sns); border-color: var(--sns); }
+  @media (max-width: 880px) { .brand-grid { grid-template-columns: 1fr; } }
   </style>
 </head>
 <body>
@@ -451,12 +519,13 @@
     <nav>
       <span class="links">
         <a href="#services" data-i18n="nav.services">できること</a>
+        <a href="#brands" data-i18n="nav.brands">海外ブランドの方へ</a>
         <a href="/can-do/" class="nav-cando">困りごと別に探す</a>
         <a href="#ventures" data-i18n="nav.ventures">実際に使われている仕事</a>
         <a href="#roi" data-i18n="nav.roi">費用対効果</a>
         <a href="#about" data-i18n="nav.about">プロフィール</a>
       </span>
-      <a href="#contact" class="cta" data-i18n="nav.contact">お問い合わせ</a>
+      <a href="#talk" class="cta" data-i18n="nav.cta">15分、話してみる</a>
       <button type="button" id="lang-toggle" class="lang-switch" aria-label="Switch to English / 英語表示に切り替え">EN</button>
     </nav>
   </div>
@@ -468,18 +537,98 @@
       <span class="kicker">PORTFOLIO &amp; WORKS</span>
       <!-- ===== 要編集: キャッチコピー ===== -->
       <h1 data-i18n="hero.title"><span class="nw">手作業のまま回している仕事、</span><span class="nw"><em>仕組み</em>にして動くところまで。</span></h1>
-      <p class="lede" data-i18n="hero.lede">メールの下書き、書類集め、社内への通知。毎回同じ手順でくり返している作業を、GAS・Notion・生成AIで自動にする仕組みをつくります。私自身の担当業務でも使っているやり方です。展示会の準備から当日の営業、終わったあとのフォローまでのご相談もお受けします。</p>
+      <p class="lede" data-i18n="hero.lede">展示会の準備から終わったあとのフォロー、受発注や請求など売ったあとの手作業、海外メーカーとの英語のやり取りまで。担当の人しか分からない作業を、ほかの人も回せる形にします。GAS・Notion・生成AIは、そのための道具として使っています。</p>
       <div class="meta">
-        <span data-i18n="hero.meta1">業務効率化・自動化</span>
-        <span data-i18n="hero.meta2">展示会の出展サポート</span>
-        <span data-i18n="hero.meta3">営業・事務サポート</span>
-        <span data-i18n="hero.meta4">日英対応</span>
+        <span data-i18n="hero.meta1">展示会の出展サポート</span>
+        <span data-i18n="hero.meta2">売ったあとの事務・営業</span>
+        <span data-i18n="hero.meta3">海外メーカーの日本での展開（日英）</span>
+        <span data-i18n="hero.meta4">クラウドファンディングの掲載準備</span>
       </div>
       <div class="actions">
-        <a href="#contact" class="btn btn-primary" data-i18n="hero.cta1">お仕事のご相談 →</a>
-        <a href="#ventures" class="btn btn-ghost" data-i18n="hero.cta2">使われている仕事を見る</a>
+        <a href="https://calendar.app.google/AjnzHxfucmSKPPAx7" class="btn btn-primary js-booking" target="_blank" rel="noopener" data-i18n="hero.cta1">15分、オンラインで話す →</a>
+        <a href="#talk" class="btn btn-ghost" data-i18n="hero.cta2">相談できることを見る</a>
       </div>
     </header>
+
+
+    <!-- ===== 15分相談（受け皿）: 名刺のQR・紹介・発信はすべてここの予約ページに集める ===== -->
+    <section class="block" id="talk">
+      <div class="block-head">
+        <span class="kicker solo">15 MIN TALK</span>
+        <h2 data-i18n="talk.h2">まずは15分、話してみませんか</h2>
+        <p class="block-lede" data-i18n="talk.lede"><span class="phr">「こんなこと頼める？」の段階で大丈夫です。</span><br><span class="phr">今いちばん時間がかかっている作業を、</span><span class="phr">1つ聞かせてください。</span></p>
+      </div>
+      <div class="talk-chips">
+        <span data-i18n="talk.chip1">15分</span>
+        <span data-i18n="talk.chip2">無料</span>
+        <span data-i18n="talk.chip3">オンライン（Google Meet）</span>
+      </div>
+      <div class="only-ja">
+      <p class="talk-q">こんなご相談を受けています</p>
+      <div class="talk-themes">
+        <a class="talk-theme t1 js-booking" href="https://calendar.app.google/AjnzHxfucmSKPPAx7" target="_blank" rel="noopener">
+          <span class="t-no">01</span>
+          <h3 data-i18n="talk.t1.h3"><span class="nw">展示会の準備・当日・</span><span class="nw">終わったあと</span></h3>
+          <p data-i18n="talk.t1.p"><span class="phr">初めて出展する。</span><span class="phr">出ているのに商談につながらない。</span><span class="phr">名刺交換のあとが続かない。</span></p>
+          <span class="t-go" data-i18n="talk.go">この相談で予約する →</span>
+        </a>
+        <a class="talk-theme t2 js-booking" href="https://calendar.app.google/AjnzHxfucmSKPPAx7" target="_blank" rel="noopener">
+          <span class="t-no">02</span>
+          <h3 data-i18n="talk.t2.h3"><span class="nw">受発注や請求など、</span><span class="nw">売ったあとの手作業</span></h3>
+          <p data-i18n="talk.t2.p"><span class="phr">伝票・請求・在庫の転記を手で回している。</span><span class="phr">担当の人しかやり方が分からない。</span></p>
+          <span class="t-go" data-i18n="talk.go">この相談で予約する →</span>
+        </a>
+        <a class="talk-theme t3 js-booking" href="https://calendar.app.google/AjnzHxfucmSKPPAx7" target="_blank" rel="noopener">
+          <span class="t-no">03</span>
+          <h3 data-i18n="talk.t3.h3">海外メーカーの日本での展開</h3>
+          <p data-i18n="talk.t3.p"><span class="phr">日本で売れるかの調査、</span><span class="phr">日本語の商品ページ、</span><span class="phr">展示会、</span><span class="phr">英語でのやり取り。</span></p>
+          <span class="t-go" data-i18n="talk.go">この相談で予約する →</span>
+        </a>
+        <a class="talk-theme t4 js-booking" href="https://calendar.app.google/AjnzHxfucmSKPPAx7" target="_blank" rel="noopener">
+          <span class="t-no">04</span>
+          <h3 data-i18n="talk.t4.h3">クラウドファンディングに載せたい</h3>
+          <p data-i18n="talk.t4.p"><span class="phr">何から準備すればいいか。</span><span class="phr">載せられる商品かどうかを確かめたい。</span></p>
+          <span class="t-go" data-i18n="talk.go">この相談で予約する →</span>
+        </a>
+        <a class="talk-theme t5 js-booking" href="https://calendar.app.google/AjnzHxfucmSKPPAx7" target="_blank" rel="noopener">
+          <span class="t-no">05</span>
+          <h3 data-i18n="talk.t5.h3">AIを仕事で使いはじめたい</h3>
+          <p data-i18n="talk.t5.p"><span class="phr">ChatGPTを入れたけれど、</span><span class="phr">まだ使えていない。</span><span class="phr">毎回の文章づくりを楽にしたい。</span></p>
+          <span class="t-go" data-i18n="talk.go">この相談で予約する →</span>
+        </a>
+      </div>
+      </div>
+      <div class="talk-flow">
+        <div class="talk-step"><span class="s-no">01</span><b data-i18n="talk.s1.b">予約する</b><span data-i18n="talk.s1.p"><span class="phr">空いている時間を選んで、</span><span class="phr">相談したいことを選び、</span><span class="phr">1行書いてください。</span></span></div>
+        <div class="talk-arrow" aria-hidden="true">→</div>
+        <div class="talk-step"><span class="s-no">02</span><b data-i18n="talk.s2.b">15分、オンラインで話す</b><span data-i18n="talk.s2.p"><span class="phr">今の作業のやり方を聞かせてください。</span><span class="phr">話すだけで終わっても大丈夫です。</span></span></div>
+        <div class="talk-arrow" aria-hidden="true">→</div>
+        <div class="talk-step"><span class="s-no">03</span><b data-i18n="talk.s3.b">続けるかは、そのあとで</b><span data-i18n="talk.s3.p"><span class="phr">お手伝いできそうなときは、</span><span class="phr">範囲と金額を後日メールでお送りします。</span><span class="phr">できないことは、</span><span class="phr">その場でお伝えします。</span></span></div>
+      </div>
+      <div class="talk-cta">
+        <a href="https://calendar.app.google/AjnzHxfucmSKPPAx7" class="btn btn-primary js-booking" target="_blank" rel="noopener" data-i18n="talk.cta">15分の予約ページへ →</a>
+        <small data-i18n="talk.small"><span class="phr">文章で送りたい方は、</span><span class="phr">ページ下の「お仕事のご相談」からどうぞ。</span></small>
+      </div>
+    </section>
+
+    <!-- ===== 名刺（英語版）の裏面と同じ内容：海外ブランド向け ===== -->
+    <section class="block" id="brands">
+      <div class="block-head">
+        <span class="kicker solo">VELACOTTA WORKS</span>
+        <h2>What I can do for your brand in Japan</h2>
+      </div>
+      <div class="brand-grid">
+        <a class="brand-item js-booking" href="https://calendar.app.google/AjnzHxfucmSKPPAx7" target="_blank" rel="noopener"><span class="b-ico" aria-hidden="true">⌕</span><div><b>Market Research</b><span>Will it sell in Japan?</span></div></a>
+        <a class="brand-item js-booking" href="https://calendar.app.google/AjnzHxfucmSKPPAx7" target="_blank" rel="noopener"><span class="b-ico" aria-hidden="true">▤</span><div><b>Japanese Localization</b><span>Product pages &amp; catalogs</span></div></a>
+        <a class="brand-item js-booking" href="https://calendar.app.google/AjnzHxfucmSKPPAx7" target="_blank" rel="noopener"><span class="b-ico" aria-hidden="true">➚</span><div><b>Distribution Agent</b><span>Bringing your brand to Japan</span></div></a>
+        <a class="brand-item js-booking" href="https://calendar.app.google/AjnzHxfucmSKPPAx7" target="_blank" rel="noopener"><span class="b-ico" aria-hidden="true">⌂</span><div><b>Trade Show Support</b><span>Booth, visitors, follow-up</span></div></a>
+      </div>
+      <div class="brand-opt">
+        <div class="o-h">OPTIONAL — AS NEEDED</div>
+        <ul><li>Import &amp; shipping</li><li>Order &amp; stock admin</li><li>JP customer support</li></ul>
+        <em>Start small. Each step only with your approval.</em>
+      </div>
+    </section>
 
     <!-- ===== できること（強み1つ → 入口別） ===== -->
     <section class="block" id="services">
@@ -505,50 +654,46 @@
           <p data-i18n="strength.p3.p">事務の現場に約20年いながら、展示会の運営や新規開拓など、営業の側も担当してきました。職場が変わるたびに、新しいやり方にすぐ慣れてきました。</p>
         </div>
       </div>
-      <div class="offers-head"><span data-i18n="offers.g1">手作業・担当者だけの仕事を減らしたい</span></div>
-      <div class="offers">
-        <div class="offer o1">
-          <div class="o-no">01</div>
-          <h4 data-i18n="offers.o1.h4">メール・書類作成の自動化</h4>
-          <p data-i18n="offers.o1.p">差し込みメールの一括下書きや、請求書のリマインダーをGASとClaudeでつくります。<b>士業事務所での導入実績があります。</b></p>
-        </div>
-        <div class="offer o6">
-          <div class="o-no">02</div>
-          <h4 data-i18n="offers.o6.h4">Notion・Slack・GASを使った業務整備</h4>
-          <p data-i18n="offers.o6.p">議事録テンプレート、自動通知、ダッシュボード、手順書やよくある質問の整備など。<b>担当者が替わっても回るように、使い方の決まりまで整えます。</b></p>
-        </div>
-        <div class="offer o5">
-          <div class="o-no">03</div>
-          <h4 data-i18n="offers.o5.h4">税理士事務所・バックオフィスへの現場支援</h4>
-          <p data-i18n="offers.o5.p">事務の現場に約20年いた経験から、業務の整理とDX化を現場に入って進めます。<b>顧客データ（Salesforce / Notion）の整備や、見積・請求・議事録の整理にも対応します。</b></p>
-        </div>
-        <div class="offer o2">
-          <div class="o-no">04</div>
-          <h4 data-i18n="offers.o2.h4">AI導入の初期設計・使い方サポート</h4>
-          <p data-i18n="offers.o2.p">Claude Codeの初期設定をお手伝いします。設定ファイル（CLAUDE.md）、外部ツールとの接続（MCP）、セキュリティ設定まで対応します。<b>入れて終わりにせず、使えるようになるまでお付き合いします。</b></p>
-        </div>
-      </div>
-      <div class="offers-head"><span data-i18n="offers.g2">販路を広げたい（展示会・新規開拓・海外）</span></div>
-      <div class="offers">
+      <div class="offers-head only-ja"><span data-i18n="offers.gA">いちばん多いご相談</span></div>
+      <div class="offers only-ja">
         <div class="offer o2" style="grid-column:1/-1">
-          <div class="o-no">05</div>
+          <div class="o-no">01</div>
           <h4 data-i18n="offers.expo.h4">展示会の出展サポート（必要なところだけ選べます）</h4>
           <p data-i18n="offers.expo.p">展示会の企画・運営責任者として、出る展示会の候補を調べて提案し、設営、当日の営業、撤収、終わったあとのフォローまで自分の手でやってきました。次の4つから、必要なものだけ選んでいただけます。<br><b>① 出る展示会を一緒に比べる相談<br>② 準備から撤収までの段取り表<br>③ 当日の同行・ブースでの営業<br>④ 終わったあとのフォローの仕組み（リード一覧・お礼メールの一括下書き・商談の記録）</b><br>初めて出展する方、出ているのに商談につながらない方、海外からの来場者向けに資料や対応を整えたい方に。売上や集客の結果はお約束しません。</p>
         </div>
+        <div class="offer o5">
+          <div class="o-no">02</div>
+          <h4 data-i18n="offers.o5.h4">受発注や請求など、売ったあとの手作業</h4>
+          <p data-i18n="offers.o5.p">事務の現場に約20年いた経験から、業務の整理とDX化を現場に入って進めます。<b>顧客データ（Salesforce / Notion）の整備や、見積・請求・議事録の整理にも対応します。</b></p>
+        </div>
         <div class="offer o3">
-          <div class="o-no">06</div>
+          <div class="o-no">03</div>
           <h4 data-i18n="offers.o3.h4">新規開拓営業のゼロからの立ち上げ</h4>
           <p data-i18n="offers.o3.p">外資系AI/SaaS企業の創業期に、リスト作成から契約までの営業の流れをゼロからつくりました。<b>新規開拓の型づくりと改善をご一緒します。</b></p>
         </div>
         <div class="offer o7">
-          <div class="o-no">07</div>
-          <h4 data-i18n="offers.o7.h4">日英対応が必要な業務</h4>
-          <p data-i18n="offers.o7.p">英語での商談、資料づくりと日英翻訳、海外チームとの調整に対応します。<b>海外のチームと一緒に働いてきた経験があります。</b></p>
+          <div class="o-no">04</div>
+          <h4 data-i18n="offers.o7.h4">海外メーカーの日本での展開</h4>
+          <p data-i18n="offers.o7.p">日本で売りたい海外メーカー向けに、<b>日本で売れるかの調査、日本語の商品ページ・カタログ、日本での販売の窓口（代理）、展示会でのブース・来場者対応・フォロー</b>をお手伝いします。必要に応じて、輸入・発送、受発注と在庫の事務、日本のお客様対応も。小さく始めて、一つずつご確認いただきながら進めます。<b>海外のチームと一緒に働いてきた経験があります。</b></p>
+        </div>
+        <div class="offer o6">
+          <div class="o-no">05</div>
+          <h4 data-i18n="offers.cf.h4">クラウドファンディングの掲載準備</h4>
+          <p data-i18n="offers.cf.p">載せたい商品が、表示のルールや名義、ほかの販路との兼ね合いで掲載できるかを一緒に確かめ、準備の段取りを整えます。<b>掲載を最後まで伴走した実績は、まだありません。</b>支援額のお約束はしません。</p>
         </div>
       </div>
-      <p class="offers-note" data-i18n="offers.g2.note">クラウドファンディングなど、展示会以外の販路のご相談もお受けします。</p>
-      <div class="offers-head"><span data-i18n="offers.g3">そのほかのご相談</span></div>
-      <div class="offers">
+      <div class="offers-head only-ja"><span data-i18n="offers.gB">あわせてお受けしているご相談</span></div>
+      <div class="offers only-ja">
+        <div class="offer o1">
+          <div class="o-no">06</div>
+          <h4 data-i18n="offers.o1.h4">メール・書類作成の自動化</h4>
+          <p data-i18n="offers.o1.p">差し込みメールの一括下書きや、請求書のリマインダーをGASとClaudeでつくります。<b>士業事務所での導入実績があります。</b></p>
+        </div>
+        <div class="offer o6">
+          <div class="o-no">07</div>
+          <h4 data-i18n="offers.o6.h4">Notion・Slack・GASを使った業務整備</h4>
+          <p data-i18n="offers.o6.p">議事録テンプレート、自動通知、ダッシュボード、手順書やよくある質問の整備など。<b>担当者が替わっても回るように、使い方の決まりまで整えます。</b></p>
+        </div>
         <div class="offer o4">
           <div class="o-no">08</div>
           <h4 data-i18n="offers.o4.h4">補助金申請の工程表づくり・要件整理</h4>
@@ -558,6 +703,14 @@
           <div class="o-no">09</div>
           <h4 data-i18n="offers.o8.h4">Googleマップのお店情報（MEO）・教材づくり</h4>
           <p data-i18n="offers.o8.p">Googleビジネスプロフィールの運用と診断、学習コースや教材、LP・記事の文章づくりに対応します。<b>練習用につくった見本を、このページ下の「制作実績」に載せています。</b></p>
+        </div>
+      </div>
+      <div class="offers-head only-ja"><span data-i18n="offers.gC">AIを仕事で使いはじめたい方へ</span></div>
+      <div class="offers only-ja">
+        <div class="offer o2" style="grid-column:1/-1">
+          <div class="o-no">10</div>
+          <h4 data-i18n="offers.o2.h4">AI導入の初期設計・使い方サポート</h4>
+          <p data-i18n="offers.o2.p">Claude Codeの初期設定をお手伝いします。設定ファイル（CLAUDE.md）、外部ツールとの接続（MCP）、セキュリティ設定まで対応します。<b>入れて終わりにせず、使えるようになるまでお付き合いします。</b></p>
         </div>
       </div>
       <p class="offers-note" data-i18n="offers.note">リモート可 ／ 1回のご相談から継続サポートまで ／ <b>範囲を決めて、小さく始める</b>進め方です。</p>
@@ -728,7 +881,8 @@
       <div class="contact">
         <span class="kicker solo" style="justify-content:center">CONTACT</span>
         <h2 data-i18n="contact.h2">お仕事のご相談</h2>
-        <p data-i18n="contact.p">「この作業、自動にできる？」「展示会、何から準備すればいい？」という段階でも大丈夫です。下のフォームから送ってください。内容を読んで、折り返しご連絡します。</p>
+        <p data-i18n="contact.p"><span class="phr">「この作業、</span><span class="phr">自動にできる？</span><span class="phr">」「展示会、</span><span class="phr">何から準備すればいい？</span><span class="phr">」という段階でも大丈夫です。</span><span class="phr">話すほうが早い方は15分の予約を、</span><span class="phr">文章で送りたい方はフォームをお使いください。</span><span class="phr">内容を読んで、</span><span class="phr">折り返しご連絡します。</span></p>
+        <a href="https://calendar.app.google/AjnzHxfucmSKPPAx7" class="btn btn-primary js-booking" target="_blank" rel="noopener" style="font-size:15px;padding:14px 34px;margin:6px" data-i18n="contact.booking">15分、オンラインで話す →</a>
         <a href="shindan/" class="btn btn-ghost" style="font-size:14px;padding:12px 26px;margin:6px" id="cf-shindan" data-i18n="contact.shindan" hidden>10分でできるミニ診断へ →</a>
       </div>
 
@@ -760,8 +914,9 @@
         </form>
       </div>
 
+      <p class="contact-links"><span data-i18n="contact.where">東京</span><a href="mailto:velacottaworks.33@gmail.com">velacottaworks.33@gmail.com</a><a href="https://www.linkedin.com/in/miho-ueno-286bb7189" target="_blank" rel="noopener">LinkedIn</a></p>
       <p class="form-embed-alt" id="cf-fallback">
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdsbaPOFnbH2ohYBqTe6wTVRXs1EG2h5FgJaL0SOs2tQASR4w/viewform" target="_blank" rel="noopener" class="btn btn-primary" style="font-size:15px;padding:14px 34px" data-i18n="cform.gform">お問い合わせフォームへ →</a>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdsbaPOFnbH2ohYBqTe6wTVRXs1EG2h5FgJaL0SOs2tQASR4w/viewform" target="_blank" rel="noopener" class="btn btn-ghost" style="font-size:14px;padding:12px 26px" data-i18n="cform.gform">文章で送る（お問い合わせフォーム） →</a>
       </p>
     </section>
 
@@ -862,13 +1017,6 @@
       'nav.ventures': 'Automation Impact',
       'nav.contact': 'Contact',
 
-      'hero.title': 'Finding where work gets stuck, turning it into a <em>system</em>, and building it until it runs.',
-      'hero.lede': 'Alongside admin support for a sales and marketing team at a global company, I work on workflow automation with Notion, GAS and AI, local business growth (MEO), and clear, practical course content. I turn &ldquo;I want to do this but can&rsquo;t get to it&rdquo; into something that actually runs day to day.',
-      'hero.meta1': 'Workflow Automation',
-      'hero.meta3': 'Sales &amp; Admin Support',
-      'hero.meta4': 'MEO &amp; Course Content',
-      'hero.cta1': 'Get in Touch →',
-      'hero.cta2': 'See Real Impact',
 
       'about.h2': 'Profile',
       'about.p1': 'Hi, I\'m <b>Miho</b>. I provide admin support for a sales and marketing team at a global company, and I&rsquo;m good at solving the small day-to-day frustrations of a sales team with <b>workflow automation</b> in mind.',
@@ -884,7 +1032,6 @@
       'about.point3.p': 'Skilled at organizing knowledge and work information organically using an Input / Output / Tag structure.',
 
       'services.h2': 'What I Do',
-      'services.lede': 'I work backward from the problem and can help with just the parts you need &mdash; happy to keep things flexible based on what you&rsquo;re looking for.',
       'services.c1.h3': 'Workflow Automation',
       'services.c1.li1': 'Automation via Notion AI + GAS integration',
       'services.c1.li2': 'Systemizing FAQ handling and routine tasks',
@@ -988,7 +1135,6 @@
       'ventures.v5.roi': 'Not a tool that stopped with the person who built it &mdash; <b>the whole team adopted it</b>',
 
       'contact.h2': 'Get in Touch',
-      'contact.p': 'Even a &ldquo;could you help with something like this?&rdquo; question at the earliest stage is welcome. Please reach out using the form below &mdash; I&rsquo;ll review your message and get back to you.',
       'contact.shindan': 'Start with a 10-minute self-check →',
       'cform.name': 'Your name<b class="cf-req">required</b>',
       'cform.email': 'Email address<b class="cf-req">required</b>',
@@ -996,7 +1142,40 @@
       'cform.req': 'required',
       'cform.hint': 'A rough &ldquo;could you help with something like this?&rdquo; is fine. One line about the task taking up most of your time is plenty.',
       'cform.submit': 'Send',
-      'cform.gform': 'Go to Contact Form →'
+      'cform.gform': 'Write to me (contact form) →',
+      'nav.cta': 'Book a 15-min call',
+      'nav.brands': 'For Brands',
+      'hero.title': 'Introducing overseas products to Japan, <em>one at a time</em>.',
+      'hero.lede': 'Japan Market Development for overseas brands. From checking whether your product will sell in Japan to Japanese product pages, trade shows, and the admin that comes after the sale &mdash; I help with just the parts you need. Start small. Each step only with your approval.',
+      'hero.meta1': 'Market Research',
+      'hero.meta2': 'Japanese Localization',
+      'hero.meta3': 'Distribution Agent',
+      'hero.meta4': 'Trade Show Support',
+      'hero.cta1': 'Book a 15-min online call →',
+      'hero.cta2': 'What I can do',
+      'talk.h2': 'Start with a 15-minute call',
+      'talk.lede': 'Even a &ldquo;could you help with this?&rdquo; is fine. Tell me what you want to do in Japan.',
+      'talk.chip1': '15 min',
+      'talk.chip2': 'Free',
+      'talk.chip3': 'Online (Google Meet)',
+      'talk.s1.b': 'Book a time',
+      'talk.s1.p': 'Pick a free slot, choose a topic, and write one line.',
+      'talk.s2.b': 'Talk for 15 minutes online',
+      'talk.s2.p': 'Tell me about your product and what you want to do in Japan. It&rsquo;s fine if we just talk.',
+      'talk.s3.b': 'Decide afterwards',
+      'talk.s3.p': 'If I can help, I&rsquo;ll email you the scope and fee later. If it&rsquo;s something I can&rsquo;t do, I&rsquo;ll tell you on the call.',
+      'talk.cta': 'Book a 15-min call →',
+      'talk.small': 'Prefer to write? Use the contact form at the bottom of this page.',
+      'services.lede': 'I turn hands-on work that only one person understands into something others can run. Whether it&rsquo;s day-to-day operations or a trade show, the work is the same.',
+      'strength.p1.h3': 'Show it working first',
+      'strength.p1.p': 'I show a working prototype before it&rsquo;s finished, and I try it on my own work before handing it over. My trade show thank-you email tool spread after other salespeople saw me using it.',
+      'strength.p2.h3': 'Set the scope, build small',
+      'strength.p2.p': 'I decide how far to build before I start.',
+      'strength.p3.h3': 'I know both admin and sales on the ground',
+      'strength.p3.p': 'I&rsquo;ve spent about 20 years in admin roles while also running trade shows and new-business sales. Each time my workplace changed, I adapted quickly to new ways of working.',
+      'contact.p': 'Even an early &ldquo;could you help with something like this?&rdquo; is welcome. If talking is quicker, book 15 minutes; if you&rsquo;d rather write, use the form. I&rsquo;ll read it and get back to you.',
+      'contact.booking': 'Book a 15-min online call →',
+      'contact.where': 'Tokyo, Japan'
     };
 
     var EN_ARIA = {
@@ -1007,7 +1186,7 @@
     };
 
     var TITLE_JA = document.title;
-    var TITLE_EN = 'Miho | Workflow Automation & Ops Support (Notion / GAS / AI) | VelaCotta Works';
+    var TITLE_EN = 'Miho | Japan Market Development | VelaCotta Works';
 
     var nodes = Array.prototype.slice.call(document.querySelectorAll('[data-i18n]'));
     var original = new Map();
@@ -1055,6 +1234,19 @@
         location.href = inEnDir() ? '../' : 'en/';
       });
     }
+  })();
+  </script>
+
+  <!-- ===== 15分相談の予約ページ ===== -->
+  <script>
+  (function () {
+    // Googleカレンダー「予約スケジュール」の公開URLをここに入れる。
+    // 空のあいだは、予約ボタンはお問い合わせフォーム（Googleフォーム）に向いたまま。
+    var BOOKING_URL = "https://calendar.app.google/AjnzHxfucmSKPPAx7";
+    if (!BOOKING_URL) return;
+    Array.prototype.forEach.call(document.querySelectorAll('.js-booking'), function (a) {
+      a.setAttribute('href', BOOKING_URL);
+    });
   })();
   </script>
   <button type="button" id="to-top" class="to-top" aria-label="ページの先頭に戻る">↑</button>
