@@ -25,11 +25,11 @@ EN_URL = BASE + "en/"
 TITLE_EN = "Miho | Japan Market Development | VelaCotta Works"
 DESC_EN = (
     "Introducing overseas products to Japan, one at a time. Market research, Japanese localization, "
-    "distribution and trade show support for your brand in Japan. Start small. Each step only with your approval."
+    "buyer outreach and trade show support for your brand in Japan. Start small. Each step only with your approval."
 )
 OG_DESC_EN = (
     "Introducing overseas products to Japan, one at a time. Market research, Japanese localization, "
-    "distribution and trade show support. Start with a free 15-minute online call."
+    "buyer outreach and trade show support. Start with a free 15-minute online call."
 )
 TW_TITLE_EN = "Miho | Japan Market Development | VelaCotta Works"
 OG_ALT_EN = (
