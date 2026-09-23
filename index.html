@@ -405,6 +405,18 @@
   .offer.o1 { --oc: var(--content); } .offer.o2 { --oc: var(--sns); }   .offer.o3 { --oc: var(--office); }
   .offer.o4 { --oc: var(--sns); }     .offer.o5 { --oc: var(--office); } .offer.o6 { --oc: var(--content); }
   .offer.o7 { --oc: var(--azul-deep); }
+  /* いちばん多いご相談の中で、01展示会・02売ったあとの手作業を主役にする（2026-09-23） */
+  .offers.g-main { grid-template-columns: repeat(6, 1fr); }
+  .offers.g-main .offer { grid-column: span 2; }
+  .offers.g-main .offer.lead { grid-column: 1 / -1; }
+  .offer.lead {
+    background: rgba(255,255,255,.88); border-left-width: 6px; padding: 24px 26px 22px;
+    box-shadow: 0 8px 22px rgba(37,32,26,.10);
+  }
+  .offer.lead h4 { font-size: 19.5px; margin: 4px 0 10px; }
+  .offer.lead p { font-size: 13.5px; }
+  .offers.g-main .offer:not(.lead) h4 { font-size: 15.5px; }
+  .offers.g-main .offer:not(.lead) p { font-size: 12.5px; }
   .offers-note {
     margin-top: 18px; padding: 14px 20px; font-size: 13px; color: var(--ink-soft);
     background: rgba(255,255,255,.45); border: 1px dashed var(--line); border-radius: 6px; text-align: center;
@@ -413,7 +425,7 @@
 
   /* ───────── 制作実績（おまけ扱い・控えめ表示） ───────── */
   #works .work-thumb { height: 104px; }
-  @media (max-width: 880px) { .offers { grid-template-columns: 1fr; } }
+  @media (max-width: 880px) { .offers, .offers.g-main { grid-template-columns: 1fr; } .offers.g-main .offer, .offers.g-main .offer.lead { grid-column: auto; } }
   @media (max-width: 380px) { .offers-head span { white-space: normal; } }
 
   /* ───────── 英語表示時のラベル幅（JAの2文字前提だと Availability 等がはみ出すため） ───────── */
@@ -660,16 +672,16 @@
         </div>
       </div>
       <div class="offers-head only-ja"><span data-i18n="offers.gA">いちばん多いご相談</span></div>
-      <div class="offers only-ja">
-        <div class="offer o2" style="grid-column:1/-1">
+      <div class="offers g-main only-ja">
+        <div class="offer o5 lead">
           <div class="o-no">01</div>
-          <h4 data-i18n="offers.expo.h4">展示会の出展サポート（必要なところだけ選べます）</h4>
-          <p data-i18n="offers.expo.p">展示会の企画・運営責任者として、出る展示会の候補を調べて提案し、設営、当日の営業、撤収、終わったあとのフォローまで自分の手でやってきました。次の4つから、必要なものだけ選んでいただけます。<br><b>① 出る展示会を一緒に比べる相談<br>② 準備から撤収までの段取り表<br>③ 当日の同行・ブースでの営業<br>④ 終わったあとのフォローの仕組み（リード一覧・お礼メールの一括下書き・商談の記録）</b><br>初めて出展する方、出ているのに商談につながらない方、海外からの来場者向けに資料や対応を整えたい方に。売上や集客の結果はお約束しません。</p>
-        </div>
-        <div class="offer o5">
-          <div class="o-no">02</div>
           <h4 data-i18n="offers.o5.h4">受発注や請求など、売ったあとの手作業</h4>
           <p data-i18n="offers.o5.p">事務の現場に約20年いた経験から、業務の整理とDX化を現場に入って進めます。<b>顧客データ（Salesforce / Notion）の整備や、見積・請求・議事録の整理にも対応します。</b></p>
+        </div>
+        <div class="offer o2 lead">
+          <div class="o-no">02</div>
+          <h4 data-i18n="offers.expo.h4">展示会の出展サポート（必要なところだけ選べます）</h4>
+          <p data-i18n="offers.expo.p">展示会の企画・運営責任者として、出る展示会の候補を調べて提案し、設営、当日の営業、撤収、終わったあとのフォローまで自分の手でやってきました。次の4つから、必要なものだけ選んでいただけます。<br><b>① 出る展示会を一緒に比べる相談<br>② 準備から撤収までの段取り表<br>③ 当日の同行・ブースでの営業<br>④ 終わったあとのフォローの仕組み（リード一覧・お礼メールの一括下書き・商談の記録）</b><br>初めて出展する方、出ているのに商談につながらない方、海外からの来場者向けに資料や対応を整えたい方に。売上や集客の結果はお約束しません。</p>
         </div>
         <div class="offer o3">
           <div class="o-no">03</div>
@@ -679,7 +691,7 @@
         <div class="offer o7">
           <div class="o-no">04</div>
           <h4 data-i18n="offers.o7.h4">海外メーカーの日本での展開</h4>
-          <p data-i18n="offers.o7.p">日本で売りたい海外メーカー向けに、<b>日本で売れるかの調査、日本語の商品ページ・カタログ、日本のお店・バイヤー探しとやり取り、展示会でのブース・来場者対応・フォロー</b>をお手伝いします。必要に応じて、輸入・発送、受発注と在庫の事務、日本のお客様対応も。小さく始めて、一つずつご確認いただきながら進めます。<b>海外のチームと一緒に働いてきた経験があります。</b></p>
+          <p data-i18n="offers.o7.p">日本で売りたい海外メーカー向けに、<b>日本で売れるかの調査、日本語の商品ページ、日本のお店・バイヤー探し、展示会での対応</b>をお手伝いします。<b>海外のチームと一緒に働いてきた経験があります。</b></p>
         </div>
         <div class="offer o6">
           <div class="o-no">05</div>
