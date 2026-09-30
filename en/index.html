@@ -498,6 +498,37 @@
   }
   @media (max-width: 640px) { .talk-theme { padding: 16px 16px 14px; } .talk-cta .btn { width: 100%; justify-content: center; } }
 
+  /* ───────── 展示会を軸にしたつながり（2026-10-01追加・日本語のみ） ───────── */
+  .flow-base {
+    background: rgba(255,255,255,.88); border: 1px solid var(--line); border-left: 6px solid var(--sns);
+    border-radius: 8px; padding: 24px 26px 22px; box-shadow: 0 8px 22px rgba(37,32,26,.10);
+  }
+  .flow-base h3 { font-family: var(--serif); font-size: 20px; font-weight: 800; line-height: 1.5; }
+  .flow-base > p { font-size: 13.5px; color: var(--ink-soft); margin: 8px 0 18px; }
+  .flow-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  .flow-step { border-top: 3px solid var(--line); padding-top: 10px; }
+  .flow-step b { display: block; font-family: var(--serif); font-size: 15px; font-weight: 800; margin-bottom: 4px; }
+  .flow-step span { font-size: 12.5px; color: var(--ink-soft); line-height: 1.75; }
+  .flow-link { display: block; text-align: center; font-size: 12.5px; font-weight: 700; color: var(--sns); letter-spacing: .04em; margin-top: 18px; text-decoration: none; }
+  .flow-head { font-family: var(--serif); font-size: 15px; font-weight: 800; letter-spacing: .06em; margin: 26px 0 14px; text-align: center; }
+  .flow-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+  .flow-item {
+    display: flex; flex-direction: column; gap: 6px; text-decoration: none; color: inherit;
+    background: rgba(255,255,255,.66); border: 1px solid var(--line); border-top: 4px solid var(--fc);
+    border-radius: 8px; padding: 16px 18px 14px; box-shadow: 0 4px 16px rgba(37,32,26,.06);
+    transition: transform .18s, box-shadow .18s, border-color .18s;
+  }
+  .flow-item:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(37,32,26,.14); }
+  .flow-item .f-tag { font-family: var(--mono); font-size: 10.5px; font-weight: 700; letter-spacing: .08em; color: var(--fc); }
+  .flow-item h4 { font-family: var(--serif); font-size: 15.5px; font-weight: 800; line-height: 1.5; }
+  .flow-item p { font-size: 12.5px; color: var(--ink-soft); flex: 1; line-height: 1.75; }
+  .flow-item.f1 { --fc: var(--office); } .flow-item.f2 { --fc: var(--content); }
+  .flow-item.f3 { --fc: var(--azul-deep); } .flow-item.f4 { --fc: var(--sns); }
+  @media (max-width: 880px) {
+    .flow-steps { grid-template-columns: 1fr; }
+    .flow-grid { grid-template-columns: 1fr; }
+  }
+
   /* ───────── 日英で出し分ける区画（名刺EN版の内容・2026-09追加） ───────── */
   html[lang="en"] .only-ja { display: none !important; }
   html:not([lang="en"]) .only-en { display: none !important; }
@@ -547,19 +578,61 @@
     <header class="hero">
       <span class="kicker">PORTFOLIO &amp; WORKS</span>
       <!-- ===== 要編集: キャッチコピー ===== -->
-      <h1 data-i18n="hero.title"><span class="nw">手作業のまま回している仕事、</span><span class="nw"><em>仕組み</em>にして動くところまで。</span></h1>
-      <p class="lede" data-i18n="hero.lede">展示会の準備から終わったあとのフォロー、受発注や請求など売ったあとの手作業、海外メーカーとの英語のやり取りまで。担当の人しか分からない作業を、ほかの人も回せる形にします。GAS・Notion・生成AIは、そのための道具として使っています。</p>
+      <h1 data-i18n="hero.title"><span class="nw">展示会のことなら、<em>お任せ</em>ください。</span><span class="nw">準備から、終わったあとのフォローまで。</span></h1>
+      <p class="lede" data-i18n="hero.lede">展示会の企画・運営責任者（日英対応）として、出る展示会選びから当日のブース、終わったあとのフォローまでやってきました。出展前の広報、終わったあとの営業支援・クラウドファンディングの掲載準備・AI導入まで、つながってお手伝いします。</p>
       <div class="meta">
-        <span data-i18n="hero.meta1">展示会の出展サポート</span>
-        <span data-i18n="hero.meta2">売ったあとの事務・営業</span>
-        <span data-i18n="hero.meta3">海外メーカーの日本での展開（日英）</span>
-        <span data-i18n="hero.meta4">クラウドファンディングの掲載準備</span>
+        <span data-i18n="hero.meta1">展示会の準備</span>
+        <span data-i18n="hero.meta2">展示会の当日</span>
+        <span data-i18n="hero.meta3">終わったあとのフォロー</span>
+        <span data-i18n="hero.meta4">広報・営業支援・AI導入も</span>
       </div>
       <div class="actions">
         <a href="https://calendar.app.google/AjnzHxfucmSKPPAx7" class="btn btn-primary js-booking" target="_blank" rel="noopener" data-i18n="hero.cta1">15分、オンラインで話す →</a>
         <a href="#talk" class="btn btn-ghost" data-i18n="hero.cta2">相談できることを見る</a>
       </div>
     </header>
+
+    <!-- ===== 展示会を軸にしたつながり（2026-10-01追加・日本語のみ） ===== -->
+    <section class="block only-ja" id="flow">
+      <div class="block-head">
+        <span class="kicker solo">EXHIBITION SUPPORT</span>
+        <h2>展示会を軸に、前もあとも つながります</h2>
+        <p class="block-lede"><span class="phr">展示会の準備・当日・終わったあとを基盤に、</span><span class="phr">その前の広報と、</span><span class="phr">終わったあとの営業・クラウドファンディング・AI導入まで、</span><span class="phr">同じ担当がつながってお手伝いします。</span></p>
+      </div>
+      <div class="flow-base">
+        <h3>展示会のことなら、お任せください</h3>
+        <p><span class="phr">展示会の企画・運営責任者として、</span><span class="phr">出る展示会の候補を調べて提案し、</span><span class="phr">設営、当日の営業、撤収、</span><span class="phr">終わったあとのフォローまで自分の手でやってきました。</span><span class="phr">必要なところだけ選べます。</span></p>
+        <div class="flow-steps">
+          <div class="flow-step"><b>準備</b><span><span class="phr">出る展示会を一緒に比べる相談。</span><span class="phr">準備から撤収までの段取り表。</span></span></div>
+          <div class="flow-step"><b>当日</b><span><span class="phr">当日の同行・ブースでの営業。</span><span class="phr">海外からの来場者にも日英で。</span></span></div>
+          <div class="flow-step"><b>終わったあと</b><span><span class="phr">リード一覧・お礼メールの一括下書き・商談の記録。</span></span></div>
+        </div>
+        <a class="flow-link js-booking" href="https://calendar.app.google/AjnzHxfucmSKPPAx7" target="_blank" rel="noopener">展示会の相談で予約する →</a>
+      </div>
+      <p class="flow-head">展示会の前とあとで、つながってできること</p>
+      <div class="flow-grid">
+        <a class="flow-item f1 js-booking" href="https://calendar.app.google/AjnzHxfucmSKPPAx7" target="_blank" rel="noopener">
+          <span class="f-tag">前 ・ あと</span>
+          <h4>広報</h4>
+          <p><span class="phr">出展のお知らせ（案内文・SNS・プレスリリースの下書き）から、</span><span class="phr">終わったあとの発信まで。</span><span class="phr">来てほしい相手へのご案内も作ります。</span></p>
+        </a>
+        <a class="flow-item f2 js-booking" href="https://calendar.app.google/AjnzHxfucmSKPPAx7" target="_blank" rel="noopener">
+          <span class="f-tag">あと</span>
+          <h4>クラウドファンディングの掲載準備</h4>
+          <p><span class="phr">反応のよかった商品を、</span><span class="phr">載せられるかを一緒に確かめ、</span><span class="phr">準備の段取りを整えます。</span><span class="phr">掲載を最後まで伴走した実績は、まだありません。</span></p>
+        </a>
+        <a class="flow-item f3 js-booking" href="https://calendar.app.google/AjnzHxfucmSKPPAx7" target="_blank" rel="noopener">
+          <span class="f-tag">あと</span>
+          <h4>営業支援</h4>
+          <p><span class="phr">名刺交換のあとを商談につなげます。</span><span class="phr">新規開拓の型づくりと改善も、</span><span class="phr">ご一緒します。</span></p>
+        </a>
+        <a class="flow-item f4 js-booking" href="https://calendar.app.google/AjnzHxfucmSKPPAx7" target="_blank" rel="noopener">
+          <span class="f-tag">あと ・ ふだん</span>
+          <h4>AI導入支援</h4>
+          <p><span class="phr">毎回の文章づくりや転記を、</span><span class="phr">生成AIとGASで楽にします。</span><span class="phr">入れて終わりにせず、使えるようになるまで。</span></p>
+        </a>
+      </div>
+    </section>
 
 
     <!-- ===== 15分相談（受け皿）: 名刺のQR・紹介・発信はすべてここの予約ページに集める ===== -->
