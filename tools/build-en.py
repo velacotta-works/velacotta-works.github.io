@@ -50,7 +50,7 @@ REPLACEMENTS = [
     ),
     (
         "description",
-        '<meta name="description" content="現場業務の仕組み化・自動化（Notion / GAS / AI）、営業・事務サポート、MEO・教材制作。業務の詰まりを見つけ、仕組みにして、動くところまで作ります。お仕事のご相談はこちらから。">',
+        '<meta name="description" content="少ない人数でも効率的に、展示会を商談につなげます。準備から当日のブース、終わったあとのフォローまで。本業で20回以上の出展を担当（1回平均30件のリード獲得。展示会の規模によります）。まずは15分、オンラインで無料相談。">',
         f'<meta name="description" content="{DESC_EN}">',
     ),
     (
