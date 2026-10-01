@@ -45,7 +45,7 @@ REPLACEMENTS = [
     ),
     (
         "ページタイトル",
-        "<title>Miho ｜ 業務効率化・自動化サポート（Notion / GAS / AI）｜VelaCotta Works</title>",
+        "<title>Miho ｜ 展示会の出展サポート｜VelaCotta Works</title>",
         f"<title>{TITLE_EN}</title>",
     ),
     (
@@ -65,27 +65,27 @@ REPLACEMENTS = [
     ),
     (
         "og:title",
-        '<meta property="og:title" content="Miho ｜ 業務効率化・自動化サポート（Notion / GAS / AI）｜VelaCotta Works">',
+        '<meta property="og:title" content="Miho ｜ 展示会の出展サポート｜VelaCotta Works">',
         f'<meta property="og:title" content="{TITLE_EN}">',
     ),
     (
         "og:description",
-        '<meta property="og:description" content="業務の詰まりを見つけ、仕組みにして、動くところまで。Notion・GAS・AIでの業務効率化、営業・事務サポート、MEO・教材制作の制作実績。">',
+        '<meta property="og:description" content="少ない人数でも効率的に、展示会を商談につなげます。準備から当日のブース、終わったあとのフォローまで。まずは15分、オンラインで無料相談。">',
         f'<meta property="og:description" content="{OG_DESC_EN}">',
     ),
     (
         "og:image:alt",
-        '<meta property="og:image:alt" content="VelaCotta Works / Miho — 業務の詰まりを見つけ、仕組みにして、動くところまで。">',
+        '<meta property="og:image:alt" content="VelaCotta Works / Miho — 少ない人数でも効率的に、展示会を商談につなげる。">',
         f'<meta property="og:image:alt" content="{OG_ALT_EN}">',
     ),
     (
         "twitter:title",
-        '<meta name="twitter:title" content="Miho ｜ 業務効率化・自動化サポート｜VelaCotta Works">',
+        '<meta name="twitter:title" content="Miho ｜ 展示会の出展サポート｜VelaCotta Works">',
         f'<meta name="twitter:title" content="{TW_TITLE_EN}">',
     ),
     (
         "twitter:description",
-        '<meta name="twitter:description" content="業務の詰まりを見つけ、仕組みにして、動くところまで。Notion・GAS・AI・MEO・教材制作の制作実績。">',
+        '<meta name="twitter:description" content="少ない人数でも効率的に、展示会を商談につなげます。準備から当日のブース、終わったあとのフォローまで。まずは15分、オンラインで無料相談。">',
         f'<meta name="twitter:description" content="{OG_DESC_EN}">',
     ),
     (
