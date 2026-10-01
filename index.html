@@ -430,7 +430,8 @@
 
   /* ───────── 英語表示時のラベル幅（JAの2文字前提だと Availability 等がはみ出すため） ───────── */
   /* /can-do/ は日本語のみのページ。英語表示のときはナビに出さない（英語版を作ったら解除する） */
-    html[lang="en"] .nav-cando { display: none; }
+    .nav-cando { display: none; }
+    html[lang="en"] [data-i18n="hero.meta4"] { display: none; }
     html[lang="en"] .about-facts li span { width: 8.2em; }
   @media (max-width: 480px) {
     html[lang="en"] .about-facts li { flex-direction: column; gap: 2px; }
@@ -550,7 +551,8 @@
   .contact-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 22px; margin-top: 22px; font-size: 13px; color: var(--ink-soft); }
   .contact-links a { color: var(--ink); font-weight: 700; text-decoration: none; border-bottom: 1px solid var(--line); }
   .contact-links a:hover { color: var(--sns); border-color: var(--sns); }
-  @media (max-width: 880px) { .brand-grid { grid-template-columns: 1fr; } }
+  .brand-grid.three { grid-template-columns: repeat(3, 1fr); }
+  @media (max-width: 880px) { .brand-grid, .brand-grid.three { grid-template-columns: 1fr; } }
   </style>
 </head>
 <body>
@@ -559,8 +561,9 @@
     <a href="/" class="logo" aria-label="ページの先頭に戻る">Miho <small style="font-family:var(--sans);font-weight:500;font-size:10px;letter-spacing:.18em;color:var(--ink-soft)">VELACOTTA WORKS</small></a>
     <nav>
       <span class="links">
+        <a href="#flow" class="only-ja" data-i18n="nav.flow">展示会のサポート</a>
         <a href="#services" data-i18n="nav.services">できること</a>
-        <a href="#brands" data-i18n="nav.brands">海外ブランドの方へ</a>
+        <a href="#brands" class="only-en" data-i18n="nav.brands">海外ブランドの方へ</a>
         <a href="/can-do/" class="nav-cando">困りごと別に探す</a>
         <a href="#ventures" data-i18n="nav.ventures">実際に使われている仕事</a>
         <a href="#roi" data-i18n="nav.roi">費用対効果</a>
@@ -612,7 +615,7 @@
       <div class="flow-grid">
         <a class="flow-item f1 js-booking" href="https://calendar.app.google/AjnzHxfucmSKPPAx7" target="_blank" rel="noopener">
           <h4>広報</h4>
-          <p><span class="phr">出展のお知らせ（案内文・SNS・プレスリリースの下書き）から、</span><span class="phr">終わったあとの発信まで。</span><span class="phr">来てほしい相手へのご案内も作ります。</span></p>
+          <p><span class="phr">出展のお知らせ（案内文・SNS・プレスリリースの下書き）から、</span><span class="phr">終わったあとの発信まで。</span><span class="phr">来てほしい相手へのご案内も作ります。</span><span class="phr">広報の実績は、まだありません。</span></p>
         </a>
         <a class="flow-item f2 js-booking" href="https://calendar.app.google/AjnzHxfucmSKPPAx7" target="_blank" rel="noopener">
           <h4>クラウドファンディングの掲載準備</h4>
@@ -647,26 +650,26 @@
       <div class="talk-themes">
         <a class="talk-theme t1 js-booking" href="https://calendar.app.google/AjnzHxfucmSKPPAx7" target="_blank" rel="noopener">
           <span class="t-no">01</span>
-          <h3 data-i18n="talk.t1.h3"><span class="nw">展示会の準備・当日・</span><span class="nw">終わったあと</span></h3>
-          <p data-i18n="talk.t1.p"><span class="phr">初めて出展する。</span><span class="phr">出ているのに商談につながらない。</span><span class="phr">名刺交換のあとが続かない。</span></p>
+          <h3 data-i18n="talk.t1.h3">展示会の準備</h3>
+          <p data-i18n="talk.t1.p"><span class="phr">初めて出展する。</span><span class="phr">出る展示会を選びたい。</span></p>
           <span class="t-go" data-i18n="talk.go">この相談で予約する →</span>
         </a>
         <a class="talk-theme t2 js-booking" href="https://calendar.app.google/AjnzHxfucmSKPPAx7" target="_blank" rel="noopener">
           <span class="t-no">02</span>
-          <h3 data-i18n="talk.t2.h3"><span class="nw">受発注や請求など、</span><span class="nw">売ったあとの手作業</span></h3>
-          <p data-i18n="talk.t2.p"><span class="phr">伝票・請求・在庫の転記を手で回している。</span><span class="phr">担当の人しかやり方が分からない。</span></p>
+          <h3 data-i18n="talk.t2.h3">展示会の当日</h3>
+          <p data-i18n="talk.t2.p"><span class="phr">ブースでの声かけや説明を整えたい。</span><span class="phr">海外からの来場者にも対応したい。</span></p>
           <span class="t-go" data-i18n="talk.go">この相談で予約する →</span>
         </a>
         <a class="talk-theme t3 js-booking" href="https://calendar.app.google/AjnzHxfucmSKPPAx7" target="_blank" rel="noopener">
           <span class="t-no">03</span>
-          <h3 data-i18n="talk.t3.h3"><span class="nw">海外メーカーとの</span><span class="nw">英語のやり取り</span></h3>
-          <p data-i18n="talk.t3.p"><span class="phr">海外の会社から英語のメールが届いた。</span><span class="phr">見積もりや条件を英語で確かめたい。</span><span class="phr">展示会で会った海外メーカーと話を進めたい。</span></p>
+          <h3 data-i18n="talk.t3.h3">展示会が終わったあと</h3>
+          <p data-i18n="talk.t3.p"><span class="phr">名刺交換のあとが続かない。</span><span class="phr">出ているのに商談につながらない。</span></p>
           <span class="t-go" data-i18n="talk.go">この相談で予約する →</span>
         </a>
         <a class="talk-theme t4 js-booking" href="https://calendar.app.google/AjnzHxfucmSKPPAx7" target="_blank" rel="noopener">
           <span class="t-no">04</span>
-          <h3 data-i18n="talk.t4.h3"><span class="nw">クラウドファンディングに</span><span class="nw">載せたい</span></h3>
-          <p data-i18n="talk.t4.p"><span class="phr">何から準備すればいいか。</span><span class="phr">載せられる商品かどうかを確かめたい。</span></p>
+          <h3 data-i18n="talk.t4.h3">新規開拓営業</h3>
+          <p data-i18n="talk.t4.p"><span class="phr">新規開拓の進め方を整えたい。</span><span class="phr">リスト作成から契約までの流れを見直したい。</span></p>
           <span class="t-go" data-i18n="talk.go">この相談で予約する →</span>
         </a>
         <a class="talk-theme t5 js-booking" href="https://calendar.app.google/AjnzHxfucmSKPPAx7" target="_blank" rel="noopener">
@@ -678,7 +681,7 @@
         <a class="talk-theme t6 js-booking" href="https://calendar.app.google/AjnzHxfucmSKPPAx7" target="_blank" rel="noopener">
           <span class="t-no">06</span>
           <h3 data-i18n="talk.t6.h3">その他</h3>
-          <p data-i18n="talk.t6.p"><span class="phr">どれに当てはまるか分からない。</span><span class="phr">まずは話を聞いてほしい。</span></p>
+          <p data-i18n="talk.t6.p"><span class="phr">売ったあとの手作業・英語のやり取りなど。</span><span class="phr">どれに当てはまるか分からない。</span><span class="phr">まずは話を聞いてほしい。</span></p>
           <span class="t-go" data-i18n="talk.go">この相談で予約する →</span>
         </a>
       </div>
@@ -700,17 +703,14 @@
     <section class="block" id="brands">
       <div class="block-head">
         <span class="kicker solo">VELACOTTA WORKS</span>
-        <h2>What I can do for your brand in Japan</h2>
+        <h2>Trade show support for your exhibit in Japan</h2>
       </div>
-      <div class="brand-grid">
-        <a class="brand-item js-booking" href="https://calendar.app.google/AjnzHxfucmSKPPAx7" target="_blank" rel="noopener"><span class="b-ico" aria-hidden="true">⌕</span><div><b>Market Research</b><span>Will it sell in Japan?</span></div></a>
-        <a class="brand-item js-booking" href="https://calendar.app.google/AjnzHxfucmSKPPAx7" target="_blank" rel="noopener"><span class="b-ico" aria-hidden="true">▤</span><div><b>Japanese Localization</b><span>Product pages &amp; catalogs</span></div></a>
-        <a class="brand-item js-booking" href="https://calendar.app.google/AjnzHxfucmSKPPAx7" target="_blank" rel="noopener"><span class="b-ico" aria-hidden="true">➚</span><div><b>Buyer Outreach</b><span>Finding shops &amp; buyers in Japan</span></div></a>
-        <a class="brand-item js-booking" href="https://calendar.app.google/AjnzHxfucmSKPPAx7" target="_blank" rel="noopener"><span class="b-ico" aria-hidden="true">⌂</span><div><b>Trade Show Support</b><span>Booth, visitors, follow-up</span></div></a>
+      <div class="brand-grid three">
+        <a class="brand-item js-booking" href="https://calendar.app.google/AjnzHxfucmSKPPAx7" target="_blank" rel="noopener"><span class="b-ico" aria-hidden="true">⌕</span><div><b>Before the show</b><span>Choosing a show, a step-by-step plan, booth layout, and Japanese panels &amp; materials</span></div></a>
+        <a class="brand-item js-booking" href="https://calendar.app.google/AjnzHxfucmSKPPAx7" target="_blank" rel="noopener"><span class="b-ico" aria-hidden="true">⌂</span><div><b>At the show</b><span>Bilingual support at your booth (dates to be discussed)</span></div></a>
+        <a class="brand-item js-booking" href="https://calendar.app.google/AjnzHxfucmSKPPAx7" target="_blank" rel="noopener"><span class="b-ico" aria-hidden="true">➚</span><div><b>After the show</b><span>A lead list, follow-up email drafts, and tracking which leads become deals</span></div></a>
       </div>
       <div class="brand-opt">
-        <div class="o-h">OPTIONAL — AS NEEDED</div>
-        <ul><li>Import &amp; shipping</li><li>Order &amp; stock admin</li><li>JP customer support</li></ul>
         <em>Start small. Each step only with your approval.</em>
       </div>
     </section>
@@ -741,15 +741,15 @@
       </div>
       <div class="offers-head only-ja"><span data-i18n="offers.gA">いちばん多いご相談</span></div>
       <div class="offers g-main only-ja">
-        <div class="offer o5 lead">
-          <div class="o-no">01</div>
-          <h4 data-i18n="offers.o5.h4">受発注や請求など、売ったあとの手作業</h4>
-          <p data-i18n="offers.o5.p">事務の現場に約20年いた経験から、業務の整理とDX化を現場に入って進めます。<b>顧客データ（Salesforce / Notion）の整備や、見積・請求・議事録の整理にも対応します。</b></p>
-        </div>
         <div class="offer o2 lead">
-          <div class="o-no">02</div>
+          <div class="o-no">01</div>
           <h4 data-i18n="offers.expo.h4">展示会の出展サポート（必要なところだけ選べます）</h4>
           <p data-i18n="offers.expo.p">展示会の企画・運営責任者として、出る展示会の候補を調べて提案し、設営、当日の営業、撤収、終わったあとのフォローまで自分の手でやってきました。次の4つから、必要なものだけ選んでいただけます。<br><b>① 出る展示会を一緒に比べる相談<br>② 準備から撤収までの段取り表<br>③ 当日の同行・ブースでの営業<br>④ 終わったあとのフォローの仕組み（リード一覧・お礼メールの一括下書き・商談の記録）</b><br>初めて出展する方、出ているのに商談につながらない方、海外からの来場者向けに資料や対応を整えたい方に。売上や集客の結果はお約束しません。</p>
+        </div>
+        <div class="offer o5 lead">
+          <div class="o-no">02</div>
+          <h4 data-i18n="offers.o5.h4">受発注や請求など、売ったあとの手作業</h4>
+          <p data-i18n="offers.o5.p">事務の現場に約20年いた経験から、業務の整理とDX化を現場に入って進めます。<b>顧客データ（Salesforce / Notion）の整備や、見積・請求・議事録の整理にも対応します。</b></p>
         </div>
         <div class="offer o3">
           <div class="o-no">03</div>
@@ -1105,7 +1105,7 @@
 
       'about.h2': 'Profile',
       'about.p1': 'Hi, I\'m <b>Miho</b>. I provide admin support for a sales and marketing team at a global company, and I&rsquo;m good at solving the small day-to-day frustrations of a sales team with <b>workflow automation</b> in mind.',
-      'about.p2': 'Rather than starting from a tool, I <b>work backward from the problem</b> to design a system and build it all the way to something that actually runs. I cover everything from Notion / GAS / AI automation to sales and admin support, MEO, and course content.',
+      'about.p2': 'Rather than starting from a tool, I <b>work backward from the problem</b> to design a system and build it all the way to something that actually runs.',
       'about.fact1': '<span>Location</span>Tokyo, Japan (remote OK)',
       'about.fact2': '<span>Availability</span>Weekday evenings &amp; weekends (approx. 10&ndash;20 hrs/week)',
       'about.fact3': '<span>Experience</span>DX promotion / Workflow automation / Sales support / Data management',
@@ -1230,16 +1230,16 @@
       'cform.gform': 'Write to me (contact form) →',
       'nav.cta': 'Book a 15-min call',
       'nav.brands': 'For Brands',
-      'hero.title': 'Introducing overseas products to Japan, <em>one at a time</em>.',
-      'hero.lede': 'Japan Market Development for overseas brands. From checking whether your product will sell in Japan to Japanese product pages, trade shows, and the admin that comes after the sale &mdash; I help with just the parts you need. Start small. Each step only with your approval.',
-      'hero.meta1': 'Market Research',
-      'hero.meta2': 'Japanese Localization',
-      'hero.meta3': 'Buyer Outreach',
+      'hero.title': 'Trade show support for overseas companies <em>exhibiting in Japan</em>.',
+      'hero.lede': 'I have led exhibit planning and operations at trade shows, in Japanese and English. Before, at, and after the show, I help overseas companies exhibiting in Japan with just the parts they need. Start small. Each step only with your approval.',
+      'hero.meta1': 'Before the show',
+      'hero.meta2': 'At the show',
+      'hero.meta3': 'After the show',
       'hero.meta4': 'Trade Show Support',
       'hero.cta1': 'Book a 15-min online call →',
       'hero.cta2': 'What I can do',
       'talk.h2': 'Start with a 15-minute call',
-      'talk.lede': 'Even a &ldquo;could you help with this?&rdquo; is fine. Tell me what you want to do in Japan.',
+      'talk.lede': 'Even a &ldquo;could you help with this?&rdquo; is fine. Tell me which trade show in Japan you are planning for.',
       'talk.chip1': '15 min',
       'talk.chip2': 'Free',
       'talk.chip3': 'Online (Google Meet)',
@@ -1251,7 +1251,7 @@
       'talk.s3.p': 'If I can help, I&rsquo;ll email you the scope and fee later. If it&rsquo;s something I can&rsquo;t do, I&rsquo;ll tell you on the call.',
       'talk.cta': 'Book a 15-min call →',
       'talk.small': 'Prefer to write? Use the contact form at the bottom of this page.',
-      'services.lede': 'I turn hands-on work that only one person understands into something others can run. Whether it&rsquo;s day-to-day operations or a trade show, the work is the same.',
+      'services.lede': 'Before, at, and after the show, I help with just the parts you need. I also turn work that only one person understands into something others can run.',
       'strength.p1.h3': 'Show it working first',
       'strength.p1.p': 'I show a working prototype before it&rsquo;s finished, and I try it on my own work before handing it over. My trade show thank-you email tool spread after other salespeople saw me using it.',
       'strength.p2.h3': 'Set the scope, build small',
@@ -1271,7 +1271,7 @@
     };
 
     var TITLE_JA = document.title;
-    var TITLE_EN = 'Miho | Japan Market Development | VelaCotta Works';
+    var TITLE_EN = 'Miho | Trade Show Support in Japan | VelaCotta Works';
 
     var nodes = Array.prototype.slice.call(document.querySelectorAll('[data-i18n]'));
     var original = new Map();

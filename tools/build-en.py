@@ -22,18 +22,18 @@ DST = ROOT / "en" / "index.html"
 BASE = "https://velacotta-works.github.io/"
 EN_URL = BASE + "en/"
 
-TITLE_EN = "Miho | Japan Market Development | VelaCotta Works"
+TITLE_EN = "Miho | Trade Show Support in Japan | VelaCotta Works"
 DESC_EN = (
-    "Introducing overseas products to Japan, one at a time. Market research, Japanese localization, "
-    "buyer outreach and trade show support for your brand in Japan. Start small. Each step only with your approval."
+    "Trade show support for overseas companies exhibiting in Japan: before, at, and after the show. "
+    "Start small. Each step only with your approval."
 )
 OG_DESC_EN = (
-    "Introducing overseas products to Japan, one at a time. Market research, Japanese localization, "
-    "buyer outreach and trade show support. Start with a free 15-minute online call."
+    "Trade show support for overseas companies exhibiting in Japan: before, at, and after the show. "
+    "Start with a free 15-minute online call."
 )
-TW_TITLE_EN = "Miho | Japan Market Development | VelaCotta Works"
+TW_TITLE_EN = "Miho | Trade Show Support in Japan | VelaCotta Works"
 OG_ALT_EN = (
-    "VelaCotta Works / Miho - Introducing overseas products to Japan, one at a time."
+    "VelaCotta Works / Miho - Trade show support for overseas companies exhibiting in Japan."
 )
 
 # (説明, 置換前, 置換後)。置換前が本文にちょうど1回現れることを確認してから置き換える。
