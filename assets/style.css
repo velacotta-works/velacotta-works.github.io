@@ -169,7 +169,7 @@ summary:hover { background: #f0f3ee; }
 
 .work-list { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-bottom: 56px; }
 .work { padding: 0 32px 32px; background: #fff; border: 1px solid var(--line); overflow: hidden; }
-.work-photo { display: block; width: calc(100% + 64px); max-width: none; height: 190px; object-fit: cover; margin: 0 -32px 26px; }
+.work-photo { display: block; width: calc(100% + 64px); max-width: none; height: 64px; object-fit: cover; margin: 0 -32px 24px; }
 .work small { font-size: 12px; color: var(--orange-dark); font-weight: 600; }
 .work h2 { font: 500 22px/1.7 var(--serif); margin: 10px 0; }
 .work p { font-size: 14px; color: var(--muted); margin: 0 0 10px; }
@@ -292,7 +292,7 @@ summary:hover { background: #f0f3ee; }
   .consult { padding: 48px 0; }
   .work-list { grid-template-columns: 1fr; gap: 18px; }
   .work { padding: 0 24px 26px; }
-  .work-photo { width: calc(100% + 48px); height: 175px; margin: 0 -24px 22px; }
+  .work-photo { width: calc(100% + 48px); height: 52px; margin: 0 -24px 20px; }
   .work h2 { font-size: 21px; }
   .roi { padding: 40px 0; }
   .roi-items, .roi-steps, .sample-grid, .theme-grid, .flow-steps, .way-grid { grid-template-columns: 1fr; }
